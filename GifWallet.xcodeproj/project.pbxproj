@@ -87,8 +87,6 @@
 		F5D1D45020499B880012E800 /* GifWalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GifWalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D1D45420499B880012E800 /* GifWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifWalletTests.swift; sourceTree = "<group>"; };
 		F5D1D45620499B880012E800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F5D1D45F20499B880012E800 /* GifWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifWalletUITests.swift; sourceTree = "<group>"; };
-		F5D1D46120499B880012E800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5D1D47220499E2F0012E800 /* GifWalletKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GifWalletKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D1D47420499E2F0012E800 /* GifWalletKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GifWalletKit.h; sourceTree = "<group>"; };
 		F5D1D47520499E2F0012E800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -161,7 +159,6 @@
 			children = (
 				F5D1D43C20499B880012E800 /* GifWallet */,
 				F5D1D45320499B880012E800 /* GifWalletTests */,
-				F5D1D45E20499B880012E800 /* GifWalletUITests */,
 				F5D1D47320499E2F0012E800 /* GifWalletKit */,
 				F5D1D48020499E300012E800 /* GifWalletKitTests */,
 				F5D1D43B20499B880012E800 /* Products */,
@@ -203,15 +200,6 @@
 				F5D1D45620499B880012E800 /* Info.plist */,
 			);
 			path = GifWalletTests;
-			sourceTree = "<group>";
-		};
-		F5D1D45E20499B880012E800 /* GifWalletUITests */ = {
-			isa = PBXGroup;
-			children = (
-				F5D1D45F20499B880012E800 /* GifWalletUITests.swift */,
-				F5D1D46120499B880012E800 /* Info.plist */,
-			);
-			path = GifWalletUITests;
 			sourceTree = "<group>";
 		};
 		F5D1D47320499E2F0012E800 /* GifWalletKit */ = {
