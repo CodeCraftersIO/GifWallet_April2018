@@ -1,0 +1,16 @@
+//
+//  AppStore.xcconfig
+//  GifWallet
+//
+//  Created by Pierluigi Cifani on 02/03/2018.
+//  Copyright © 2018 Pierluigi Cifani. All rights reserved.
+//
+
+#include "Pods/Target Support Files/Pods-GifWallet/Pods-GifWallet.release.xcconfig"
+
+// App Name
+APP_DISPLAY_NAME = GifWallet
+
+// Code Signing
+PRODUCT_BUNDLE_IDENTIFIER = com.codecrafters.gifwallet
+
