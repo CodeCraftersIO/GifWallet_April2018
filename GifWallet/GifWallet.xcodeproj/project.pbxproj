@@ -1,0 +1,567 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F5D1D43E20499B880012E800 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D1D43D20499B880012E800 /* AppDelegate.swift */; };
+		F5D1D44020499B880012E800 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D1D43F20499B880012E800 /* MasterViewController.swift */; };
+		F5D1D44220499B880012E800 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D1D44120499B880012E800 /* DetailViewController.swift */; };
+		F5D1D44520499B880012E800 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5D1D44320499B880012E800 /* Main.storyboard */; };
+		F5D1D44720499B880012E800 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5D1D44620499B880012E800 /* Assets.xcassets */; };
+		F5D1D44A20499B880012E800 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5D1D44820499B880012E800 /* LaunchScreen.storyboard */; };
+		F5D1D45520499B880012E800 /* GifWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D1D45420499B880012E800 /* GifWalletTests.swift */; };
+		F5D1D46020499B880012E800 /* GifWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D1D45F20499B880012E800 /* GifWalletUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F5D1D45120499B880012E800 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5D1D43220499B870012E800 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F5D1D43920499B880012E800;
+			remoteInfo = GifWallet;
+		};
+		F5D1D45C20499B880012E800 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5D1D43220499B870012E800 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F5D1D43920499B880012E800;
+			remoteInfo = GifWallet;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F5D1D43A20499B880012E800 /* GifWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GifWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5D1D43D20499B880012E800 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F5D1D43F20499B880012E800 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		F5D1D44120499B880012E800 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		F5D1D44420499B880012E800 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F5D1D44620499B880012E800 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F5D1D44920499B880012E800 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F5D1D44B20499B880012E800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5D1D45020499B880012E800 /* GifWalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GifWalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5D1D45420499B880012E800 /* GifWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifWalletTests.swift; sourceTree = "<group>"; };
+		F5D1D45620499B880012E800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5D1D45B20499B880012E800 /* GifWalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GifWalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5D1D45F20499B880012E800 /* GifWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifWalletUITests.swift; sourceTree = "<group>"; };
+		F5D1D46120499B880012E800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F5D1D43720499B880012E800 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5D1D44D20499B880012E800 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5D1D45820499B880012E800 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F5D1D43120499B870012E800 = {
+			isa = PBXGroup;
+			children = (
+				F5D1D43C20499B880012E800 /* GifWallet */,
+				F5D1D45320499B880012E800 /* GifWalletTests */,
+				F5D1D45E20499B880012E800 /* GifWalletUITests */,
+				F5D1D43B20499B880012E800 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F5D1D43B20499B880012E800 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F5D1D43A20499B880012E800 /* GifWallet.app */,
+				F5D1D45020499B880012E800 /* GifWalletTests.xctest */,
+				F5D1D45B20499B880012E800 /* GifWalletUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F5D1D43C20499B880012E800 /* GifWallet */ = {
+			isa = PBXGroup;
+			children = (
+				F5D1D43D20499B880012E800 /* AppDelegate.swift */,
+				F5D1D43F20499B880012E800 /* MasterViewController.swift */,
+				F5D1D44120499B880012E800 /* DetailViewController.swift */,
+				F5D1D44320499B880012E800 /* Main.storyboard */,
+				F5D1D44620499B880012E800 /* Assets.xcassets */,
+				F5D1D44820499B880012E800 /* LaunchScreen.storyboard */,
+				F5D1D44B20499B880012E800 /* Info.plist */,
+			);
+			path = GifWallet;
+			sourceTree = "<group>";
+		};
+		F5D1D45320499B880012E800 /* GifWalletTests */ = {
+			isa = PBXGroup;
+			children = (
+				F5D1D45420499B880012E800 /* GifWalletTests.swift */,
+				F5D1D45620499B880012E800 /* Info.plist */,
+			);
+			path = GifWalletTests;
+			sourceTree = "<group>";
+		};
+		F5D1D45E20499B880012E800 /* GifWalletUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F5D1D45F20499B880012E800 /* GifWalletUITests.swift */,
+				F5D1D46120499B880012E800 /* Info.plist */,
+			);
+			path = GifWalletUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F5D1D43920499B880012E800 /* GifWallet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5D1D46420499B880012E800 /* Build configuration list for PBXNativeTarget "GifWallet" */;
+			buildPhases = (
+				F5D1D43620499B880012E800 /* Sources */,
+				F5D1D43720499B880012E800 /* Frameworks */,
+				F5D1D43820499B880012E800 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GifWallet;
+			productName = GifWallet;
+			productReference = F5D1D43A20499B880012E800 /* GifWallet.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F5D1D44F20499B880012E800 /* GifWalletTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5D1D46720499B880012E800 /* Build configuration list for PBXNativeTarget "GifWalletTests" */;
+			buildPhases = (
+				F5D1D44C20499B880012E800 /* Sources */,
+				F5D1D44D20499B880012E800 /* Frameworks */,
+				F5D1D44E20499B880012E800 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F5D1D45220499B880012E800 /* PBXTargetDependency */,
+			);
+			name = GifWalletTests;
+			productName = GifWalletTests;
+			productReference = F5D1D45020499B880012E800 /* GifWalletTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F5D1D45A20499B880012E800 /* GifWalletUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5D1D46A20499B880012E800 /* Build configuration list for PBXNativeTarget "GifWalletUITests" */;
+			buildPhases = (
+				F5D1D45720499B880012E800 /* Sources */,
+				F5D1D45820499B880012E800 /* Frameworks */,
+				F5D1D45920499B880012E800 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F5D1D45D20499B880012E800 /* PBXTargetDependency */,
+			);
+			name = GifWalletUITests;
+			productName = GifWalletUITests;
+			productReference = F5D1D45B20499B880012E800 /* GifWalletUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F5D1D43220499B870012E800 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Pierluigi Cifani";
+				TargetAttributes = {
+					F5D1D43920499B880012E800 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					F5D1D44F20499B880012E800 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F5D1D43920499B880012E800;
+					};
+					F5D1D45A20499B880012E800 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F5D1D43920499B880012E800;
+					};
+				};
+			};
+			buildConfigurationList = F5D1D43520499B870012E800 /* Build configuration list for PBXProject "GifWallet" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F5D1D43120499B870012E800;
+			productRefGroup = F5D1D43B20499B880012E800 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F5D1D43920499B880012E800 /* GifWallet */,
+				F5D1D44F20499B880012E800 /* GifWalletTests */,
+				F5D1D45A20499B880012E800 /* GifWalletUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F5D1D43820499B880012E800 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5D1D44A20499B880012E800 /* LaunchScreen.storyboard in Resources */,
+				F5D1D44720499B880012E800 /* Assets.xcassets in Resources */,
+				F5D1D44520499B880012E800 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5D1D44E20499B880012E800 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5D1D45920499B880012E800 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F5D1D43620499B880012E800 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5D1D44220499B880012E800 /* DetailViewController.swift in Sources */,
+				F5D1D44020499B880012E800 /* MasterViewController.swift in Sources */,
+				F5D1D43E20499B880012E800 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5D1D44C20499B880012E800 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5D1D45520499B880012E800 /* GifWalletTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5D1D45720499B880012E800 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5D1D46020499B880012E800 /* GifWalletUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F5D1D45220499B880012E800 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F5D1D43920499B880012E800 /* GifWallet */;
+			targetProxy = F5D1D45120499B880012E800 /* PBXContainerItemProxy */;
+		};
+		F5D1D45D20499B880012E800 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F5D1D43920499B880012E800 /* GifWallet */;
+			targetProxy = F5D1D45C20499B880012E800 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F5D1D44320499B880012E800 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5D1D44420499B880012E800 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F5D1D44820499B880012E800 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5D1D44920499B880012E800 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F5D1D46220499B880012E800 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F5D1D46320499B880012E800 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F5D1D46520499B880012E800 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JC3H35UYFP;
+				INFOPLIST_FILE = GifWallet/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.blurred.GifWallet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F5D1D46620499B880012E800 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JC3H35UYFP;
+				INFOPLIST_FILE = GifWallet/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.blurred.GifWallet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F5D1D46820499B880012E800 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JC3H35UYFP;
+				INFOPLIST_FILE = GifWalletTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.blurred.GifWalletTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GifWallet.app/GifWallet";
+			};
+			name = Debug;
+		};
+		F5D1D46920499B880012E800 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JC3H35UYFP;
+				INFOPLIST_FILE = GifWalletTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.blurred.GifWalletTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GifWallet.app/GifWallet";
+			};
+			name = Release;
+		};
+		F5D1D46B20499B880012E800 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JC3H35UYFP;
+				INFOPLIST_FILE = GifWalletUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.blurred.GifWalletUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GifWallet;
+			};
+			name = Debug;
+		};
+		F5D1D46C20499B880012E800 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JC3H35UYFP;
+				INFOPLIST_FILE = GifWalletUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.blurred.GifWalletUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GifWallet;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F5D1D43520499B870012E800 /* Build configuration list for PBXProject "GifWallet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5D1D46220499B880012E800 /* Debug */,
+				F5D1D46320499B880012E800 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5D1D46420499B880012E800 /* Build configuration list for PBXNativeTarget "GifWallet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5D1D46520499B880012E800 /* Debug */,
+				F5D1D46620499B880012E800 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5D1D46720499B880012E800 /* Build configuration list for PBXNativeTarget "GifWalletTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5D1D46820499B880012E800 /* Debug */,
+				F5D1D46920499B880012E800 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5D1D46A20499B880012E800 /* Build configuration list for PBXNativeTarget "GifWalletUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5D1D46B20499B880012E800 /* Debug */,
+				F5D1D46C20499B880012E800 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F5D1D43220499B870012E800 /* Project object */;
+}
