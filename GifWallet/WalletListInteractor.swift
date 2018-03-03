@@ -7,12 +7,44 @@
 //
 
 import Foundation
+import GifWalletKit
 
 final class WalletListInteractor {
 
     func fetchWallet(completion: @escaping ([GifCell.VM]) -> ()) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
-            completion((0...8).map { _ in GifCell.VM.mock })
+        APIClient.shared.fetchTrends() { trendsResponse in
+            completion([GifCell.VM].init(fromResponse: trendsResponse))
         }
+    }
+    
+    func retrieveGifDetails(forGifId id: String, completion: @escaping (GifDetailViewController.VM) -> ()) {
+        
+        APIClient.shared.retrieveGIF(withId: id) { (gifResponse) in
+            completion(GifDetailViewController.VM(fromResponse: gifResponse))
+        }
+    }
+}
+
+extension Array where Element == GifCell.VM {
+    init(fromResponse response: TrendsResponse) {
+        let elements = response.data.map(GifCell.VM.init)
+        self.init(elements)
+    }
+}
+
+extension GifCell.VM {
+    init(fromResponse response: GIFResponse) {
+        self.id = response.id
+        self.title = response.title
+        self.url = response.images.downsized.url
+    }
+}
+
+extension GifDetailViewController.VM {
+    init(fromResponse response: GIFResponse) {
+        self.imageURL = response.images.original.url
+        self.imageWidth = CGFloat(response.images.original.width)
+        self.imageHeight = CGFloat(response.images.original.height)
+        self.metadata = GifMetadataView.VM(id: response.id, title: response.title, description: response.importDateTime.toString())
     }
 }

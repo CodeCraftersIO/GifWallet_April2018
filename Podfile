@@ -9,3 +9,7 @@ end
 
 target 'GifWalletKit' do
 end
+
+target 'GifWalletTests' do
+    pod 'iOSSnapshotTestCase'
+end
