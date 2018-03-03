@@ -8,10 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		0EDB97AAE181ABCA141291DB /* Pods_GifWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A6F727CA56BBC6B0F2BC71 /* Pods_GifWallet.framework */; };
+		67A58254204ACBF400D5224B /* GifDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A58253204ACBF400D5224B /* GifDetailViewController.swift */; };
+		67A58258204ACED600D5224B /* StretchyImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A58257204ACED600D5224B /* StretchyImageScrollView.swift */; };
+		67A5825A204ACF3400D5224B /* NSLayoutConstraint+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A58259204ACF3400D5224B /* NSLayoutConstraint+Wallet.swift */; };
+		67A5825D204AD31100D5224B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A5825C204AD31100D5224B /* File.swift */; };
+		67A58260204AF18F00D5224B /* trends.json in Resources */ = {isa = PBXBuildFile; fileRef = 67A5825F204AF18F00D5224B /* trends.json */; };
+		67B2DD95204AF1EB00251E00 /* TrendsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B2DD94204AF1EB00251E00 /* TrendsResponse.swift */; };
+		67B2DD97204AF98C00251E00 /* GIFParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B2DD96204AF98C00251E00 /* GIFParsingTests.swift */; };
+		67B2DD99204B042F00251E00 /* Data+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B2DD98204B042F00251E00 /* Data+Wallet.swift */; };
 		96BD2327B9BF84651CC63C62 /* Pods_GifWalletKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE38F6BB5FC7E7F8B0E1334 /* Pods_GifWalletKit.framework */; };
+		BDFCC3CFE32BFD1C48827EE4 /* Pods_GifWalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93693C37CD47E38504DDD0F4 /* Pods_GifWalletTests.framework */; };
 		F50514F12049AD9200D3C1BB /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50514F02049AD9200D3C1BB /* WalletViewController.swift */; };
 		F50514F32049AFD200D3C1BB /* UIColor+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50514F22049AFD200D3C1BB /* UIColor+Wallet.swift */; };
 		F50514F62049B17E00D3C1BB /* UIView+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50514F52049B17E00D3C1BB /* UIView+Wallet.swift */; };
+		F5071B262049B3DF001D09B2 /* ListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5071B252049B3DF001D09B2 /* ListState.swift */; };
+		F5A882362049C68E00A4D3A5 /* WalletListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A882352049C68E00A4D3A5 /* WalletListInteractor.swift */; };
+		F5A882392049C72400A4D3A5 /* GifWallet+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A882382049C72400A4D3A5 /* GifWallet+Mock.swift */; };
 		F5D1D43E20499B880012E800 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D1D43D20499B880012E800 /* AppDelegate.swift */; };
 		F5D1D44720499B880012E800 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5D1D44620499B880012E800 /* Assets.xcassets */; };
 		F5D1D44A20499B880012E800 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5D1D44820499B880012E800 /* LaunchScreen.storyboard */; };
@@ -72,13 +84,27 @@
 /* Begin PBXFileReference section */
 		1C57C1C750AA91C3F11BA5E4 /* Pods-GifWalletKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifWalletKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GifWalletKit/Pods-GifWalletKit.debug.xcconfig"; sourceTree = "<group>"; };
 		2AECB1B364602EE2C6751957 /* Pods-GifWalletKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifWalletKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-GifWalletKit/Pods-GifWalletKit.release.xcconfig"; sourceTree = "<group>"; };
+		31E7222EAA643759478704ED /* Pods-GifWalletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifWalletTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GifWalletTests/Pods-GifWalletTests.release.xcconfig"; sourceTree = "<group>"; };
+		50100687D38F85A90A62C1FC /* Pods-GifWalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifWalletTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GifWalletTests/Pods-GifWalletTests.debug.xcconfig"; sourceTree = "<group>"; };
 		52A6F727CA56BBC6B0F2BC71 /* Pods_GifWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GifWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		67A58253204ACBF400D5224B /* GifDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifDetailViewController.swift; sourceTree = "<group>"; };
+		67A58257204ACED600D5224B /* StretchyImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchyImageScrollView.swift; sourceTree = "<group>"; };
+		67A58259204ACF3400D5224B /* NSLayoutConstraint+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Wallet.swift"; sourceTree = "<group>"; };
+		67A5825C204AD31100D5224B /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		67A5825F204AF18F00D5224B /* trends.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = trends.json; sourceTree = "<group>"; };
+		67B2DD94204AF1EB00251E00 /* TrendsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsResponse.swift; sourceTree = "<group>"; };
+		67B2DD96204AF98C00251E00 /* GIFParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFParsingTests.swift; sourceTree = "<group>"; };
+		67B2DD98204B042F00251E00 /* Data+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Wallet.swift"; sourceTree = "<group>"; };
 		7F0484C73C76BA7AA7F4CA35 /* Pods-GifWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifWallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GifWallet/Pods-GifWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		832E7926BFBF2E17321EE417 /* Pods-GifWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-GifWallet/Pods-GifWallet.release.xcconfig"; sourceTree = "<group>"; };
+		93693C37CD47E38504DDD0F4 /* Pods_GifWalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GifWalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEE38F6BB5FC7E7F8B0E1334 /* Pods_GifWalletKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GifWalletKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50514F02049AD9200D3C1BB /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		F50514F22049AFD200D3C1BB /* UIColor+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Wallet.swift"; sourceTree = "<group>"; };
 		F50514F52049B17E00D3C1BB /* UIView+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Wallet.swift"; sourceTree = "<group>"; };
+		F5071B252049B3DF001D09B2 /* ListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListState.swift; sourceTree = "<group>"; };
+		F5A882352049C68E00A4D3A5 /* WalletListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListInteractor.swift; sourceTree = "<group>"; };
+		F5A882382049C72400A4D3A5 /* GifWallet+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GifWallet+Mock.swift"; sourceTree = "<group>"; };
 		F5D1D43A20499B880012E800 /* GifWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GifWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D1D43D20499B880012E800 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5D1D44620499B880012E800 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDFCC3CFE32BFD1C48827EE4 /* Pods_GifWalletTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,8 +166,51 @@
 			children = (
 				52A6F727CA56BBC6B0F2BC71 /* Pods_GifWallet.framework */,
 				BEE38F6BB5FC7E7F8B0E1334 /* Pods_GifWalletKit.framework */,
+				93693C37CD47E38504DDD0F4 /* Pods_GifWalletTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		67A58255204ACEB700D5224B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				67A5825B204AD30800D5224B /* Protocol */,
+				F50514F42049AFE800D3C1BB /* Extension */,
+				67A58256204ACEC100D5224B /* Components */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		67A58256204ACEC100D5224B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				67A58257204ACED600D5224B /* StretchyImageScrollView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		67A5825B204AD30800D5224B /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				67A5825C204AD31100D5224B /* File.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		67A5825E204AF18000D5224B /* json */ = {
+			isa = PBXGroup;
+			children = (
+				67A5825F204AF18F00D5224B /* trends.json */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+		67B2DD93204AF1D600251E00 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				67B2DD94204AF1EB00251E00 /* TrendsResponse.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		DD0F61E484A967F269BCA9C1 /* Pods */ = {
@@ -150,6 +220,8 @@
 				832E7926BFBF2E17321EE417 /* Pods-GifWallet.release.xcconfig */,
 				1C57C1C750AA91C3F11BA5E4 /* Pods-GifWalletKit.debug.xcconfig */,
 				2AECB1B364602EE2C6751957 /* Pods-GifWalletKit.release.xcconfig */,
+				50100687D38F85A90A62C1FC /* Pods-GifWalletTests.debug.xcconfig */,
+				31E7222EAA643759478704ED /* Pods-GifWalletTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -159,8 +231,36 @@
 			children = (
 				F50514F22049AFD200D3C1BB /* UIColor+Wallet.swift */,
 				F50514F52049B17E00D3C1BB /* UIView+Wallet.swift */,
+				67A58259204ACF3400D5224B /* NSLayoutConstraint+Wallet.swift */,
+				67B2DD98204B042F00251E00 /* Data+Wallet.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		F5071B272049B3E2001D09B2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F50514F02049AD9200D3C1BB /* WalletViewController.swift */,
+				67A58253204ACBF400D5224B /* GifDetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F5071B292049B496001D09B2 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				F5071B252049B3DF001D09B2 /* ListState.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		F5A882372049C6FF00A4D3A5 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				67A5825E204AF18000D5224B /* json */,
+				F5A882382049C72400A4D3A5 /* GifWallet+Mock.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		F5D1D43120499B870012E800 = {
@@ -190,13 +290,16 @@
 		F5D1D43C20499B880012E800 /* GifWallet */ = {
 			isa = PBXGroup;
 			children = (
+				67A58255204ACEB700D5224B /* Common */,
+				F5A882372049C6FF00A4D3A5 /* Mock */,
 				F5D1D43D20499B880012E800 /* AppDelegate.swift */,
-				F50514F02049AD9200D3C1BB /* WalletViewController.swift */,
-				F50514F42049AFE800D3C1BB /* Extension */,
+				F5071B292049B496001D09B2 /* DataSource */,
+				F5071B272049B3E2001D09B2 /* ViewControllers */,
 				F5D1D44620499B880012E800 /* Assets.xcassets */,
 				F5D1D44820499B880012E800 /* LaunchScreen.storyboard */,
 				F5D1D44B20499B880012E800 /* Info.plist */,
 				F5D1D4942049A0790012E800 /* Configurations */,
+				F5A882352049C68E00A4D3A5 /* WalletListInteractor.swift */,
 			);
 			path = GifWallet;
 			sourceTree = "<group>";
@@ -213,6 +316,7 @@
 		F5D1D47320499E2F0012E800 /* GifWalletKit */ = {
 			isa = PBXGroup;
 			children = (
+				67B2DD93204AF1D600251E00 /* Models */,
 				F5D1D47420499E2F0012E800 /* GifWalletKit.h */,
 				F5D1D47520499E2F0012E800 /* Info.plist */,
 				F5D1D49020499ED00012E800 /* APIClient.swift */,
@@ -223,6 +327,7 @@
 		F5D1D48020499E300012E800 /* GifWalletKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				67B2DD96204AF98C00251E00 /* GIFParsingTests.swift */,
 				F5D1D48120499E300012E800 /* GifWalletKitTests.swift */,
 				F5D1D48320499E300012E800 /* Info.plist */,
 			);
@@ -278,9 +383,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5D1D46720499B880012E800 /* Build configuration list for PBXNativeTarget "GifWalletTests" */;
 			buildPhases = (
+				5F86B44390D85EEBD25AE3A0 /* [CP] Check Pods Manifest.lock */,
 				F5D1D44C20499B880012E800 /* Sources */,
 				F5D1D44D20499B880012E800 /* Frameworks */,
 				F5D1D44E20499B880012E800 /* Resources */,
+				8284A094525D99B74EF720B3 /* [CP] Embed Pods Frameworks */,
+				1B5893FCEB7D58C7C20EF776 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -390,6 +498,7 @@
 			files = (
 				F5D1D44A20499B880012E800 /* LaunchScreen.storyboard in Resources */,
 				F5D1D44720499B880012E800 /* Assets.xcassets in Resources */,
+				67A58260204AF18F00D5224B /* trends.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +526,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1B5893FCEB7D58C7C20EF776 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GifWalletTests/Pods-GifWalletTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		315B800E607B24F5FE0FB3D7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -439,17 +563,67 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GifWallet/Pods-GifWallet-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BNRDeferred/Deferred.framework",
+				"${BUILT_PRODUCTS_DIR}/BSWFoundation/BSWFoundation.framework",
+				"${BUILT_PRODUCTS_DIR}/BSWInterfaceKit/BSWInterfaceKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
+				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Deferred.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSWFoundation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSWInterfaceKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GifWallet/Pods-GifWallet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F86B44390D85EEBD25AE3A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GifWalletTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8284A094525D99B74EF720B3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GifWalletTests/Pods-GifWalletTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GifWalletTests/Pods-GifWalletTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		87660106223F79343BA173AC /* [CP] Check Pods Manifest.lock */ = {
@@ -510,9 +684,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67A58254204ACBF400D5224B /* GifDetailViewController.swift in Sources */,
 				F5D1D43E20499B880012E800 /* AppDelegate.swift in Sources */,
+				F5A882392049C72400A4D3A5 /* GifWallet+Mock.swift in Sources */,
+				F5A882362049C68E00A4D3A5 /* WalletListInteractor.swift in Sources */,
+				67A5825A204ACF3400D5224B /* NSLayoutConstraint+Wallet.swift in Sources */,
 				F50514F32049AFD200D3C1BB /* UIColor+Wallet.swift in Sources */,
+				67B2DD99204B042F00251E00 /* Data+Wallet.swift in Sources */,
+				F5071B262049B3DF001D09B2 /* ListState.swift in Sources */,
+				67A58258204ACED600D5224B /* StretchyImageScrollView.swift in Sources */,
 				F50514F12049AD9200D3C1BB /* WalletViewController.swift in Sources */,
+				67A5825D204AD31100D5224B /* File.swift in Sources */,
 				F50514F62049B17E00D3C1BB /* UIView+Wallet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,6 +711,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67B2DD95204AF1EB00251E00 /* TrendsResponse.swift in Sources */,
 				F5D1D49120499ED00012E800 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,6 +721,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5D1D48220499E300012E800 /* GifWalletKitTests.swift in Sources */,
+				67B2DD97204AF98C00251E00 /* GIFParsingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,6 +901,7 @@
 		};
 		F5D1D46820499B880012E800 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50100687D38F85A90A62C1FC /* Pods-GifWalletTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -734,6 +919,7 @@
 		};
 		F5D1D46920499B880012E800 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31E7222EAA643759478704ED /* Pods-GifWalletTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
