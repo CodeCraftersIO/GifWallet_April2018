@@ -1,44 +1,17 @@
 PODS:
-  - Alamofire (4.5.1)
-  - BNRDeferred (3.1.2)
-  - BSWFoundation (1.3.1):
-    - Alamofire (~> 4.5.1)
-    - BNRDeferred (= 3.1.2)
-    - KeychainAccess (~> 3.1.0)
-  - BSWInterfaceKit (0.4.0):
-    - BSWFoundation (~> 1.3.0)
-    - SDWebImage (~> 4.3.2)
   - FLAnimatedImage (1.0.12)
-  - KeychainAccess (3.1.0)
-  - SDWebImage (4.3.2):
-    - SDWebImage/Core (= 4.3.2)
   - SDWebImage/Core (4.3.2)
   - SDWebImage/GIF (4.3.2):
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
 
 DEPENDENCIES:
-  - BSWInterfaceKit (from `https://github.com/BlurredSoftware/BSWInterfaceKit.git`)
   - SDWebImage/GIF
 
-EXTERNAL SOURCES:
-  BSWInterfaceKit:
-    :git: https://github.com/BlurredSoftware/BSWInterfaceKit.git
-
-CHECKOUT OPTIONS:
-  BSWInterfaceKit:
-    :commit: 5ec3e7d2b34782d056f6c3e978851a5a7a1a2fdd
-    :git: https://github.com/BlurredSoftware/BSWInterfaceKit.git
-
 SPEC CHECKSUMS:
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
-  BNRDeferred: e3cdbffe7527482fb9908b79dd0a18d2b450fb10
-  BSWFoundation: 14e6ba6a5bf330fcbbc7eb2216c8750a3be80e73
-  BSWInterfaceKit: e97235acd483b3b01fb3f001db0328fab4cd52e1
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
   SDWebImage: 29bd3c0bc1f01e5eb59720847c64ad4c4ca1af5d
 
-PODFILE CHECKSUM: 90e5a6128903b93a298a016c96f376586f1d38db
+PODFILE CHECKSUM: 6b4aa0b134c7078e90d26c0a207f532238761032
 
 COCOAPODS: 1.4.0
