@@ -7,7 +7,7 @@ import UIKit
 
 class CollectionViewStatefulDataSource<Cell: ViewModelReusable & UICollectionViewCell>: NSObject, UICollectionViewDataSource {
 
-    init(state: ListState<Cell.VM>,
+    init(state: ListState<Cell.VM> = .loading,
          collectionView: UICollectionView) {
         self.state = state
         self.collectionView = collectionView
