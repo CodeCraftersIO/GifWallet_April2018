@@ -14,6 +14,7 @@ class GIFWalletViewController: UIViewController {
 
     var collectionView: UICollectionView!
     var dataSource: CollectionViewStatefulDataSource<GifCell>!
+    var presenter = GIFWalletPresenter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,6 @@ class GIFWalletViewController: UIViewController {
     private func setup() {
         setupCollectionView()
         dataSource = CollectionViewStatefulDataSource<GifCell>(
-            state: .loading,
             collectionView: collectionView
         )
     }
@@ -41,7 +41,9 @@ class GIFWalletViewController: UIViewController {
     }
 
     private func fetchData() {
-
+        presenter.fetchMockData { (listState) in
+            self.dataSource.state = listState
+        }
     }
 }
 
