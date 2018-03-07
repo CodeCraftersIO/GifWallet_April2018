@@ -1,23 +1,34 @@
 //
 //  Created by Pierluigi Cifani on 02/03/2018.
-//  Copyright © 2018 Code Crafters. All rights reserved.
+//  Copyright © 2018 Pierluigi Cifani. All rights reserved.
 //
 
 import UIKit
+import SDWebImage
 
 class GIFWalletViewController: UIViewController {
-
-    var collectionView: UICollectionView!
 
     private enum Constants {
         static let cellHeight: CGFloat = 200
     }
 
+    var collectionView: UICollectionView!
+    var dataSource: CollectionViewStatefulDataSource!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         title = "Your Gifs"
+        setup()
+        fetchData()
+    }
+
+    private func setup() {
         setupCollectionView()
+        dataSource = CollectionViewStatefulDataSource(
+            state: .loaded(data: MockLoader.mockCellVM()),
+            collectionView: collectionView,
+            cellType: GifCell.self
+        )
     }
 
     private func setupCollectionView() {
@@ -28,6 +39,10 @@ class GIFWalletViewController: UIViewController {
         collectionView.pinToSuperviewSafeLayoutEdges()
         collectionView.backgroundColor = .white
     }
+
+    private func fetchData() {
+
+    }
 }
 
 extension GIFWalletViewController {
@@ -37,8 +52,6 @@ extension GIFWalletViewController {
         let url: URL
     }
 }
-
-import SDWebImage
 
 extension GIFWalletViewController {
 
@@ -52,7 +65,6 @@ extension GIFWalletViewController {
         //MARK: - UI Elements
         let titleLabel: UILabel = {
             let label = UILabel()
-            label.setContentHuggingPriority(.required, for: .vertical)
             label.numberOfLines = 2
             label.textAlignment = .center
             return label
