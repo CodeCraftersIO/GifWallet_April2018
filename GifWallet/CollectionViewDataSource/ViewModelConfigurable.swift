@@ -5,6 +5,7 @@
 
 import Foundation
 
-protocol GIFViewModelConfigurable {
-    func configureFor(vm: GIFWalletViewController.VM)
+protocol ViewModelConfigurable {
+    associatedtype VM
+    func configureFor(vm: VM)
 }
