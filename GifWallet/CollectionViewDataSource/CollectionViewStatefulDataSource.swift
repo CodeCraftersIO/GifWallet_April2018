@@ -5,7 +5,7 @@
 
 import UIKit
 
-class CollectionViewStatefulDataSource<Cell: ViewModelConfigurable & UICollectionViewCell>: NSObject, UICollectionViewDataSource {
+class CollectionViewStatefulDataSource<Cell: ViewModelReusable & UICollectionViewCell>: NSObject, UICollectionViewDataSource {
 
     init(state: ListState<Cell.VM>,
          collectionView: UICollectionView) {
@@ -13,7 +13,7 @@ class CollectionViewStatefulDataSource<Cell: ViewModelConfigurable & UICollectio
         self.collectionView = collectionView
         super.init()
         collectionView.dataSource = self
-        collectionView.register(Cell.self, forCellWithReuseIdentifier: ReuseID)
+        collectionView.registerReusableCell(Cell.self)
     }
 
     public weak var collectionView: UICollectionView!
@@ -34,7 +34,7 @@ class CollectionViewStatefulDataSource<Cell: ViewModelConfigurable & UICollectio
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseID, for: indexPath) as! Cell
+        let cell: Cell = collectionView.dequeueReusableCell(indexPath: indexPath)
         switch state {
         case .loaded(let data):
             let model = data[indexPath.item]
@@ -46,4 +46,3 @@ class CollectionViewStatefulDataSource<Cell: ViewModelConfigurable & UICollectio
     }
 }
 
-private let ReuseID = "reuseID"
