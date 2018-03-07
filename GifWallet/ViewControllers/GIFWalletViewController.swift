@@ -55,7 +55,7 @@ extension GIFWalletViewController {
 
 extension GIFWalletViewController {
 
-    class GifCell: UICollectionViewCell, GIFViewModelConfigurable {
+    class GifCell: UICollectionViewCell, ViewModelConfigurable {
 
         private enum Constants {
             static let margin: CGFloat = 3
