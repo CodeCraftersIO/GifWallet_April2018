@@ -5,22 +5,18 @@
 
 import UIKit
 
-class CollectionViewStatefulDataSource: NSObject, UICollectionViewDataSource {
+class CollectionViewStatefulDataSource<Cell: GIFViewModelConfigurable & UICollectionViewCell>: NSObject, UICollectionViewDataSource {
 
     init(state: ListState<GIFWalletViewController.VM>,
-         collectionView: UICollectionView,
-         cellType: UICollectionViewCell.Type) {
+         collectionView: UICollectionView) {
         self.state = state
-        self.cellType = cellType
         self.collectionView = collectionView
         super.init()
         collectionView.dataSource = self
-        collectionView.register(cellType, forCellWithReuseIdentifier: "reuseID")
+        collectionView.register(Cell.self, forCellWithReuseIdentifier: ReuseID)
     }
 
-    private static let ReuseID = "reuseID"
     public weak var collectionView: UICollectionView!
-    public let cellType: UICollectionViewCell.Type
     var state: ListState<GIFWalletViewController.VM> {
         didSet {
             collectionView.reloadData()
@@ -38,7 +34,16 @@ class CollectionViewStatefulDataSource: NSObject, UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewStatefulDataSource.ReuseID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseID, for: indexPath) as! Cell
+        switch state {
+        case .loaded(let data):
+            let model = data[indexPath.item]
+            cell.configureFor(vm: model)
+        default:
+            break
+        }
         return cell
     }
 }
+
+private let ReuseID = "reuseID"

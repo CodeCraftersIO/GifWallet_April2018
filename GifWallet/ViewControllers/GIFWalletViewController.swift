@@ -13,10 +13,11 @@ class GIFWalletViewController: UIViewController {
     }
 
     var collectionView: UICollectionView!
-    var dataSource: CollectionViewStatefulDataSource!
+    var dataSource: CollectionViewStatefulDataSource<GifCell>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         title = "Your Gifs"
         setup()
         fetchData()
@@ -24,20 +25,19 @@ class GIFWalletViewController: UIViewController {
 
     private func setup() {
         setupCollectionView()
-        dataSource = CollectionViewStatefulDataSource(
+        dataSource = CollectionViewStatefulDataSource<GifCell>(
             state: .loaded(data: MockLoader.mockCellVM()),
-            collectionView: collectionView,
-            cellType: GifCell.self
+            collectionView: collectionView
         )
     }
 
     private func setupCollectionView() {
         let collectionViewLayout = UICollectionViewFlowLayout()
-        collectionViewLayout.itemSize = CGSize(width: self.view.frame.width, height: Constants.cellHeight)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         view.addSubview(collectionView)
         collectionView.pinToSuperviewSafeLayoutEdges()
         collectionView.backgroundColor = .white
+        collectionViewLayout.itemSize = CGSize(width: self.view.frame.width, height: Constants.cellHeight)
     }
 
     private func fetchData() {
@@ -55,7 +55,7 @@ extension GIFWalletViewController {
 
 extension GIFWalletViewController {
 
-    class GifCell: UICollectionViewCell {
+    class GifCell: UICollectionViewCell, GIFViewModelConfigurable {
 
         private enum Constants {
             static let margin: CGFloat = 3
@@ -101,6 +101,11 @@ extension GIFWalletViewController {
 
             stackView.addArrangedSubview(imageView)
             stackView.addArrangedSubview(titleLabel)
+        }
+
+        func configureFor(vm: GIFWalletViewController.VM) {
+            titleLabel.text = vm.title
+            imageView.sd_setImage(with: vm.url, completed: nil)
         }
     }
 }
