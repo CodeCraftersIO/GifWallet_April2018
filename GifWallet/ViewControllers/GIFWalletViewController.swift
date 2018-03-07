@@ -13,7 +13,7 @@ class GIFWalletViewController: UIViewController {
     }
 
     var collectionView: UICollectionView!
-    var dataSource: CollectionViewStatefulDataSource!
+    var dataSource: CollectionViewStatefulDataSource<GifCell>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +25,9 @@ class GIFWalletViewController: UIViewController {
 
     private func setup() {
         setupCollectionView()
-        dataSource = CollectionViewStatefulDataSource(
+        dataSource = CollectionViewStatefulDataSource<GifCell>(
             state: .loaded(data: MockLoader.mockCellVM()),
-            collectionView: collectionView,
-            cellType: GifCell.self
+            collectionView: collectionView
         )
     }
 
@@ -56,7 +55,7 @@ extension GIFWalletViewController {
 
 extension GIFWalletViewController {
 
-    final class GifCell: UICollectionViewCell {
+    final class GifCell: UICollectionViewCell, GIFViewModelConfigurable {
 
         private enum Constants {
             static let margin: CGFloat = 3
@@ -102,6 +101,11 @@ extension GIFWalletViewController {
 
             stackView.addArrangedSubview(imageView)
             stackView.addArrangedSubview(titleLabel)
+        }
+
+        func configureFor(vm: GIFWalletViewController.VM) {
+            titleLabel.text = vm.title
+            imageView.sd_setImage(with: vm.url, completed: nil)
         }
     }
 }
