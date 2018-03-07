@@ -389,7 +389,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0920;
-				ORGANIZATIONNAME = "Pierluigi Cifani";
+				ORGANIZATIONNAME = "Code Crafters";
 				TargetAttributes = {
 					F5D1D43920499B880012E800 = {
 						CreatedOnToolsVersion = 9.2;
