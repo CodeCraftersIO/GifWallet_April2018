@@ -16,6 +16,7 @@ class CollectionViewStatefulDataSource<Cell: ViewModelReusable & UICollectionVie
         collectionView.registerReusableCell(Cell.self)
     }
 
+    fileprivate var emptyView: UIView?
     public weak var collectionView: UICollectionView!
     var state: ListState<Cell.VM> {
         didSet {
@@ -25,6 +26,10 @@ class CollectionViewStatefulDataSource<Cell: ViewModelReusable & UICollectionVie
 
     //MARK: UICollectionViewDataSource
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        defer {
+            addEmptyViewForCurrentState()
+        }
+
         switch state {
         case .loaded(let data):
             return data.count
@@ -43,6 +48,40 @@ class CollectionViewStatefulDataSource<Cell: ViewModelReusable & UICollectionVie
             break
         }
         return cell
+    }
+
+    //MARK: Private
+    fileprivate func addEmptyViewForCurrentState() {
+        self.emptyView?.removeFromSuperview()
+
+        let newEmptyView: UIView? = {
+            switch state {
+            case .loaded(let data):
+                if data.count == 0 {
+                    let label = UILabel()
+                    label.text = "No results, sorry"
+                    return label
+                } else {
+                    return nil
+                }
+            case .loading:
+                let activity = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+                activity.startAnimating()
+                return activity
+            case .failure(let error):
+                let label = UILabel()
+                label.text = "Error: \(error.localizedDescription)"
+                return label
+            }
+        }()
+
+        guard let emptyView = newEmptyView, let collectionView = self.collectionView else { return }
+
+        collectionView.addSubview(emptyView)
+        emptyView.translatesAutoresizingMaskIntoConstraints = false
+        emptyView.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor).isActive = true
+        emptyView.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor, constant: -20).isActive = true
+        self.emptyView = newEmptyView
     }
 }
 
