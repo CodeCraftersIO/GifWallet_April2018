@@ -220,11 +220,11 @@
 		F5D1D43C20499B880012E800 /* GifWallet */ = {
 			isa = PBXGroup;
 			children = (
-				F5A882372049C6FF00A4D3A5 /* Mock */,
 				F5D1D43D20499B880012E800 /* AppDelegate.swift */,
 				F5071B292049B496001D09B2 /* DataSource */,
 				F5071B272049B3E2001D09B2 /* ViewControllers */,
 				F50514F42049AFE800D3C1BB /* Extension */,
+				F5A882372049C6FF00A4D3A5 /* Mock */,
 				F5D1D44620499B880012E800 /* Assets.xcassets */,
 				F5D1D44820499B880012E800 /* LaunchScreen.storyboard */,
 				F5D1D44B20499B880012E800 /* Info.plist */,
@@ -478,8 +478,6 @@
 				"${BUILT_PRODUCTS_DIR}/BSWInterfaceKit/BSWInterfaceKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
-				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -490,8 +488,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSWInterfaceKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

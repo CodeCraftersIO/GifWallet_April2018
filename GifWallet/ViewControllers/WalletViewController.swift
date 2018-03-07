@@ -19,9 +19,7 @@ class WalletViewController: UIViewController {
     }
 
     var collectionView: UICollectionView!
-
     var dataSource: CollectionViewStatefulDataSource<GifCell>!
-
     var interactor = WalletListInteractor()
 
     override func viewDidLoad() {
@@ -34,7 +32,6 @@ class WalletViewController: UIViewController {
 
     private func setup() {
         setupCollectionView()
-
         dataSource = CollectionViewStatefulDataSource(collectionView: collectionView, listPresenter: self)
     }
 
@@ -62,63 +59,65 @@ extension WalletViewController: ListStatePresenter {
     }
 }
 
+struct GifListVM {
+    let id: String
+    let title: String
+    let url: URL
+}
 
-final class GifCell: UICollectionViewCell, ViewModelReusable {
+extension WalletViewController {
 
-    private enum Constants {
-        static let margin: CGFloat = 3
-        static let spacing: CGFloat = 8
-    }
+    final class GifCell: UICollectionViewCell, ViewModelReusable {
 
-    struct VM {
-        let title: String
-        let url: URL
-    }
+        private enum Constants {
+            static let margin: CGFloat = 3
+            static let spacing: CGFloat = 8
+        }
 
-    //MARK: - UI Elements
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.setContentHuggingPriority(.required, for: .vertical)
-        label.numberOfLines = 2
-        label.textAlignment = .center
-        return label
-    }()
+        //MARK: - UI Elements
+        let titleLabel: UILabel = {
+            let label = UILabel()
+            label.numberOfLines = 2
+            label.textAlignment = .center
+            return label
+        }()
 
-    let imageView: UIImageView = {
-        let imageView = FLAnimatedImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
-        return imageView
-    }()
+        let imageView: UIImageView = {
+            let imageView = FLAnimatedImageView()
+            imageView.contentMode = .scaleAspectFit
+            imageView.clipsToBounds = true
+            return imageView
+        }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            setup()
+        }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
 
-    private func setup() {
+        private func setup() {
 
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.alignment = .fill
-        stackView.spacing = Constants.spacing
-        stackView.layoutMargins = UIEdgeInsets(top: Constants.margin, left: Constants.margin, bottom: Constants.margin, right: Constants.margin)
-        stackView.isLayoutMarginsRelativeArrangement = true
-        
-        contentView.addSubview(stackView)
-        stackView.pinToSuperview()
+            let stackView = UIStackView()
+            stackView.axis = .vertical
+            stackView.distribution = .fill
+            stackView.alignment = .fill
+            stackView.spacing = Constants.spacing
+            stackView.layoutMargins = UIEdgeInsets(top: Constants.margin, left: Constants.margin, bottom: Constants.margin, right: Constants.margin)
+            stackView.isLayoutMarginsRelativeArrangement = true
 
-        stackView.addArrangedSubview(imageView)
-        stackView.addArrangedSubview(titleLabel)
-    }
+            contentView.addSubview(stackView)
+            stackView.pinToSuperview()
 
-    func configureFor(viewModel: GifCell.VM) {
-        titleLabel.text = viewModel.title
-        imageView.sd_setImage(with: viewModel.url, completed: nil)
+            stackView.addArrangedSubview(imageView)
+            stackView.addArrangedSubview(titleLabel)
+        }
+
+        func configureFor(viewModel: GifListVM) {
+            titleLabel.text = viewModel.title
+            imageView.sd_setImage(with: viewModel.url, completed: nil)
+        }
     }
 }

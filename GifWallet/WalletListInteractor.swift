@@ -10,9 +10,9 @@ import Foundation
 
 final class WalletListInteractor {
 
-    func fetchWallet(completion: @escaping ([GifCell.VM]) -> ()) {
+    func fetchWallet(completion: @escaping ([GifListVM]) -> ()) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
-            completion((0...8).map { _ in GifCell.VM.mock })
+            completion(MockLoader.mockCellVM())
         }
     }
 }
