@@ -18,7 +18,7 @@ class GIFWalletViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = "Your Gifs"
+        title = "Your GIFs"
         setup()
         fetchData()
     }
@@ -26,7 +26,7 @@ class GIFWalletViewController: UIViewController {
     private func setup() {
         setupCollectionView()
         dataSource = CollectionViewStatefulDataSource<GifCell>(
-            state: .loaded(data: MockLoader.mockCellVM()),
+            state: .loading,
             collectionView: collectionView
         )
     }
