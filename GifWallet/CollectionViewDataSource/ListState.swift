@@ -3,7 +3,7 @@
 //  Copyright © 2018 Pierluigi Cifani. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /**
  Represents the different states that a list can be

@@ -5,22 +5,15 @@
 
 import UIKit
 import SDWebImage
-import BSWInterfaceKit
 
-struct GifViewModel {
-    let title: String
-    let gif: URL
-}
-
-class WalletViewController: UIViewController {
+class GIFWalletViewController: UIViewController {
 
     private enum Constants {
         static let cellHeight: CGFloat = 200
     }
 
     var collectionView: UICollectionView!
-    var dataSource: CollectionViewStatefulDataSource<GifCell>!
-    var interactor = WalletListInteractor()
+    var dataSource: CollectionViewStatefulDataSource!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +25,11 @@ class WalletViewController: UIViewController {
 
     private func setup() {
         setupCollectionView()
-        dataSource = CollectionViewStatefulDataSource(collectionView: collectionView, listPresenter: self)
+        dataSource = CollectionViewStatefulDataSource(
+            state: .loaded(data: MockLoader.mockCellVM()),
+            collectionView: collectionView,
+            cellType: GifCell.self
+        )
     }
 
     private func setupCollectionView() {
@@ -45,29 +42,21 @@ class WalletViewController: UIViewController {
     }
 
     private func fetchData() {
-        dataSource.updateState(.loading)
-        interactor.fetchWallet { [weak self] (walletList) in
-            guard let `self` = self else { return }
-            self.dataSource.updateState(.loaded(data: walletList))
-        }
+
     }
 }
 
-extension WalletViewController: ListStatePresenter {
-    func errorConfiguration(forError error: Error) -> ErrorListConfiguration {
-        return .default(ActionableListConfiguration(title: NSAttributedString(string: "Error in gif thingies")))
+extension GIFWalletViewController {
+    struct VM {
+        let id: String
+        let title: String
+        let url: URL
     }
 }
 
-struct GifListVM {
-    let id: String
-    let title: String
-    let url: URL
-}
+extension GIFWalletViewController {
 
-extension WalletViewController {
-
-    final class GifCell: UICollectionViewCell, ViewModelReusable {
+    final class GifCell: UICollectionViewCell {
 
         private enum Constants {
             static let margin: CGFloat = 3
@@ -113,11 +102,6 @@ extension WalletViewController {
 
             stackView.addArrangedSubview(imageView)
             stackView.addArrangedSubview(titleLabel)
-        }
-
-        func configureFor(viewModel: GifListVM) {
-            titleLabel.text = viewModel.title
-            imageView.sd_setImage(with: viewModel.url, completed: nil)
         }
     }
 }
