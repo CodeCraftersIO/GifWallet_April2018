@@ -14,7 +14,7 @@ class GIFWalletViewController: UIViewController {
 
     var collectionView: UICollectionView!
     var dataSource: CollectionViewStatefulDataSource<GifCell>!
-    var presenter = GIFWalletPresenter()
+    var presenter = Presenter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,17 +33,30 @@ class GIFWalletViewController: UIViewController {
 
     private func setupCollectionView() {
         let collectionViewLayout = UICollectionViewFlowLayout()
+        collectionViewLayout.itemSize = CGSize(width: self.view.frame.width, height: Constants.cellHeight)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         view.addSubview(collectionView)
         collectionView.pinToSuperviewSafeLayoutEdges()
         collectionView.backgroundColor = .white
-        collectionViewLayout.itemSize = CGSize(width: self.view.frame.width, height: Constants.cellHeight)
+        collectionView.delegate = self
     }
 
     private func fetchData() {
         presenter.fetchMockData { (listState) in
             self.dataSource.state = listState
         }
+    }
+}
+
+extension GIFWalletViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard case .loaded(let data) = self.dataSource.state else {
+            return
+        }
+
+        let gifVM = data[indexPath.item]
+        let vc = GIFDetailsViewController(gifID: gifVM.id)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

@@ -5,10 +5,13 @@
 
 import UIKit
 
-class GIFWalletPresenter {
-    func fetchMockData(handler: @escaping (ListState<GIFWalletViewController.VM>) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-            handler(.loaded(data: MockLoader.mockCellVM()))
+extension GIFWalletViewController {
+    class Presenter {
+        func fetchMockData(handler: @escaping (ListState<GIFWalletViewController.VM>) -> Void) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                handler(.loaded(data: MockLoader.mockCellVM()))
+            }
         }
     }
 }
+
