@@ -22,19 +22,9 @@ class GIFDetailsViewController: UIViewController {
         return imageView
     }()
 
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .title1)
-        label.numberOfLines = 0
-        return label
-    }()
+    private let titleLabel = UILabel.autolayoutLabelWith(textStyle: .title1)
 
-    private let subtitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .body)
-        label.numberOfLines = 0
-        return label
-    }()
+    private let subtitleLabel = UILabel.autolayoutLabelWith(textStyle: .body)
 
     private let tagView: TagListView = {
         let tagView = TagListView()
