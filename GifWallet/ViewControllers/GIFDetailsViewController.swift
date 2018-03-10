@@ -67,25 +67,29 @@ class GIFDetailsViewController: UIViewController {
         activityView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activityView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 
-        // Actually layout the view
+        // Add ImageView
         self.view.addAutolayoutView(self.imageView)
-        self.view.addAutolayoutView(self.titleLabel)
-        self.view.addAutolayoutView(self.subtitleLabel)
-        self.view.addAutolayoutView(self.tagView)
+
+        // Now the details' StackView
+        let stackView = UIStackView(arrangedSubviews: [self.titleLabel, self.subtitleLabel, self.tagView])
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.spacing = 10
+        stackView.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        self.view.addAutolayoutView(stackView)
+
+        // Layout StackView
         let layoutMargins = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             self.imageView.leadingAnchor.constraint(equalTo: layoutMargins.leadingAnchor),
             self.imageView.topAnchor.constraint(equalTo: layoutMargins.topAnchor),
             self.imageView.trailingAnchor.constraint(equalTo: layoutMargins.trailingAnchor),
-            self.titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 5),
-            self.titleLabel.leadingAnchor.constraint(equalTo: layoutMargins.leadingAnchor, constant: 5),
-            self.titleLabel.trailingAnchor.constraint(equalTo: layoutMargins.trailingAnchor, constant: 5),
-            self.subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
-            self.subtitleLabel.leadingAnchor.constraint(equalTo: layoutMargins.leadingAnchor, constant: 5),
-            self.subtitleLabel.trailingAnchor.constraint(equalTo: layoutMargins.trailingAnchor, constant: 5),
-            self.tagView.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 5),
-            self.tagView.leadingAnchor.constraint(equalTo: layoutMargins.leadingAnchor, constant: 5),
-            self.tagView.trailingAnchor.constraint(equalTo: layoutMargins.trailingAnchor, constant: 5),
+
+            stackView.topAnchor.constraint(equalTo: self.imageView.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: layoutMargins.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: layoutMargins.trailingAnchor),
             ])
     }
 
