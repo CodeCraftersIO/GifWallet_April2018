@@ -6,14 +6,22 @@
 import UIKit
 
 class AutoLayoutTestsViewController: UIViewController {
+
+    let redView = RedView(frame: .zero)
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let redView = RedView(frame: .zero)
         view.addSubview(redView)
 
         // Specify origin
         redView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        redView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        redView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print(view.safeAreaInsets)
+        print(redView.safeAreaInsets)
     }
 }
 
