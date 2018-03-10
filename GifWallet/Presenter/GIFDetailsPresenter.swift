@@ -8,7 +8,7 @@ import Foundation
 extension GIFDetailsViewController {
     class Presenter {
         func fetchMockGif(gifID: String, handler: @escaping (GIFDetailsViewController.VM?) -> Void) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200)) {
                 handler(MockLoader.mockDetailGif(gifID: gifID))
             }
        }

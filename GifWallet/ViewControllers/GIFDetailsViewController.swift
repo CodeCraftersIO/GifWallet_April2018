@@ -4,12 +4,46 @@
 //
 
 import UIKit
+import SDWebImage
+import TagListView
 
 class GIFDetailsViewController: UIViewController {
 
-    let presenter = Presenter()
     let gifID: String
-    var activityView: UIActivityIndicatorView!
+
+    private let presenter = Presenter()
+
+    private var activityView: UIActivityIndicatorView!
+
+    private let imageView: UIImageView = {
+        let imageView = FLAnimatedImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.preferredFont(forTextStyle: .title1)
+        label.numberOfLines = 0
+        return label
+    }()
+
+    private let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.numberOfLines = 0
+        return label
+    }()
+
+    private let tagView: TagListView = {
+        let tagView = TagListView()
+        tagView.textFont = UIFont.preferredFont(forTextStyle: .body)
+        tagView.tagBackgroundColor = UIColor.GifWallet.brand
+        tagView.alignment = .left
+        tagView.cornerRadius = 5
+        return tagView
+    }()
 
     init(gifID: String) {
         self.gifID = gifID
@@ -26,13 +60,33 @@ class GIFDetailsViewController: UIViewController {
     }
 
     private func setupView() {
-        //Add UIActivityIndicatorView
+        // Add UIActivityIndicatorView
         activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activityView.hidesWhenStopped = true
-        self.view.addSubview(activityView)
-        activityView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addAutolayoutView(activityView)
         activityView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activityView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+
+        // Actually layout the view
+        self.view.addAutolayoutView(self.imageView)
+        self.view.addAutolayoutView(self.titleLabel)
+        self.view.addAutolayoutView(self.subtitleLabel)
+        self.view.addAutolayoutView(self.tagView)
+        let layoutMargins = self.view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            self.imageView.leadingAnchor.constraint(equalTo: layoutMargins.leadingAnchor),
+            self.imageView.topAnchor.constraint(equalTo: layoutMargins.topAnchor),
+            self.imageView.trailingAnchor.constraint(equalTo: layoutMargins.trailingAnchor),
+            self.titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 5),
+            self.titleLabel.leadingAnchor.constraint(equalTo: layoutMargins.leadingAnchor, constant: 5),
+            self.titleLabel.trailingAnchor.constraint(equalTo: layoutMargins.trailingAnchor, constant: 5),
+            self.subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+            self.subtitleLabel.leadingAnchor.constraint(equalTo: layoutMargins.leadingAnchor, constant: 5),
+            self.subtitleLabel.trailingAnchor.constraint(equalTo: layoutMargins.trailingAnchor, constant: 5),
+            self.tagView.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 5),
+            self.tagView.leadingAnchor.constraint(equalTo: layoutMargins.leadingAnchor, constant: 5),
+            self.tagView.trailingAnchor.constraint(equalTo: layoutMargins.trailingAnchor, constant: 5),
+            ])
     }
 
     private func fetchGIFDetails() {
@@ -44,6 +98,7 @@ class GIFDetailsViewController: UIViewController {
                 return
             }
             self.activityView.stopAnimating()
+            self.configureFor(vm: vm)
         }
     }
 }
@@ -55,5 +110,14 @@ extension GIFDetailsViewController {
         let url: URL
         let subtitle: String
         let tags: Set<String>
+    }
+}
+
+extension GIFDetailsViewController: ViewModelConfigurable {
+    func configureFor(vm: VM) {
+        self.titleLabel.text = vm.title
+        self.subtitleLabel.text = vm.subtitle
+        self.imageView.sd_setImage(with: vm.url, completed: nil)
+        self.tagView.addTags(Array(vm.tags))
     }
 }

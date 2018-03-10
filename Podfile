@@ -4,6 +4,7 @@ use_frameworks!
 
 target 'GifWallet' do
   pod 'SDWebImage/GIF'
+  pod 'TagListView', '~> 1.0'
 end
 
 target 'GifWalletKit' do
