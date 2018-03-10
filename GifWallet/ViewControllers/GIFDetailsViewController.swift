@@ -67,29 +67,39 @@ class GIFDetailsViewController: UIViewController {
         activityView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activityView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 
-        // Add ImageView
-        self.view.addAutolayoutView(self.imageView)
+        // Add UIScrollView & Container-View
+        let scrollView = UIScrollView()
+        scrollView.alwaysBounceVertical = true
+        self.view.addAutolayoutView(scrollView)
+        scrollView.pinToSuperviewSafeLayoutEdges()
+        let containerView = UIView()
+        scrollView.addAutolayoutView(containerView)
+        containerView.pinToSuperview()
+
+        // Add UIImageView
+        containerView.addAutolayoutView(self.imageView)
 
         // Now the details' StackView
-        let stackView = UIStackView(arrangedSubviews: [self.titleLabel, self.subtitleLabel, self.tagView])
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.alignment = .fill
-        stackView.spacing = 10
-        stackView.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        stackView.isLayoutMarginsRelativeArrangement = true
-        self.view.addAutolayoutView(stackView)
+        let detailsStackView = UIStackView(arrangedSubviews: [self.titleLabel, self.subtitleLabel, self.tagView])
+        detailsStackView.axis = .vertical
+        detailsStackView.distribution = .fill
+        detailsStackView.alignment = .fill
+        detailsStackView.spacing = 10
+        detailsStackView.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        detailsStackView.isLayoutMarginsRelativeArrangement = true
+        containerView.addAutolayoutView(detailsStackView)
 
-        // Layout StackView
-        let layoutMargins = self.view.safeAreaLayoutGuide
+        // Layout the view
+        let layoutGuide = containerView
         NSLayoutConstraint.activate([
-            self.imageView.leadingAnchor.constraint(equalTo: layoutMargins.leadingAnchor),
-            self.imageView.topAnchor.constraint(equalTo: layoutMargins.topAnchor),
-            self.imageView.trailingAnchor.constraint(equalTo: layoutMargins.trailingAnchor),
-
-            stackView.topAnchor.constraint(equalTo: self.imageView.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: layoutMargins.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: layoutMargins.trailingAnchor),
+            containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            self.imageView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
+            self.imageView.topAnchor.constraint(equalTo: layoutGuide.topAnchor),
+            self.imageView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
+            detailsStackView.topAnchor.constraint(equalTo: self.imageView.bottomAnchor),
+            detailsStackView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
+            detailsStackView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
+            detailsStackView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor),
             ])
     }
 
