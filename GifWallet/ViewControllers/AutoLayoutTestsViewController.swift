@@ -13,7 +13,7 @@ class AutoLayoutTestsViewController: UIViewController {
 
         // Specify origin
         redView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        redView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        redView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
     }
 }
 
@@ -22,10 +22,19 @@ class RedView: UIView {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .red
-    }
 
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: 50, height: 50)
+        let label = UILabel(frame: .zero)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Code Crafters"
+        self.addSubview(label)
+
+        self.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
+            label.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
+            label.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor),
+            label.bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor)
+            ])
     }
 
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
