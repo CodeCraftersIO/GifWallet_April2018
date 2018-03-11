@@ -45,6 +45,20 @@ class GIFDetailsViewController: UIViewController {
         return tagView
     }()
 
+    private let containerStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        return stackView
+    }()
+
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.alwaysBounceVertical = true
+        return scrollView
+    }()
+
     init(gifID: String) {
         self.gifID = gifID
         super.init(nibName: nil, bundle: nil)
@@ -60,24 +74,14 @@ class GIFDetailsViewController: UIViewController {
     }
 
     private func setupView() {
-        // Add UIActivityIndicatorView
-        activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        activityView.hidesWhenStopped = true
-        self.view.addAutolayoutView(activityView)
-        activityView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        activityView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-
         // Add UIScrollView & Container-View
-        let scrollView = UIScrollView()
-        scrollView.alwaysBounceVertical = true
         self.view.addAutolayoutView(scrollView)
         scrollView.pinToSuperviewSafeLayoutEdges()
-        let containerView = UIView()
-        scrollView.addAutolayoutView(containerView)
-        containerView.pinToSuperview()
+        scrollView.addAutolayoutView(containerStackView)
+        containerStackView.pinToSuperview()
 
         // Add UIImageView
-        containerView.addAutolayoutView(self.imageView)
+        containerStackView.addArrangedSubview(self.imageView)
 
         // Now the details' StackView
         let detailsStackView = UIStackView(arrangedSubviews: [self.titleLabel, self.subtitleLabel, self.tagView])
@@ -87,20 +91,19 @@ class GIFDetailsViewController: UIViewController {
         detailsStackView.spacing = 10
         detailsStackView.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         detailsStackView.isLayoutMarginsRelativeArrangement = true
-        containerView.addAutolayoutView(detailsStackView)
+        containerStackView.addArrangedSubview(detailsStackView)
 
         // Layout the view
-        let layoutGuide = containerView
         NSLayoutConstraint.activate([
-            containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            self.imageView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
-            self.imageView.topAnchor.constraint(equalTo: layoutGuide.topAnchor),
-            self.imageView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
-            detailsStackView.topAnchor.constraint(equalTo: self.imageView.bottomAnchor),
-            detailsStackView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
-            detailsStackView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
-            detailsStackView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor),
+            containerStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             ])
+
+        // Add UIActivityIndicatorView
+        activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityView.hidesWhenStopped = true
+        self.view.addAutolayoutView(activityView)
+        activityView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
 
     private func fetchGIFDetails() {
