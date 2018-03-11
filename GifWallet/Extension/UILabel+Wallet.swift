@@ -12,6 +12,8 @@ extension UILabel {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.preferredFont(forTextStyle: style)
         label.numberOfLines = 0
+        label.setContentHuggingPriority(.required, for: .vertical)
+        label.setContentHuggingPriority(.required, for: .horizontal)
         return label
     }
 

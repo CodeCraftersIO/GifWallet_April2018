@@ -32,6 +32,8 @@ class GIFDetailsViewController: UIViewController {
         tagView.tagBackgroundColor = UIColor.GifWallet.brand
         tagView.alignment = .left
         tagView.cornerRadius = 5
+        tagView.setContentHuggingPriority(.required, for: .vertical)
+        tagView.setContentHuggingPriority(.required, for: .horizontal)
         return tagView
     }()
 
@@ -43,11 +45,25 @@ class GIFDetailsViewController: UIViewController {
         return stackView
     }()
 
+    private let detailsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.spacing = 10
+        stackView.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        return stackView
+    }()
+
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.alwaysBounceVertical = true
         return scrollView
     }()
+
+    private var landscapeConstraints: [NSLayoutConstraint]!
+    private var portraitConstraints: [NSLayoutConstraint]!
 
     init(gifID: String) {
         self.gifID = gifID
@@ -63,6 +79,13 @@ class GIFDetailsViewController: UIViewController {
         fetchGIFDetails()
     }
 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { (context) in
+            self.configureStackViews(forContainerViewSize: size)
+        }, completion: nil)
+    }
+
     private func setupView() {
         // Add UIScrollView & Container-View
         self.view.addAutolayoutView(scrollView)
@@ -74,19 +97,30 @@ class GIFDetailsViewController: UIViewController {
         containerStackView.addArrangedSubview(self.imageView)
 
         // Now the details' StackView
-        let detailsStackView = UIStackView(arrangedSubviews: [self.titleLabel, self.subtitleLabel, self.tagView])
-        detailsStackView.axis = .vertical
-        detailsStackView.distribution = .fill
-        detailsStackView.alignment = .fill
-        detailsStackView.spacing = 10
-        detailsStackView.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        detailsStackView.isLayoutMarginsRelativeArrangement = true
+        let topSpacingView = UIView.verticalSpacingView()
+        let bottomSpacingView = UIView.verticalSpacingView()
+        detailsStackView.addArrangedSubview(topSpacingView)
+        detailsStackView.addArrangedSubview(self.titleLabel)
+        detailsStackView.addArrangedSubview(self.subtitleLabel)
+        detailsStackView.addArrangedSubview(self.tagView)
+        detailsStackView.addArrangedSubview(bottomSpacingView)
         containerStackView.addArrangedSubview(detailsStackView)
 
-        // Layout the view
         NSLayoutConstraint.activate([
+            topSpacingView.heightAnchor.constraint(equalTo: bottomSpacingView.heightAnchor),
             containerStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             ])
+
+        portraitConstraints = [
+            topSpacingView.heightAnchor.constraint(lessThanOrEqualToConstant: 0),
+        ]
+
+        landscapeConstraints = [
+            imageView.widthAnchor.constraint(lessThanOrEqualTo: detailsStackView.widthAnchor, multiplier: 2, constant: 0),
+            containerStackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
+        ]
+
+        self.configureStackViews(forContainerViewSize: self.view.frame.size)
 
         // Add UIActivityIndicatorView
         activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
@@ -94,6 +128,18 @@ class GIFDetailsViewController: UIViewController {
         self.view.addAutolayoutView(activityView)
         activityView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activityView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+
+    private func configureStackViews(forContainerViewSize size: CGSize) {
+        if size.width > size.height {
+            self.containerStackView.axis = .horizontal
+            landscapeConstraints.forEach { $0.isActive = true }
+            portraitConstraints.forEach { $0.isActive = false }
+        } else {
+            self.containerStackView.axis = .vertical
+            landscapeConstraints.forEach { $0.isActive = false }
+            portraitConstraints.forEach { $0.isActive = true }
+        }
     }
 
     private func fetchGIFDetails() {
@@ -127,7 +173,9 @@ extension GIFDetailsViewController: ViewModelConfigurable {
         self.imageView.sd_setImage(with: vm.url) { (image, _, _, _) in
             guard let image = image else { return }
             let aspectRatio = image.size.width/image.size.height
-            self.imageView.widthAnchor.constraint(equalTo: self.imageView.heightAnchor, multiplier: aspectRatio).isActive = true
+            let aspectRatioConstraint = self.imageView.widthAnchor.constraint(equalTo: self.imageView.heightAnchor, multiplier: aspectRatio)
+            aspectRatioConstraint.priority = .defaultHigh
+            aspectRatioConstraint.isActive = true
         }
         self.tagView.addTags(Array(vm.tags))
     }

@@ -7,6 +7,13 @@ import UIKit
 
 extension UIView {
 
+    class func verticalSpacingView() -> UIView {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        return view
+    }
+
     public func addAutolayoutView(_ subview: UIView) {
         subview.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(subview)
