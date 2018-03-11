@@ -17,7 +17,7 @@ class GIFDetailsViewController: UIViewController {
 
     private let imageView: UIImageView = {
         let imageView = FLAnimatedImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -124,7 +124,11 @@ extension GIFDetailsViewController: ViewModelConfigurable {
     func configureFor(vm: VM) {
         self.titleLabel.text = vm.title
         self.subtitleLabel.text = vm.subtitle
-        self.imageView.sd_setImage(with: vm.url, completed: nil)
+        self.imageView.sd_setImage(with: vm.url) { (image, _, _, _) in
+            guard let image = image else { return }
+            let aspectRatio = image.size.width/image.size.height
+            self.imageView.widthAnchor.constraint(equalTo: self.imageView.heightAnchor, multiplier: aspectRatio).isActive = true
+        }
         self.tagView.addTags(Array(vm.tags))
     }
 }
