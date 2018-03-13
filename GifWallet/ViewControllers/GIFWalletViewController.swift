@@ -13,6 +13,7 @@ class GIFWalletViewController: UIViewController {
     }
 
     var collectionView: UICollectionView!
+    var collectionViewLayout: UICollectionViewFlowLayout!
     var dataSource: CollectionViewStatefulDataSource<GifCell>!
     var presenter = Presenter()
 
@@ -24,6 +25,18 @@ class GIFWalletViewController: UIViewController {
         fetchData()
     }
 
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        guard let _ = collectionViewLayout else { return }
+        coordinator.animate(alongsideTransition: { (_) in
+            self.configureCollectionViewLayout(forHorizontalSizeClass: newCollection.horizontalSizeClass)
+        }, completion: nil)
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+    }
+
     private func setup() {
         setupCollectionView()
         dataSource = CollectionViewStatefulDataSource<GifCell>(
@@ -32,13 +45,29 @@ class GIFWalletViewController: UIViewController {
     }
 
     private func setupCollectionView() {
-        let collectionViewLayout = UICollectionViewFlowLayout()
-        collectionViewLayout.itemSize = CGSize(width: self.view.frame.width, height: Constants.cellHeight)
+        collectionViewLayout = UICollectionViewFlowLayout()
+        collectionViewLayout.minimumLineSpacing = 0
+        collectionViewLayout.minimumInteritemSpacing = 0
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         view.addSubview(collectionView)
         collectionView.pinToSuperviewSafeLayoutEdges()
         collectionView.backgroundColor = .white
         collectionView.delegate = self
+        configureCollectionViewLayout(forHorizontalSizeClass: self.traitCollection.horizontalSizeClass)
+    }
+
+    private func configureCollectionViewLayout(forHorizontalSizeClass horizontalSizeClass: UIUserInterfaceSizeClass) {
+        let numberOfColumns: Int
+        switch horizontalSizeClass {
+        case .regular:
+            numberOfColumns = 2
+        default:
+            numberOfColumns = 1
+        }
+        collectionViewLayout.itemSize = CGSize(
+            width: self.view.frame.width / CGFloat(numberOfColumns),
+            height: Constants.cellHeight
+        )
     }
 
     private func fetchData() {
