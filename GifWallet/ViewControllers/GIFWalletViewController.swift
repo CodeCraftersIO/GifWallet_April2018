@@ -27,14 +27,19 @@ class GIFWalletViewController: UIViewController {
 
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransition(to: newCollection, with: coordinator)
-        guard let _ = collectionViewLayout else { return }
-        coordinator.animate(alongsideTransition: { (_) in
-            self.configureCollectionViewLayout(forHorizontalSizeClass: newCollection.horizontalSizeClass)
-        }, completion: nil)
+        coordinator.newCollection = newCollection
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
+        guard let _ = collectionViewLayout else { return }
+        let newCollection = coordinator.newCollection ?? self.traitCollection
+        coordinator.animate(alongsideTransition: { (_) in
+            self.configureCollectionViewLayout(
+                forHorizontalSizeClass: newCollection.horizontalSizeClass,
+                targetSize: size
+            )
+        }, completion: nil)
     }
 
     private func setup() {
@@ -53,14 +58,19 @@ class GIFWalletViewController: UIViewController {
         collectionView.pinToSuperviewSafeLayoutEdges()
         collectionView.backgroundColor = .white
         collectionView.delegate = self
-        configureCollectionViewLayout(forHorizontalSizeClass: self.traitCollection.horizontalSizeClass)
+        configureCollectionViewLayout(
+            forHorizontalSizeClass: self.traitCollection.horizontalSizeClass,
+            targetSize: self.view.frame.size
+        )
     }
 
-    private func configureCollectionViewLayout(forHorizontalSizeClass horizontalSizeClass: UIUserInterfaceSizeClass) {
+    private func configureCollectionViewLayout(
+        forHorizontalSizeClass horizontalSizeClass: UIUserInterfaceSizeClass,
+        targetSize: CGSize) {
         let numberOfColumns: Int
         switch horizontalSizeClass {
         case .regular:
-            numberOfColumns = 2
+            numberOfColumns = (targetSize.width > targetSize.height) ? 3 : 2
         default:
             numberOfColumns = 1
         }
