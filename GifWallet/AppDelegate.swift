@@ -43,7 +43,7 @@ class Wireframe {
     }
 
     func initialViewController() -> UIViewController {
-        let navigationController = UINavigationController(rootViewController: GIFWalletViewController())
+        let navigationController = UINavigationController(rootViewController: AutoLayoutTestsViewController())
         return navigationController
     }
 

@@ -16,12 +16,15 @@ class AutoLayoutTestsViewController: UIViewController {
         // Specify origin
         redView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         redView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+
+        print("Horiziontal: \(self.traitCollection.horizontalSizeClass.printableDescription)")
+        print("Vertical: \(self.traitCollection.verticalSizeClass.printableDescription)")
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print(view.safeAreaInsets)
-        print(redView.safeAreaInsets)
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        print("Horiziontal: \(self.traitCollection.horizontalSizeClass.printableDescription)")
+        print("Vertical: \(self.traitCollection.verticalSizeClass.printableDescription)")
     }
 }
 
@@ -45,5 +48,11 @@ class RedView: UIView {
             ])
     }
 
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        print("Horiziontal: \(self.traitCollection.horizontalSizeClass.printableDescription)")
+        print("Vertical: \(self.traitCollection.verticalSizeClass.printableDescription)")
+    }
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 }
+

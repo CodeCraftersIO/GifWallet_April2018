@@ -42,3 +42,16 @@ extension UIView {
             ])
     }
 }
+
+extension UIUserInterfaceSizeClass {
+    var printableDescription: String {
+        switch self {
+        case .compact:
+            return "compact"
+        case .regular:
+            return "regular"
+        case .unspecified:
+            return "unspecified"
+        }
+    }
+}
