@@ -11,6 +11,8 @@ class GIFDetailsViewController: UIViewController {
 
     let gifID: String
 
+    private var vm: VM?
+
     private let presenter = Presenter()
 
     private var activityView: UIActivityIndicatorView!
@@ -84,6 +86,22 @@ class GIFDetailsViewController: UIViewController {
         coordinator.animate(alongsideTransition: { (context) in
             self.configureStackViews(forContainerViewSize: size)
         }, completion: nil)
+    }
+
+    @objc func shareGIF() {
+        guard
+            let vm = self.vm,
+            let path = SDImageCache.shared().defaultCachePath(forKey: vm.url.absoluteString) else { return }
+
+        let url = URL(fileURLWithPath: path)
+
+        guard let data = try? Data(contentsOf: url) else { return }
+
+        let controller = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+        
+        // Specify the anchor point for the popover.
+        controller.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
+        present(controller, animated: true, completion: nil)
     }
 
     private func setupView() {
@@ -168,6 +186,9 @@ extension GIFDetailsViewController {
 
 extension GIFDetailsViewController: ViewModelConfigurable {
     func configureFor(vm: VM) {
+        self.vm = vm
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareGIF))
+
         self.titleLabel.text = vm.title
         self.subtitleLabel.text = vm.subtitle
         self.imageView.sd_setImage(with: vm.url) { (image, _, _, _) in
