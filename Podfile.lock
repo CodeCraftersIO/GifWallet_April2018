@@ -1,20 +1,27 @@
 PODS:
-  - Alamofire (4.6.0)
+  - Alamofire (4.7.0)
   - FLAnimatedImage (1.0.12)
-  - SDWebImage/Core (4.3.2)
-  - SDWebImage/GIF (4.3.2):
+  - iOSSnapshotTestCase (2.2.0):
+    - iOSSnapshotTestCase/SwiftSupport (= 2.2.0)
+  - iOSSnapshotTestCase/Core (2.2.0)
+  - iOSSnapshotTestCase/SwiftSupport (2.2.0):
+    - iOSSnapshotTestCase/Core
+  - SDWebImage/Core (4.3.3)
+  - SDWebImage/GIF (4.3.3):
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
 
 DEPENDENCIES:
   - Alamofire
+  - iOSSnapshotTestCase
   - SDWebImage/GIF
 
 SPEC CHECKSUMS:
-  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  SDWebImage: 29bd3c0bc1f01e5eb59720847c64ad4c4ca1af5d
+  iOSSnapshotTestCase: 415bd84f9dbba4ff45fede49d800bc7332fbedac
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
 
-PODFILE CHECKSUM: 540cd907d817806d05358439fd305fd6297ed5b3
+PODFILE CHECKSUM: 8a6a31050c556cb723237d737774be09adffc914
 
 COCOAPODS: 1.4.0
