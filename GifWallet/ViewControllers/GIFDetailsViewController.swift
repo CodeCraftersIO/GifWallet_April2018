@@ -165,7 +165,7 @@ class GIFDetailsViewController: UIViewController {
         self.presenter.fetchMockGif(gifID: self.gifID) { [weak self] (vm) in
             guard let `self` = self else { return }
             guard let vm = vm else {
-                self.navigationController?.popViewController(animated: true)
+                self.dismissViewController(sender: self)
                 return
             }
             self.activityView.stopAnimating()

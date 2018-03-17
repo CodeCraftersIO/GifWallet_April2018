@@ -17,6 +17,7 @@
 		F52373BB20514FF5007CC1C9 /* ViewModelConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52373BA20514FF5007CC1C9 /* ViewModelConfigurable.swift */; };
 		F52373BD205150BE007CC1C9 /* UICollectionView+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52373BC205150BE007CC1C9 /* UICollectionView+Wallet.swift */; };
 		F52373C020515185007CC1C9 /* GIFWalletPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52373BF20515185007CC1C9 /* GIFWalletPresenter.swift */; };
+		F52531AE205D59C4009E9062 /* UIViewController+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52531AD205D59C4009E9062 /* UIViewController+Wallet.swift */; };
 		F528E8C220545A05003A8421 /* UILabel+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F528E8C120545A05003A8421 /* UILabel+Wallet.swift */; };
 		F54F91E120540023000891B2 /* AutoLayoutTestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54F91E020540023000891B2 /* AutoLayoutTestsViewController.swift */; };
 		F54F91E32054277D000891B2 /* GIFDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54F91E22054277D000891B2 /* GIFDetailsViewController.swift */; };
@@ -95,6 +96,7 @@
 		F52373BA20514FF5007CC1C9 /* ViewModelConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelConfigurable.swift; sourceTree = "<group>"; };
 		F52373BC205150BE007CC1C9 /* UICollectionView+Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Wallet.swift"; sourceTree = "<group>"; };
 		F52373BF20515185007CC1C9 /* GIFWalletPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFWalletPresenter.swift; sourceTree = "<group>"; };
+		F52531AD205D59C4009E9062 /* UIViewController+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Wallet.swift"; sourceTree = "<group>"; };
 		F528E8C120545A05003A8421 /* UILabel+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Wallet.swift"; sourceTree = "<group>"; };
 		F54F91E020540023000891B2 /* AutoLayoutTestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutTestsViewController.swift; sourceTree = "<group>"; };
 		F54F91E22054277D000891B2 /* GIFDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFDetailsViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				F50514F52049B17E00D3C1BB /* UIView+Wallet.swift */,
 				F528E8C120545A05003A8421 /* UILabel+Wallet.swift */,
 				F5CE5CC82057EEAF007765F6 /* UIViewControllerTransitionCoordinator+Wallet.swift */,
+				F52531AD205D59C4009E9062 /* UIViewController+Wallet.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 				F528E8C220545A05003A8421 /* UILabel+Wallet.swift in Sources */,
 				F5BF8488205023020091BA88 /* CollectionViewStatefulDataSource.swift in Sources */,
 				F54F91E5205428DB000891B2 /* GIFDetailsPresenter.swift in Sources */,
+				F52531AE205D59C4009E9062 /* UIViewController+Wallet.swift in Sources */,
 				F52373BD205150BE007CC1C9 /* UICollectionView+Wallet.swift in Sources */,
 				F52373BB20514FF5007CC1C9 /* ViewModelConfigurable.swift in Sources */,
 				F50514F32049AFD200D3C1BB /* UIColor+Wallet.swift in Sources */,

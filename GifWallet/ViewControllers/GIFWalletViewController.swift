@@ -95,7 +95,7 @@ extension GIFWalletViewController: UICollectionViewDelegate {
 
         let gifVM = data[indexPath.item]
         let vc = GIFDetailsViewController(gifID: gifVM.id)
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.show(vc, sender: nil)
     }
 }
 
