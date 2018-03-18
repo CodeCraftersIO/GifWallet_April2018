@@ -6,7 +6,7 @@
 import Foundation
 
 protocol GIFDetailInteractorType {
-    func fetchGif(gifID: String, handler: @escaping (GIFDetailsViewController.VM?) -> Void)
+    func fetchGifDetails(gifID: String, handler: @escaping (GIFDetailsViewController.VM?) -> Void)
 }
 
 extension GIFDetailsViewController {
@@ -15,7 +15,7 @@ extension GIFDetailsViewController {
 
         var delaySeconds: Int = 1
 
-        func fetchGif(gifID: String, handler: @escaping (GIFDetailsViewController.VM?) -> Void) {
+        func fetchGifDetails(gifID: String, handler: @escaping (GIFDetailsViewController.VM?) -> Void) {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delaySeconds)) {
                 handler(MockLoader.mockDetailGif(gifID: gifID))
             }

@@ -6,7 +6,7 @@
 import XCTest
 import FBSnapshotTestCase
 
-class GIFWalletSnapshotTest: FBSnapshotTestCase {
+class SnapshotTest: FBSnapshotTestCase {
 
     let waiter = XCTWaiter()
 

@@ -64,6 +64,7 @@ class GIFDetailsViewController: UIViewController {
 
     private var landscapeConstraints: [NSLayoutConstraint]!
     private var portraitConstraints: [NSLayoutConstraint]!
+    private var imageAspectRatioConstraint: NSLayoutConstraint!
 
     init(gifID: String, interactor: GIFDetailInteractorType = MockDataInteractor()) {
         self.gifID = gifID
@@ -96,6 +97,7 @@ class GIFDetailsViewController: UIViewController {
 
         // Add UIImageView
         containerStackView.addArrangedSubview(self.imageView)
+        self.imageAspectRatioConstraint = self.imageView.widthAnchor.constraint(equalTo: self.imageView.heightAnchor, multiplier: 1)
 
         // Now the details' StackView
         let topSpacingView = UIView.verticalSpacingView()
@@ -110,6 +112,7 @@ class GIFDetailsViewController: UIViewController {
         NSLayoutConstraint.activate([
             topSpacingView.heightAnchor.constraint(equalTo: bottomSpacingView.heightAnchor),
             containerStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            self.imageAspectRatioConstraint
             ])
 
         portraitConstraints = [
@@ -145,7 +148,7 @@ class GIFDetailsViewController: UIViewController {
 
     private func fetchGIFDetails() {
         activityView.startAnimating()
-        self.interactor.fetchGif(gifID: self.gifID) { [weak self] (vm) in
+        self.interactor.fetchGifDetails(gifID: self.gifID) { [weak self] (vm) in
             guard let `self` = self else { return }
             guard let vm = vm else {
                 self.navigationController?.popViewController(animated: true)
@@ -171,12 +174,15 @@ extension GIFDetailsViewController: ViewModelConfigurable {
     func configureFor(vm: VM) {
         self.titleLabel.text = vm.title
         self.subtitleLabel.text = vm.subtitle
-        self.imageView.sd_setImage(with: vm.url) { (image, _, _, _) in
+        self.imageView.setImageWithURL(vm.url) { (image, error) in
             guard let image = image else { return }
+            if let imageAspectRatioConstraint = self.imageAspectRatioConstraint {
+                self.imageView.removeConstraint(imageAspectRatioConstraint)
+            }
             let aspectRatio = image.size.width/image.size.height
-            let aspectRatioConstraint = self.imageView.widthAnchor.constraint(equalTo: self.imageView.heightAnchor, multiplier: aspectRatio)
-            aspectRatioConstraint.priority = .defaultHigh
-            aspectRatioConstraint.isActive = true
+            self.imageAspectRatioConstraint = self.imageView.widthAnchor.constraint(equalTo: self.imageView.heightAnchor, multiplier: aspectRatio)
+            self.imageAspectRatioConstraint.priority = .defaultHigh
+            self.imageAspectRatioConstraint.isActive = true
         }
         self.tagView.addTags(Array(vm.tags))
     }

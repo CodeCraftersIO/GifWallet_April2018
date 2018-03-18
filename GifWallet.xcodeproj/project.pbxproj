@@ -20,8 +20,9 @@
 		F52531B3205E8421009E9062 /* GIFWalletInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52531B2205E8420009E9062 /* GIFWalletInteractor.swift */; };
 		F52531B5205E8441009E9062 /* GIFDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52531B4205E8441009E9062 /* GIFDetailsInteractor.swift */; };
 		F52531B7205E84EB009E9062 /* UIImageView+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52531B6205E84EA009E9062 /* UIImageView+Wallet.swift */; };
-		F52531BA205E8580009E9062 /* GIFWalletSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52531B8205E857F009E9062 /* GIFWalletSnapshotTest.swift */; };
+		F52531BA205E8580009E9062 /* SnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52531B8205E857F009E9062 /* SnapshotTest.swift */; };
 		F52531BB205E8580009E9062 /* GIFWalletViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52531B9205E8580009E9062 /* GIFWalletViewControllerTests.swift */; };
+		F52531BE205E86BF009E9062 /* GIFDetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52531BD205E86BF009E9062 /* GIFDetailViewControllerTests.swift */; };
 		F528E8C220545A05003A8421 /* UILabel+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F528E8C120545A05003A8421 /* UILabel+Wallet.swift */; };
 		F54F91E120540023000891B2 /* AutoLayoutTestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54F91E020540023000891B2 /* AutoLayoutTestsViewController.swift */; };
 		F54F91E32054277D000891B2 /* GIFDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54F91E22054277D000891B2 /* GIFDetailsViewController.swift */; };
@@ -102,8 +103,9 @@
 		F52531B2205E8420009E9062 /* GIFWalletInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFWalletInteractor.swift; sourceTree = "<group>"; };
 		F52531B4205E8441009E9062 /* GIFDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFDetailsInteractor.swift; sourceTree = "<group>"; };
 		F52531B6205E84EA009E9062 /* UIImageView+Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Wallet.swift"; sourceTree = "<group>"; };
-		F52531B8205E857F009E9062 /* GIFWalletSnapshotTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFWalletSnapshotTest.swift; sourceTree = "<group>"; };
+		F52531B8205E857F009E9062 /* SnapshotTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotTest.swift; sourceTree = "<group>"; };
 		F52531B9205E8580009E9062 /* GIFWalletViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFWalletViewControllerTests.swift; sourceTree = "<group>"; };
+		F52531BD205E86BF009E9062 /* GIFDetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFDetailViewControllerTests.swift; sourceTree = "<group>"; };
 		F528E8C120545A05003A8421 /* UILabel+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Wallet.swift"; sourceTree = "<group>"; };
 		F54F91E020540023000891B2 /* AutoLayoutTestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutTestsViewController.swift; sourceTree = "<group>"; };
 		F54F91E22054277D000891B2 /* GIFDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFDetailsViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +237,15 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
+		F52531BC205E86AF009E9062 /* Test Suite */ = {
+			isa = PBXGroup;
+			children = (
+				F52531B9205E8580009E9062 /* GIFWalletViewControllerTests.swift */,
+				F52531BD205E86BF009E9062 /* GIFDetailViewControllerTests.swift */,
+			);
+			path = "Test Suite";
+			sourceTree = "<group>";
+		};
 		F5D1D43120499B870012E800 = {
 			isa = PBXGroup;
 			children = (
@@ -279,8 +290,8 @@
 		F5D1D45320499B880012E800 /* GifWalletTests */ = {
 			isa = PBXGroup;
 			children = (
-				F52531B8205E857F009E9062 /* GIFWalletSnapshotTest.swift */,
-				F52531B9205E8580009E9062 /* GIFWalletViewControllerTests.swift */,
+				F52531B8205E857F009E9062 /* SnapshotTest.swift */,
+				F52531BC205E86AF009E9062 /* Test Suite */,
 				F5D1D45620499B880012E800 /* Info.plist */,
 			);
 			path = GifWalletTests;
@@ -674,7 +685,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F52531BB205E8580009E9062 /* GIFWalletViewControllerTests.swift in Sources */,
-				F52531BA205E8580009E9062 /* GIFWalletSnapshotTest.swift in Sources */,
+				F52531BE205E86BF009E9062 /* GIFDetailViewControllerTests.swift in Sources */,
+				F52531BA205E8580009E9062 /* SnapshotTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
