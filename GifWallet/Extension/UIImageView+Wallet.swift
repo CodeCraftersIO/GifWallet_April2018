@@ -38,7 +38,7 @@ extension UIImageView {
             backgroundColor = UIColor.lightGray
             return
         }
-        setImageWithURL(url) { (image, error) in
+        sd_setImage(with: url) { (image, error, _, _) in
             completedBlock?(image, error)
         }
     }
