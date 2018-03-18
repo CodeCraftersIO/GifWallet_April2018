@@ -15,17 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     private let wireframe = Wireframe()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        defer { self.window?.makeKeyAndVisible() }
+        
         guard NSClassFromString("XCTest") == nil else {
-            self.window = UIWindow(frame: UIScreen.main.bounds)
             self.window?.rootViewController = UIViewController()
-            self.window?.makeKeyAndVisible()
             return true
         }
 
-        self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = wireframe.initialViewController()
-        self.window?.makeKeyAndVisible()
 
         return true
     }
