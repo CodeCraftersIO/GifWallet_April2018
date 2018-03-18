@@ -13,6 +13,7 @@ class GIFWalletViewController: UIViewController {
     }
 
     var collectionView: UICollectionView!
+    var collectionViewLayout: UICollectionViewFlowLayout!
     var dataSource: CollectionViewStatefulDataSource<GifCell>!
     let interactor: GIFWalletInteractorType
     
@@ -34,6 +35,23 @@ class GIFWalletViewController: UIViewController {
         fetchData()
     }
 
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        coordinator.newCollection = newCollection
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        guard let _ = collectionViewLayout else { return }
+        let newCollection = coordinator.newCollection ?? self.traitCollection
+        coordinator.animate(alongsideTransition: { (_) in
+            self.configureCollectionViewLayout(
+                forHorizontalSizeClass: newCollection.horizontalSizeClass,
+                targetSize: size
+            )
+        }, completion: nil)
+    }
+
     private func setup() {
         setupCollectionView()
         dataSource = CollectionViewStatefulDataSource<GifCell>(
@@ -42,13 +60,34 @@ class GIFWalletViewController: UIViewController {
     }
 
     private func setupCollectionView() {
-        let collectionViewLayout = UICollectionViewFlowLayout()
-        collectionViewLayout.itemSize = CGSize(width: self.view.frame.width, height: Constants.cellHeight)
+        collectionViewLayout = UICollectionViewFlowLayout()
+        collectionViewLayout.minimumLineSpacing = 0
+        collectionViewLayout.minimumInteritemSpacing = 0
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         view.addSubview(collectionView)
         collectionView.pinToSuperviewSafeLayoutEdges()
         collectionView.backgroundColor = .white
         collectionView.delegate = self
+        configureCollectionViewLayout(
+            forHorizontalSizeClass: self.traitCollection.horizontalSizeClass,
+            targetSize: self.view.frame.size
+        )
+    }
+
+    private func configureCollectionViewLayout(
+        forHorizontalSizeClass horizontalSizeClass: UIUserInterfaceSizeClass,
+        targetSize: CGSize) {
+        let numberOfColumns: Int
+        switch horizontalSizeClass {
+        case .regular:
+            numberOfColumns = (targetSize.width > targetSize.height) ? 3 : 2
+        default:
+            numberOfColumns = 1
+        }
+        collectionViewLayout.itemSize = CGSize(
+            width: self.view.frame.width / CGFloat(numberOfColumns),
+            height: Constants.cellHeight
+        )
     }
 
     private func fetchData() {
@@ -65,7 +104,7 @@ extension GIFWalletViewController: UICollectionViewDelegate {
         }
         let gifVM = data[indexPath.item]
         let vc = GIFDetailsViewController(gifID: gifVM.id)
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.show(vc, sender: nil)
     }
 }
 

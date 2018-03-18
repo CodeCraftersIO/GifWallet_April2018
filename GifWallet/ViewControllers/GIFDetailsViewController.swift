@@ -88,6 +88,22 @@ class GIFDetailsViewController: UIViewController {
         }, completion: nil)
     }
 
+    @objc func shareGIF() {
+        guard
+            let vm = self.vm,
+            let path = SDImageCache.shared().defaultCachePath(forKey: vm.url.absoluteString) else { return }
+
+        let url = URL(fileURLWithPath: path)
+
+        guard let data = try? Data(contentsOf: url) else { return }
+
+        let controller = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+        
+        // Specify the anchor point for the popover.
+        controller.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
+        present(controller, animated: true, completion: nil)
+    }
+
     private func setupView() {
         // Add UIScrollView & Container-View
         self.view.addAutolayoutView(scrollView)
@@ -151,7 +167,7 @@ class GIFDetailsViewController: UIViewController {
         self.interactor.fetchGifDetails(gifID: self.gifID) { [weak self] (vm) in
             guard let `self` = self else { return }
             guard let vm = vm else {
-                self.navigationController?.popViewController(animated: true)
+                self.closeViewController(sender: self)
                 return
             }
             self.activityView.stopAnimating()
@@ -172,6 +188,9 @@ extension GIFDetailsViewController {
 
 extension GIFDetailsViewController: ViewModelConfigurable {
     func configureFor(vm: VM) {
+        self.vm = vm
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareGIF))
+
         self.titleLabel.text = vm.title
         self.subtitleLabel.text = vm.subtitle
         self.imageView.setImageWithURL(vm.url) { (image, error) in
