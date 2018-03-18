@@ -7,6 +7,18 @@ import UIKit
 
 extension UIView {
 
+    class func verticalSpacingView() -> UIView {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        return view
+    }
+
+    public func addAutolayoutView(_ subview: UIView) {
+        subview.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(subview)
+    }
+
     @available(iOS 11.0, *)
     public func pinToSuperviewSafeLayoutEdges(withMargin margin: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)) {
         guard let superView = superview else { return }

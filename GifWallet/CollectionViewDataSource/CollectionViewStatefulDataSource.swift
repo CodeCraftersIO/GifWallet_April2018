@@ -77,8 +77,7 @@ class CollectionViewStatefulDataSource<Cell: ViewModelReusable & UICollectionVie
 
         guard let emptyView = newEmptyView, let collectionView = self.collectionView else { return }
 
-        collectionView.addSubview(emptyView)
-        emptyView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.addAutolayoutView(emptyView)
         emptyView.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor).isActive = true
         emptyView.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor, constant: -20).isActive = true
         self.emptyView = newEmptyView

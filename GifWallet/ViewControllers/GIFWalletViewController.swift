@@ -63,8 +63,9 @@ extension GIFWalletViewController: UICollectionViewDelegate {
         guard case .loaded(let data) = self.dataSource.state else {
             return
         }
-
-        let _ = data[indexPath.item]
+        let gifVM = data[indexPath.item]
+        let vc = GIFDetailsViewController(gifID: gifVM.id)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
