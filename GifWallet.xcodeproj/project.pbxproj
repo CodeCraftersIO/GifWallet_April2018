@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0EDB97AAE181ABCA141291DB /* Pods_GifWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A6F727CA56BBC6B0F2BC71 /* Pods_GifWallet.framework */; };
 		96BD2327B9BF84651CC63C62 /* Pods_GifWalletKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE38F6BB5FC7E7F8B0E1334 /* Pods_GifWalletKit.framework */; };
+		A80657560BD82D2E0081E7BA /* Pods_GifWallet_GifWalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B911351BB114A39736C898 /* Pods_GifWallet_GifWalletTests.framework */; };
 		F50514F32049AFD200D3C1BB /* UIColor+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50514F22049AFD200D3C1BB /* UIColor+Wallet.swift */; };
 		F50514F62049B17E00D3C1BB /* UIView+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50514F52049B17E00D3C1BB /* UIView+Wallet.swift */; };
 		F5071B262049B3DF001D09B2 /* ListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5071B252049B3DF001D09B2 /* ListState.swift */; };
@@ -16,16 +17,18 @@
 		F52373B920514F78007CC1C9 /* MockLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52373B820514F78007CC1C9 /* MockLoader.swift */; };
 		F52373BB20514FF5007CC1C9 /* ViewModelConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52373BA20514FF5007CC1C9 /* ViewModelConfigurable.swift */; };
 		F52373BD205150BE007CC1C9 /* UICollectionView+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52373BC205150BE007CC1C9 /* UICollectionView+Wallet.swift */; };
-		F52373C020515185007CC1C9 /* GIFWalletPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52373BF20515185007CC1C9 /* GIFWalletPresenter.swift */; };
+		F52531B3205E8421009E9062 /* GIFWalletInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52531B2205E8420009E9062 /* GIFWalletInteractor.swift */; };
+		F52531B5205E8441009E9062 /* GIFDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52531B4205E8441009E9062 /* GIFDetailsInteractor.swift */; };
+		F52531B7205E84EB009E9062 /* UIImageView+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52531B6205E84EA009E9062 /* UIImageView+Wallet.swift */; };
+		F52531BA205E8580009E9062 /* GIFWalletSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52531B8205E857F009E9062 /* GIFWalletSnapshotTest.swift */; };
+		F52531BB205E8580009E9062 /* GIFWalletViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52531B9205E8580009E9062 /* GIFWalletViewControllerTests.swift */; };
 		F528E8C220545A05003A8421 /* UILabel+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F528E8C120545A05003A8421 /* UILabel+Wallet.swift */; };
 		F54F91E120540023000891B2 /* AutoLayoutTestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54F91E020540023000891B2 /* AutoLayoutTestsViewController.swift */; };
 		F54F91E32054277D000891B2 /* GIFDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54F91E22054277D000891B2 /* GIFDetailsViewController.swift */; };
-		F54F91E5205428DB000891B2 /* GIFDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54F91E4205428DB000891B2 /* GIFDetailsPresenter.swift */; };
 		F5BF8488205023020091BA88 /* CollectionViewStatefulDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BF8487205023020091BA88 /* CollectionViewStatefulDataSource.swift */; };
 		F5D1D43E20499B880012E800 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D1D43D20499B880012E800 /* AppDelegate.swift */; };
 		F5D1D44720499B880012E800 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5D1D44620499B880012E800 /* Assets.xcassets */; };
 		F5D1D44A20499B880012E800 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5D1D44820499B880012E800 /* LaunchScreen.storyboard */; };
-		F5D1D45520499B880012E800 /* GifWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D1D45420499B880012E800 /* GifWalletTests.swift */; };
 		F5D1D47B20499E300012E800 /* GifWalletKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D1D47220499E2F0012E800 /* GifWalletKit.framework */; };
 		F5D1D48220499E300012E800 /* GifWalletKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D1D48120499E300012E800 /* GifWalletKitTests.swift */; };
 		F5D1D48420499E300012E800 /* GifWalletKit.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D1D47420499E2F0012E800 /* GifWalletKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -80,11 +83,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A0653756804371D975D4548 /* Pods-GifWallet-GifWalletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifWallet-GifWalletTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GifWallet-GifWalletTests/Pods-GifWallet-GifWalletTests.release.xcconfig"; sourceTree = "<group>"; };
 		1C57C1C750AA91C3F11BA5E4 /* Pods-GifWalletKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifWalletKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GifWalletKit/Pods-GifWalletKit.debug.xcconfig"; sourceTree = "<group>"; };
 		2AECB1B364602EE2C6751957 /* Pods-GifWalletKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifWalletKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-GifWalletKit/Pods-GifWalletKit.release.xcconfig"; sourceTree = "<group>"; };
 		52A6F727CA56BBC6B0F2BC71 /* Pods_GifWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GifWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D11D06338086F95ABE110A7 /* Pods-GifWallet-GifWalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifWallet-GifWalletTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GifWallet-GifWalletTests/Pods-GifWallet-GifWalletTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7F0484C73C76BA7AA7F4CA35 /* Pods-GifWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifWallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GifWallet/Pods-GifWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		832E7926BFBF2E17321EE417 /* Pods-GifWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-GifWallet/Pods-GifWallet.release.xcconfig"; sourceTree = "<group>"; };
+		90B911351BB114A39736C898 /* Pods_GifWallet_GifWalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GifWallet_GifWalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEE38F6BB5FC7E7F8B0E1334 /* Pods_GifWalletKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GifWalletKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50514F22049AFD200D3C1BB /* UIColor+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Wallet.swift"; sourceTree = "<group>"; };
 		F50514F52049B17E00D3C1BB /* UIView+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Wallet.swift"; sourceTree = "<group>"; };
@@ -93,11 +99,14 @@
 		F52373B820514F78007CC1C9 /* MockLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockLoader.swift; sourceTree = "<group>"; };
 		F52373BA20514FF5007CC1C9 /* ViewModelConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelConfigurable.swift; sourceTree = "<group>"; };
 		F52373BC205150BE007CC1C9 /* UICollectionView+Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Wallet.swift"; sourceTree = "<group>"; };
-		F52373BF20515185007CC1C9 /* GIFWalletPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFWalletPresenter.swift; sourceTree = "<group>"; };
+		F52531B2205E8420009E9062 /* GIFWalletInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFWalletInteractor.swift; sourceTree = "<group>"; };
+		F52531B4205E8441009E9062 /* GIFDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFDetailsInteractor.swift; sourceTree = "<group>"; };
+		F52531B6205E84EA009E9062 /* UIImageView+Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Wallet.swift"; sourceTree = "<group>"; };
+		F52531B8205E857F009E9062 /* GIFWalletSnapshotTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFWalletSnapshotTest.swift; sourceTree = "<group>"; };
+		F52531B9205E8580009E9062 /* GIFWalletViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFWalletViewControllerTests.swift; sourceTree = "<group>"; };
 		F528E8C120545A05003A8421 /* UILabel+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Wallet.swift"; sourceTree = "<group>"; };
 		F54F91E020540023000891B2 /* AutoLayoutTestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutTestsViewController.swift; sourceTree = "<group>"; };
 		F54F91E22054277D000891B2 /* GIFDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFDetailsViewController.swift; sourceTree = "<group>"; };
-		F54F91E4205428DB000891B2 /* GIFDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFDetailsPresenter.swift; sourceTree = "<group>"; };
 		F5BF8487205023020091BA88 /* CollectionViewStatefulDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewStatefulDataSource.swift; sourceTree = "<group>"; };
 		F5D1D43A20499B880012E800 /* GifWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GifWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D1D43D20499B880012E800 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,7 +114,6 @@
 		F5D1D44920499B880012E800 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F5D1D44B20499B880012E800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5D1D45020499B880012E800 /* GifWalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GifWalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5D1D45420499B880012E800 /* GifWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifWalletTests.swift; sourceTree = "<group>"; };
 		F5D1D45620499B880012E800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5D1D47220499E2F0012E800 /* GifWalletKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GifWalletKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D1D47420499E2F0012E800 /* GifWalletKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GifWalletKit.h; sourceTree = "<group>"; };
@@ -132,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A80657560BD82D2E0081E7BA /* Pods_GifWallet_GifWalletTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +168,7 @@
 			children = (
 				52A6F727CA56BBC6B0F2BC71 /* Pods_GifWallet.framework */,
 				BEE38F6BB5FC7E7F8B0E1334 /* Pods_GifWalletKit.framework */,
+				90B911351BB114A39736C898 /* Pods_GifWallet_GifWalletTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -170,6 +180,8 @@
 				832E7926BFBF2E17321EE417 /* Pods-GifWallet.release.xcconfig */,
 				1C57C1C750AA91C3F11BA5E4 /* Pods-GifWalletKit.debug.xcconfig */,
 				2AECB1B364602EE2C6751957 /* Pods-GifWalletKit.release.xcconfig */,
+				7D11D06338086F95ABE110A7 /* Pods-GifWallet-GifWalletTests.debug.xcconfig */,
+				0A0653756804371D975D4548 /* Pods-GifWallet-GifWalletTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -177,6 +189,7 @@
 		F50514F42049AFE800D3C1BB /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				F52531B6205E84EA009E9062 /* UIImageView+Wallet.swift */,
 				F52373BC205150BE007CC1C9 /* UICollectionView+Wallet.swift */,
 				F50514F22049AFD200D3C1BB /* UIColor+Wallet.swift */,
 				F50514F52049B17E00D3C1BB /* UIView+Wallet.swift */,
@@ -213,13 +226,13 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
-		F52373BE20515185007CC1C9 /* Presenter */ = {
+		F52531B1205E8420009E9062 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				F52373BF20515185007CC1C9 /* GIFWalletPresenter.swift */,
-				F54F91E4205428DB000891B2 /* GIFDetailsPresenter.swift */,
+				F52531B2205E8420009E9062 /* GIFWalletInteractor.swift */,
+				F52531B4205E8441009E9062 /* GIFDetailsInteractor.swift */,
 			);
-			path = Presenter;
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		F5D1D43120499B870012E800 = {
@@ -251,7 +264,7 @@
 			children = (
 				F5D1D43D20499B880012E800 /* AppDelegate.swift */,
 				F52373B420514F39007CC1C9 /* ViewControllers */,
-				F52373BE20515185007CC1C9 /* Presenter */,
+				F52531B1205E8420009E9062 /* Interactor */,
 				F5071B292049B496001D09B2 /* CollectionViewDataSource */,
 				F50514F42049AFE800D3C1BB /* Extension */,
 				F52373B720514F78007CC1C9 /* Mocks */,
@@ -266,7 +279,8 @@
 		F5D1D45320499B880012E800 /* GifWalletTests */ = {
 			isa = PBXGroup;
 			children = (
-				F5D1D45420499B880012E800 /* GifWalletTests.swift */,
+				F52531B8205E857F009E9062 /* GIFWalletSnapshotTest.swift */,
+				F52531B9205E8580009E9062 /* GIFWalletViewControllerTests.swift */,
 				F5D1D45620499B880012E800 /* Info.plist */,
 			);
 			path = GifWalletTests;
@@ -340,9 +354,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5D1D46720499B880012E800 /* Build configuration list for PBXNativeTarget "GifWalletTests" */;
 			buildPhases = (
+				19F391EAB054D07B9FE2C634 /* [CP] Check Pods Manifest.lock */,
 				F5D1D44C20499B880012E800 /* Sources */,
 				F5D1D44D20499B880012E800 /* Frameworks */,
 				F5D1D44E20499B880012E800 /* Resources */,
+				228E61E740DAB9DAE2A40149 /* [CP] Embed Pods Frameworks */,
+				1E7E0F16E6F192E67B1951C7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -409,6 +426,7 @@
 					};
 					F5D1D44F20499B880012E800 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = F5D1D43920499B880012E800;
 					};
@@ -479,6 +497,63 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		19F391EAB054D07B9FE2C634 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GifWallet-GifWalletTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1E7E0F16E6F192E67B1951C7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GifWallet-GifWalletTests/Pods-GifWallet-GifWalletTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		228E61E740DAB9DAE2A40149 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GifWallet-GifWalletTests/Pods-GifWallet-GifWalletTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TagListView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GifWallet-GifWalletTests/Pods-GifWallet-GifWalletTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		315B800E607B24F5FE0FB3D7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -579,11 +654,12 @@
 				F52373B920514F78007CC1C9 /* MockLoader.swift in Sources */,
 				F54F91E120540023000891B2 /* AutoLayoutTestsViewController.swift in Sources */,
 				F5D1D43E20499B880012E800 /* AppDelegate.swift in Sources */,
-				F52373C020515185007CC1C9 /* GIFWalletPresenter.swift in Sources */,
 				F54F91E32054277D000891B2 /* GIFDetailsViewController.swift in Sources */,
+				F52531B5205E8441009E9062 /* GIFDetailsInteractor.swift in Sources */,
 				F528E8C220545A05003A8421 /* UILabel+Wallet.swift in Sources */,
+				F52531B7205E84EB009E9062 /* UIImageView+Wallet.swift in Sources */,
+				F52531B3205E8421009E9062 /* GIFWalletInteractor.swift in Sources */,
 				F5BF8488205023020091BA88 /* CollectionViewStatefulDataSource.swift in Sources */,
-				F54F91E5205428DB000891B2 /* GIFDetailsPresenter.swift in Sources */,
 				F52373BD205150BE007CC1C9 /* UICollectionView+Wallet.swift in Sources */,
 				F52373BB20514FF5007CC1C9 /* ViewModelConfigurable.swift in Sources */,
 				F50514F32049AFD200D3C1BB /* UIColor+Wallet.swift in Sources */,
@@ -597,7 +673,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5D1D45520499B880012E800 /* GifWalletTests.swift in Sources */,
+				F52531BB205E8580009E9062 /* GIFWalletViewControllerTests.swift in Sources */,
+				F52531BA205E8580009E9062 /* GIFWalletSnapshotTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,15 +870,17 @@
 		};
 		F5D1D46820499B880012E800 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D11D06338086F95ABE110A7 /* Pods-GifWallet-GifWalletTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JC3H35UYFP;
 				INFOPLIST_FILE = GifWalletTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.blurred.GifWalletTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GifWallet.app/GifWallet";
@@ -810,9 +889,10 @@
 		};
 		F5D1D46920499B880012E800 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A0653756804371D975D4548 /* Pods-GifWallet-GifWalletTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JC3H35UYFP;
 				INFOPLIST_FILE = GifWalletTests/Info.plist;

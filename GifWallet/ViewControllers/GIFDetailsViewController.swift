@@ -11,8 +11,8 @@ class GIFDetailsViewController: UIViewController {
 
     let gifID: String
 
-    private let presenter = Presenter()
-
+    private var vm: VM?
+    private let interactor: GIFDetailInteractorType
     private var activityView: UIActivityIndicatorView!
 
     private let imageView: UIImageView = {
@@ -65,8 +65,9 @@ class GIFDetailsViewController: UIViewController {
     private var landscapeConstraints: [NSLayoutConstraint]!
     private var portraitConstraints: [NSLayoutConstraint]!
 
-    init(gifID: String) {
+    init(gifID: String, interactor: GIFDetailInteractorType = MockDataInteractor()) {
         self.gifID = gifID
+        self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -144,7 +145,7 @@ class GIFDetailsViewController: UIViewController {
 
     private func fetchGIFDetails() {
         activityView.startAnimating()
-        self.presenter.fetchMockGif(gifID: self.gifID) { [weak self] (vm) in
+        self.interactor.fetchGif(gifID: self.gifID) { [weak self] (vm) in
             guard let `self` = self else { return }
             guard let vm = vm else {
                 self.navigationController?.popViewController(animated: true)
