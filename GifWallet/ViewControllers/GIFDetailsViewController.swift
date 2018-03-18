@@ -167,7 +167,7 @@ class GIFDetailsViewController: UIViewController {
         self.interactor.fetchGifDetails(gifID: self.gifID) { [weak self] (vm) in
             guard let `self` = self else { return }
             guard let vm = vm else {
-                self.dismissViewController(sender: self)
+                self.closeViewController(sender: self)
                 return
             }
             self.activityView.stopAnimating()
