@@ -16,20 +16,12 @@ public protocol Endpoint {
     /// Optional parameters for the request
     var parameters: [String : Any]? { get }
 
-    /// How the parameters should be encoded
-    var parameterEncoding: HTTPParameterEncoding { get }
-
     /// The HTTP headers to be sent
     var httpHeaderFields: [String : String]? { get }
 }
 
 public enum HTTPMethod: String {
     case GET, POST, PUT, DELETE, OPTIONS, HEAD, PATCH, TRACE, CONNECT
-}
-
-public enum HTTPParameterEncoding {
-    case url
-    case json
 }
 
 extension Endpoint {
@@ -39,10 +31,6 @@ extension Endpoint {
 
     public var parameters: [String : Any]? {
         return nil
-    }
-
-    public var parameterEncoding: HTTPParameterEncoding {
-        return .url
     }
 
     public var httpHeaderFields: [String : String]? {

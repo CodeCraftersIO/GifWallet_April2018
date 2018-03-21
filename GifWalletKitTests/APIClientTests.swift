@@ -63,6 +63,14 @@ class APIClientTests: XCTestCase {
     }
 
     func testGET() {
-        apiClient.performRequest(forEndpoint: HTTPBINAPI.ip)
+
+        let exp = expectation(description: "Fetch Completes")
+
+        apiClient.performRequest(forEndpoint: HTTPBINAPI.ip) { (data, error) in
+            XCTAssert(data != nil)
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 3)
     }
 }
