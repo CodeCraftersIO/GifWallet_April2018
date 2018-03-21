@@ -12,7 +12,6 @@ target 'GifWallet' do
 end
 
 target 'GifWalletKit' do
-    pod 'Alamofire'
 end
 
 

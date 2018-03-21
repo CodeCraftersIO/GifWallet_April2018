@@ -33,11 +33,13 @@
 		F5D1D44720499B880012E800 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5D1D44620499B880012E800 /* Assets.xcassets */; };
 		F5D1D44A20499B880012E800 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5D1D44820499B880012E800 /* LaunchScreen.storyboard */; };
 		F5D1D47B20499E300012E800 /* GifWalletKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D1D47220499E2F0012E800 /* GifWalletKit.framework */; };
-		F5D1D48220499E300012E800 /* GifWalletKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D1D48120499E300012E800 /* GifWalletKitTests.swift */; };
+		F5D1D48220499E300012E800 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D1D48120499E300012E800 /* APIClientTests.swift */; };
 		F5D1D48420499E300012E800 /* GifWalletKit.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D1D47420499E2F0012E800 /* GifWalletKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5D1D48720499E300012E800 /* GifWalletKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D1D47220499E2F0012E800 /* GifWalletKit.framework */; };
 		F5D1D48820499E300012E800 /* GifWalletKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5D1D47220499E2F0012E800 /* GifWalletKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5D1D49120499ED00012E800 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D1D49020499ED00012E800 /* APIClient.swift */; };
+		F5F1CB6A2062796E006164C6 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F1CB692062796E006164C6 /* Endpoint.swift */; };
+		F5F1CB6C20627984006164C6 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F1CB6B20627984006164C6 /* Environment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,11 +127,13 @@
 		F5D1D47420499E2F0012E800 /* GifWalletKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GifWalletKit.h; sourceTree = "<group>"; };
 		F5D1D47520499E2F0012E800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5D1D47A20499E300012E800 /* GifWalletKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GifWalletKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5D1D48120499E300012E800 /* GifWalletKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifWalletKitTests.swift; sourceTree = "<group>"; };
+		F5D1D48120499E300012E800 /* APIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
 		F5D1D48320499E300012E800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5D1D49020499ED00012E800 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		F5D1D4922049A0620012E800 /* AppStore.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AppStore.xcconfig; sourceTree = "<group>"; };
 		F5D1D4932049A0730012E800 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		F5F1CB692062796E006164C6 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		F5F1CB6B20627984006164C6 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +313,8 @@
 				F5D1D47420499E2F0012E800 /* GifWalletKit.h */,
 				F5D1D47520499E2F0012E800 /* Info.plist */,
 				F5D1D49020499ED00012E800 /* APIClient.swift */,
+				F5F1CB692062796E006164C6 /* Endpoint.swift */,
+				F5F1CB6B20627984006164C6 /* Environment.swift */,
 			);
 			path = GifWalletKit;
 			sourceTree = "<group>";
@@ -316,7 +322,7 @@
 		F5D1D48020499E300012E800 /* GifWalletKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				F5D1D48120499E300012E800 /* GifWalletKitTests.swift */,
+				F5D1D48120499E300012E800 /* APIClientTests.swift */,
 				F5D1D48320499E300012E800 /* Info.plist */,
 			);
 			path = GifWalletKitTests;
@@ -596,14 +602,12 @@
 				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TagListView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -702,6 +706,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5F1CB6A2062796E006164C6 /* Endpoint.swift in Sources */,
+				F5F1CB6C20627984006164C6 /* Environment.swift in Sources */,
 				F5D1D49120499ED00012E800 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -710,7 +716,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5D1D48220499E300012E800 /* GifWalletKitTests.swift in Sources */,
+				F5D1D48220499E300012E800 /* APIClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1062,4 +1068,3 @@
 	};
 	rootObject = F5D1D43220499B870012E800 /* Project object */;
 }
-
