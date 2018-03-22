@@ -4,10 +4,11 @@
 //
 import Foundation
 
-public class APIClient {
+open class APIClient {
 
     let environment: Environment
     let urlSession: URLSession
+    let jsonDecoder = JSONDecoder()
     var delegateQueue = DispatchQueue.main
 
     public init(environment: Environment) {
@@ -30,7 +31,10 @@ public class APIClient {
                 return
             }
 
-            guard let data = data else {
+            guard
+                let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 200,
+                let data = data else {
                 self.delegateQueue.async { handler(nil, Error.malformedResponse) }
                 return
             }
@@ -38,6 +42,16 @@ public class APIClient {
             self.delegateQueue.async { handler(data, nil) }
         }
         task.resume()
+    }
+
+
+    public func parseResponse<T: Decodable>(data: Data) throws -> T {
+        do {
+            return try self.jsonDecoder.decode(T.self, from: data)
+        }
+        catch {
+            throw Error.malformedJSONResponse
+        }
     }
 
     private func createURLRequest(endpoint: Endpoint) throws -> URLRequest {
@@ -48,7 +62,6 @@ public class APIClient {
         var urlRequest = URLRequest(url: URL)
         urlRequest.httpMethod = endpoint.method.rawValue
         urlRequest.allHTTPHeaderFields = endpoint.httpHeaderFields
-        urlRequest.setValue("User-Agent", forHTTPHeaderField: "GifWallet - iOS")
         if let parameters = endpoint.parameters {
             do {
                 let requestData = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -62,8 +75,10 @@ public class APIClient {
     }
 
     enum Error: Swift.Error {
+        case serverError
         case malformedURL
         case malformedParameters
         case malformedResponse
+        case malformedJSONResponse
     }
 }

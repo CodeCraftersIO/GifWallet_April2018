@@ -6,46 +6,6 @@
 import XCTest
 @testable import GifWalletKit
 
-/// Full-suite tests are courtesy of our good friends of HTTPBin
-
-fileprivate enum HTTPBin {
-    enum Hosts: Environment {
-        case production
-        case development
-
-        fileprivate var baseURL: URL {
-            switch self {
-            case .production:
-                return URL(string: "https://httpbin.org")!
-            case .development:
-                return URL(string: "https://dev.httpbin.org")!
-            }
-        }
-    }
-
-    enum API: Endpoint {
-        case ip
-        case orderPizza
-
-        var path: String {
-            switch self {
-            case .orderPizza:
-                return "/forms/post"
-            case .ip:
-                return "/ip"
-            }
-        }
-
-        var method: HTTPMethod {
-            switch self {
-            case .orderPizza:
-                return .POST
-            default:
-                return .GET
-            }
-        }
-    }
-}
 
 class HTTPBINAPITests: XCTestCase {
     func testIPEndpoint() {
@@ -53,23 +13,36 @@ class HTTPBINAPITests: XCTestCase {
         XCTAssert(getIP.path == "/ip")
         XCTAssert(getIP.method == .GET)
     }
+
+    func testParseIPResponse() throws {
+        let json =
+"""
+{
+  "origin": "80.34.92.76"
+}
+"""
+            .data(using: .utf8)!
+        let decoder = JSONDecoder()
+        let response = try decoder.decode(HTTPBin.Responses.IP.self, from: json)
+        XCTAssert(response.origin == "80.34.92.76")
+    }
 }
 
-class APIClientTests: XCTestCase {
+class HTTPBinAPIClientTests: XCTestCase {
 
-    var apiClient: APIClient!
+    var apiClient: HTTPBinAPIClient!
 
     override func setUp() {
         super.setUp()
-        apiClient = APIClient(environment: HTTPBin.Hosts.production)
+        apiClient = HTTPBinAPIClient(environment: HTTPBin.Hosts.production)
     }
 
     func testGET() {
 
         let exp = expectation(description: "Fetch Completes")
 
-        apiClient.performRequest(forEndpoint: HTTPBin.API.ip) { (data, error) in
-            XCTAssert(data != nil)
+        apiClient.fetchIPAddress { (response, error) in
+            XCTAssert(response != nil)
             exp.fulfill()
         }
 
