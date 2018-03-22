@@ -16,6 +16,29 @@ open class APIClient {
         self.urlSession = URLSession(configuration: .default)
     }
 
+    public func performRequestAndParseResponse<T: Decodable>(forEndpoint endpoint: Endpoint, handler: @escaping (T?, Swift.Error?) -> Void) {
+        self.performRequest(forEndpoint: endpoint) { (data, error) in
+            guard error == nil else {
+                self.delegateQueue.async { handler(nil, error!) }
+                return
+            }
+            guard let data = data else {
+                self.delegateQueue.async { handler(nil, Error.malformedResponse) }
+                return
+            }
+
+            let response: T
+            do {
+                response = try self.parseResponse(data: data)
+            } catch let error {
+                self.delegateQueue.async { handler(nil, error) }
+                return
+            }
+
+            handler(response, nil)
+        }
+    }
+
     public func performRequest(forEndpoint endpoint: Endpoint, handler: @escaping (Data?, Swift.Error?) -> Void) {
         let urlRequest: URLRequest
         do {
@@ -45,7 +68,7 @@ open class APIClient {
     }
 
 
-    public func parseResponse<T: Decodable>(data: Data) throws -> T {
+    private func parseResponse<T: Decodable>(data: Data) throws -> T {
         do {
             return try self.jsonDecoder.decode(T.self, from: data)
         }
