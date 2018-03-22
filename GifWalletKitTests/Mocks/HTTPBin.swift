@@ -13,7 +13,10 @@
 class HTTPBinAPIClient: APIClient {
 
     func fetchIPAddress(handler: @escaping(HTTPBin.Responses.IP?, Swift.Error?) -> Void) {
-        self.performRequestAndParseResponse(forEndpoint: HTTPBin.API.ip) { (response: HTTPBin.Responses.IP?, error: Swift.Error?) in
+        let ipRequest = Request<HTTPBin.Responses.IP>(
+            endpoint: HTTPBin.API.ip
+        )
+        self.perform(ipRequest) { (response, error) in
             handler(response, error)
         }
     }

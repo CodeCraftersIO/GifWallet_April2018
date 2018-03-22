@@ -5,6 +5,10 @@
 
 import Foundation
 
+public struct Request<ResponseType>{
+    let endpoint: Endpoint
+}
+
 public protocol Endpoint {
 
     /// The path for the request

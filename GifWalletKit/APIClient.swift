@@ -16,8 +16,8 @@ open class APIClient {
         self.urlSession = URLSession(configuration: .default)
     }
 
-    public func performRequestAndParseResponse<T: Decodable>(forEndpoint endpoint: Endpoint, handler: @escaping (T?, Swift.Error?) -> Void) {
-        self.performRequest(forEndpoint: endpoint) { (data, error) in
+    public func perform<T: Decodable>(_ request: Request<T>, handler: @escaping (T?, Swift.Error?) -> Void) {
+        self.performRequest(forEndpoint: request.endpoint) { (data, error) in
             guard error == nil else {
                 self.delegateQueue.async { handler(nil, error!) }
                 return
