@@ -319,9 +319,7 @@
 				F5D1D47420499E2F0012E800 /* GifWalletKit.h */,
 				F5D1D47520499E2F0012E800 /* Info.plist */,
 				F5D3DE322065221500B5AF34 /* GiphyAPIClient.swift */,
-				F5D1D49020499ED00012E800 /* APIClient.swift */,
-				F5F1CB692062796E006164C6 /* Endpoint.swift */,
-				F5F1CB6B20627984006164C6 /* Environment.swift */,
+				F5D71D052065357D008C888C /* APIClient */,
 			);
 			path = GifWalletKit;
 			sourceTree = "<group>";
@@ -344,6 +342,16 @@
 				F5D1D4932049A0730012E800 /* Development.xcconfig */,
 			);
 			path = Configurations;
+			sourceTree = "<group>";
+		};
+		F5D71D052065357D008C888C /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				F5D1D49020499ED00012E800 /* APIClient.swift */,
+				F5F1CB692062796E006164C6 /* Endpoint.swift */,
+				F5F1CB6B20627984006164C6 /* Environment.swift */,
+			);
+			path = APIClient;
 			sourceTree = "<group>";
 		};
 		F5E0ED0B2063BE3D00D90C6C /* Mocks */ = {
