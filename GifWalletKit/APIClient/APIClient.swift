@@ -2,7 +2,9 @@
 //  Created by Pierluigi Cifani on 02/03/2018.
 //  Copyright © 2018 Code Crafters. All rights reserved.
 //
+
 import Foundation
+import Async
 
 open class APIClient {
 
@@ -11,6 +13,7 @@ open class APIClient {
     let signature: Signature?
     let jsonDecoder = JSONDecoder()
     var delegateQueue = DispatchQueue.main
+    let workerQueue = DispatchQueue.global(qos: .userInitiated)
 
     public init(environment: Environment, signature: Signature? = nil) {
         self.environment = environment
@@ -18,57 +21,30 @@ open class APIClient {
         self.urlSession = URLSession(configuration: .default)
     }
 
-    public func perform<T: Decodable>(_ request: Request<T>, handler: @escaping (T?, Swift.Error?) -> Void) {
-        self.performRequest(forEndpoint: request.endpoint) { (data, error) in
-            guard error == nil else {
-                handler(nil, error!)
-                return
-            }
-            guard let data = data else {
-                handler(nil, Error.malformedResponse)
-                return
-            }
+    public func perform<T: Decodable>(_ request: Request<T>) -> Future<T> {
 
-            let response: T
+        let urlRequest: Future<URLRequest> = self.createURLRequest(endpoint: request.endpoint)
+        let downloadData = urlRequest.flatMap(to: Data.self) { (urlRequest) in
+            return self.urlSession.fetchData(with: urlRequest)
+        }
+        let parseData = downloadData.flatMap(to: T.self) { (data) in
+            return self.parseResponse(data: data)
+        }
+        return parseData
+    }
+
+    private func parseResponse<T: Decodable>(data: Data) -> Future<T> {
+        let promise = Promise<T>()
+        workerQueue.async {
             do {
-                response = try self.parseResponse(data: data)
+                let request: T = try self.parseResponse(data: data)
+                promise.complete(request)
             } catch let error {
-                handler(nil, error)
-                return
+                promise.fail(error)
             }
-
-            handler(response, nil)
         }
+        return promise.future
     }
-
-    public func performRequest(forEndpoint endpoint: Endpoint, handler: @escaping (Data?, Swift.Error?) -> Void) {
-        let urlRequest: URLRequest
-        do {
-            urlRequest = try self.createURLRequest(endpoint: endpoint)
-        } catch let error {
-            delegateQueue.async { handler(nil, error) }
-            return
-        }
-
-        let task = self.urlSession.dataTask(with: urlRequest) { (data, response, error) in
-            guard error == nil else {
-                self.delegateQueue.async { handler(nil, error) }
-                return
-            }
-
-            guard
-                let httpResponse = response as? HTTPURLResponse,
-                httpResponse.statusCode == 200,
-                let data = data else {
-                self.delegateQueue.async { handler(nil, Error.malformedResponse) }
-                return
-            }
-
-            self.delegateQueue.async { handler(data, nil) }
-        }
-        task.resume()
-    }
-
 
     private func parseResponse<T: Decodable>(data: Data) throws -> T {
         do {
@@ -77,6 +53,19 @@ open class APIClient {
         catch {
             throw Error.malformedJSONResponse
         }
+    }
+
+    private func createURLRequest(endpoint: Endpoint) -> Future<URLRequest> {
+        let promise = Promise<URLRequest>()
+        workerQueue.async {
+            do {
+                let request: URLRequest = try self.createURLRequest(endpoint: endpoint)
+                promise.complete(request)
+            } catch let error {
+                promise.fail(error)
+            }
+        }
+        return promise.future
     }
 
     private func createURLRequest(endpoint: Endpoint) throws -> URLRequest {
@@ -112,10 +101,35 @@ open class APIClient {
         case malformedParameters
         case malformedResponse
         case malformedJSONResponse
+        case unknownError
     }
 
     public struct Signature {
         let name: String
         let value: String
+    }
+}
+
+private extension URLSession {
+    func fetchData(with urlRequest: URLRequest) -> Future<Data> {
+        let promise = Promise<Data>()
+        let task = self.dataTask(with: urlRequest) { (data, response, error) in
+            guard error == nil else {
+                promise.fail(error!)
+                return
+            }
+
+            guard
+                let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 200,
+                let data = data else {
+                    promise.fail(APIClient.Error.malformedResponse)
+                    return
+            }
+
+            promise.complete(data)
+        }
+        task.resume()
+        return promise.future
     }
 }

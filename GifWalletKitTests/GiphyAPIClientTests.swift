@@ -18,9 +18,13 @@ class GiphyAPIClientTests: XCTestCase {
     func testGetTrending() {
         let exp = expectation(description: "Fetch Completes")
 
-        apiClient.fetchTrending { (response, error) in
-            XCTAssert(response != nil)
-            exp.fulfill()
+        apiClient
+            .fetchTrending()
+            .do { (response) in
+                exp.fulfill()
+            }.catch { (error) in
+                exp.fulfill()
+                XCTFail()
         }
 
         wait(for: [exp], timeout: 3)
@@ -29,14 +33,14 @@ class GiphyAPIClientTests: XCTestCase {
 
     func testSearchTerm() {
         let exp = expectation(description: "Fetch Completes")
-
-        apiClient.searchGif(term: "hello") { (response, error) in
-            XCTAssert(response != nil)
-            exp.fulfill()
+        apiClient
+            .searchGif(term: "hello")
+            .do { (response) in
+                exp.fulfill()
+            }.catch { (error) in
+                exp.fulfill()
+                XCTFail()
         }
-
         wait(for: [exp], timeout: 3)
-
     }
-
 }
