@@ -8,11 +8,13 @@ open class APIClient {
 
     let environment: Environment
     let urlSession: URLSession
+    let signature: Signature?
     let jsonDecoder = JSONDecoder()
     var delegateQueue = DispatchQueue.main
 
-    public init(environment: Environment) {
+    public init(environment: Environment, signature: Signature? = nil) {
         self.environment = environment
+        self.signature = signature
         self.urlSession = URLSession(configuration: .default)
     }
 
@@ -85,6 +87,13 @@ open class APIClient {
         var urlRequest = URLRequest(url: URL)
         urlRequest.httpMethod = endpoint.method.rawValue
         urlRequest.allHTTPHeaderFields = endpoint.httpHeaderFields
+        urlRequest.setValue("GifWallet - iOS", forHTTPHeaderField: "User-Agent")
+        if let signature = self.signature {
+            urlRequest.setValue(
+                signature.value,
+                forHTTPHeaderField: signature.name
+            )
+        }
         if let parameters = endpoint.parameters {
             do {
                 let requestData = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -97,11 +106,16 @@ open class APIClient {
         return urlRequest
     }
 
-    enum Error: Swift.Error {
+    public enum Error: Swift.Error {
         case serverError
         case malformedURL
         case malformedParameters
         case malformedResponse
         case malformedJSONResponse
+    }
+
+    public struct Signature {
+        let name: String
+        let value: String
     }
 }
