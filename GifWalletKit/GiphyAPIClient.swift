@@ -63,7 +63,6 @@ public enum Giphy {
 
             private enum GIFKeys: String, CodingKey {
                 case id = "id"
-                case url = "url"
                 case images = "images"
             }
 

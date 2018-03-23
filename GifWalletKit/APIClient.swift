@@ -21,11 +21,11 @@ open class APIClient {
     public func perform<T: Decodable>(_ request: Request<T>, handler: @escaping (T?, Swift.Error?) -> Void) {
         self.performRequest(forEndpoint: request.endpoint) { (data, error) in
             guard error == nil else {
-                self.delegateQueue.async { handler(nil, error!) }
+                handler(nil, error!)
                 return
             }
             guard let data = data else {
-                self.delegateQueue.async { handler(nil, Error.malformedResponse) }
+                handler(nil, Error.malformedResponse)
                 return
             }
 
@@ -33,7 +33,7 @@ open class APIClient {
             do {
                 response = try self.parseResponse(data: data)
             } catch let error {
-                self.delegateQueue.async { handler(nil, error) }
+                handler(nil, error)
                 return
             }
 
