@@ -6,22 +6,36 @@
 import CoreData
 import Async
 
-class DataStore {
+public class DataStore {
 
-    let persistentStore: NSPersistentContainer
+    private let persistentStore: NSPersistentContainer
+    public var storeIsReady: Bool = false
 
-    init() {
-
+    public init() {
         guard
             let path = Bundle(for: DataStore.self).path(forResource: "Model", ofType: "momd"),
             let model = NSManagedObjectModel(contentsOf: URL(fileURLWithPath: path)) else {
             fatalError()
         }
 
-        persistentStore = NSPersistentContainer(name: "GifModel", managedObjectModel: model)
-        persistentStore.loadPersistentStores { (_, _) in
-
-        }
+        persistentStore = NSPersistentContainer(
+            name: "GifModel",
+            managedObjectModel: model
+        )
     }
+
+    public func loadAndMigrateIfNeeded() -> Future<()> {
+        let promise = Promise<()>()
+        persistentStore.loadPersistentStores { (description, error) in
+            if let error = error {
+                promise.fail(error)
+            } else {
+                self.storeIsReady = true
+                promise.complete(())
+            }
+        }
+        return promise.future
+    }
+
 }
 

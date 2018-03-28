@@ -15,9 +15,9 @@ class DataStoreTests: XCTestCase {
         dataStore = DataStore()
     }
 
-
-    func testInit() {
-
+    func testInit() throws {
+        try dataStore.loadAndMigrateIfNeeded().blockingAwait()
+        XCTAssert(dataStore.storeIsReady)
     }
 
 }
