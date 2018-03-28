@@ -29,6 +29,9 @@
 		F54F91E120540023000891B2 /* AutoLayoutTestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54F91E020540023000891B2 /* AutoLayoutTestsViewController.swift */; };
 		F54F91E32054277D000891B2 /* GIFDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54F91E22054277D000891B2 /* GIFDetailsViewController.swift */; };
 		F5BF8488205023020091BA88 /* CollectionViewStatefulDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BF8487205023020091BA88 /* CollectionViewStatefulDataSource.swift */; };
+		F5CA2DE5206BAC780089E9D5 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CA2DE4206BAC780089E9D5 /* DataStore.swift */; };
+		F5CA2DE7206BACB00089E9D5 /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CA2DE6206BACB00089E9D5 /* DataStoreTests.swift */; };
+		F5CA2DEB206BAE460089E9D5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5CA2DE9206BAE460089E9D5 /* Model.xcdatamodeld */; };
 		F5CE5CC92057EEAF007765F6 /* UIViewControllerTransitionCoordinator+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE5CC82057EEAF007765F6 /* UIViewControllerTransitionCoordinator+Wallet.swift */; };
 		F5D1D43E20499B880012E800 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D1D43D20499B880012E800 /* AppDelegate.swift */; };
 		F5D1D44720499B880012E800 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5D1D44620499B880012E800 /* Assets.xcassets */; };
@@ -122,6 +125,9 @@
 		F54F91E020540023000891B2 /* AutoLayoutTestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutTestsViewController.swift; sourceTree = "<group>"; };
 		F54F91E22054277D000891B2 /* GIFDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFDetailsViewController.swift; sourceTree = "<group>"; };
 		F5BF8487205023020091BA88 /* CollectionViewStatefulDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewStatefulDataSource.swift; sourceTree = "<group>"; };
+		F5CA2DE4206BAC780089E9D5 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		F5CA2DE6206BACB00089E9D5 /* DataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreTests.swift; sourceTree = "<group>"; };
+		F5CA2DEA206BAE460089E9D5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F5CE5CC82057EEAF007765F6 /* UIViewControllerTransitionCoordinator+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewControllerTransitionCoordinator+Wallet.swift"; sourceTree = "<group>"; };
 		F5D1D43A20499B880012E800 /* GifWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GifWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D1D43D20499B880012E800 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -270,6 +276,15 @@
 			path = "Test Suite";
 			sourceTree = "<group>";
 		};
+		F5CA2DE8206BAE330089E9D5 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				F5CA2DE9206BAE460089E9D5 /* Model.xcdatamodeld */,
+				F5CA2DE4206BAC780089E9D5 /* DataStore.swift */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
 		F5D1D43120499B870012E800 = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +342,7 @@
 				F5D1D47420499E2F0012E800 /* GifWalletKit.h */,
 				F5D1D47520499E2F0012E800 /* Info.plist */,
 				F5D3DE322065221500B5AF34 /* GiphyAPIClient.swift */,
+				F5CA2DE8206BAE330089E9D5 /* DataStore */,
 				F5D71D052065357D008C888C /* APIClient */,
 			);
 			path = GifWalletKit;
@@ -335,6 +351,7 @@
 		F5D1D48020499E300012E800 /* GifWalletKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				F5CA2DE6206BACB00089E9D5 /* DataStoreTests.swift */,
 				F5D1D48120499E300012E800 /* APIClientTests.swift */,
 				F5D3DE3420652C2200B5AF34 /* GiphyAPIClientTests.swift */,
 				F5D1D48320499E300012E800 /* Info.plist */,
@@ -734,7 +751,9 @@
 				F5F1CB6A2062796E006164C6 /* Endpoint.swift in Sources */,
 				F5D3DE332065221500B5AF34 /* GiphyAPIClient.swift in Sources */,
 				F5F1CB6C20627984006164C6 /* Environment.swift in Sources */,
+				F5CA2DE5206BAC780089E9D5 /* DataStore.swift in Sources */,
 				F5D1D49120499ED00012E800 /* APIClient.swift in Sources */,
+				F5CA2DEB206BAE460089E9D5 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +762,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5D1D48220499E300012E800 /* APIClientTests.swift in Sources */,
+				F5CA2DE7206BACB00089E9D5 /* DataStoreTests.swift in Sources */,
 				F5E0ED0D2063CC1600D90C6C /* HTTPBin.swift in Sources */,
 				F5D3DE3520652C2200B5AF34 /* GiphyAPIClientTests.swift in Sources */,
 			);
@@ -1093,6 +1113,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F5CA2DE9206BAE460089E9D5 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F5CA2DEA206BAE460089E9D5 /* Model.xcdatamodel */,
+			);
+			currentVersion = F5CA2DEA206BAE460089E9D5 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F5D1D43220499B870012E800 /* Project object */;
 }
