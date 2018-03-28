@@ -18,25 +18,56 @@ class DataStoreTests: XCTestCase {
     }
 
     func testCreateAndFetchGIF() throws {
-        let id = "007"
-        try dataStore.createGIF(
+        let managedGIF = try self.createAndFetch(
             giphyID: "007",
             title: "James Bond",
             subtitle: "GoldenEye",
             url: URL(string: "google.com/007")!,
             tags: ["007"]
-        ).blockingAwait(timeout: .seconds(1))
-
-        guard let managedGIF = try dataStore.fetchGIF(id: id) else {
-            throw Error.objectUnwrappedFailed
-        }
-        XCTAssert(managedGIF.giphyID == id)
+        )
+        XCTAssert(managedGIF.giphyID == "007")
         XCTAssert(managedGIF.title == "James Bond")
         XCTAssert(managedGIF.creationDate != nil)
+    }
+
+    func testCreateAFetchGIFTwice() throws {
+        let JamesBondID = "007"
+        let _ = try self.createAndFetch(
+            giphyID: JamesBondID,
+            title: "James Bond",
+            subtitle: "GoldenEye",
+            url: URL(string: "google.com/007")!,
+            tags: ["007"]
+        )
+
+        let managedGIF = try self.createAndFetch(
+            giphyID: JamesBondID,
+            title: "James Bond",
+            subtitle: "Tomorrow Never Dies",
+            url: URL(string: "google.com/007")!,
+            tags: ["007"]
+        )
+
+        XCTAssert(managedGIF.subtitle == "Tomorrow Never Dies")
+    }
+
+    private func createAndFetch(giphyID: String, title: String, subtitle: String, url: URL, tags: Set<String>) throws -> ManagedGIF {
+        try dataStore.createGIF(
+            giphyID: giphyID,
+            title: title,
+            subtitle: subtitle,
+            url: url,
+            tags: tags
+            ).blockingAwait(timeout: .seconds(10))
+
+        guard let managedGIF = try dataStore.fetchGIF(id: giphyID) else {
+            throw Error.objectUnwrappedFailed
+        }
+
+        return managedGIF
     }
 
     enum Error: Swift.Error {
         case objectUnwrappedFailed
     }
 }
-

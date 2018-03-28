@@ -43,14 +43,11 @@ public class DataStore {
 
     //MARK: GIF Creation
     func createGIF(giphyID: String, title: String, subtitle: String, url: URL, tags: Set<String>) -> Future<()> {
-        let promise = Promise<()>()
-        guard self.storeIsReady else {
-            promise.fail(DataStore.Error.dataStoreNotInitialized)
-            return promise.future
-        }
+        assert(self.storeIsReady)
 
+        let promise = Promise<()>()
         self.persistentStore.performBackgroundTask { (moc) in
-            let managedGIF = ManagedGIF(entity: ManagedGIF.entity(), insertInto: moc)
+            let managedGIF = self.fetchGIF(id: giphyID, moc: moc) ?? ManagedGIF(entity: ManagedGIF.entity(), insertInto: moc)
             managedGIF.title = title
             managedGIF.subtitle = subtitle
             managedGIF.remoteURL = url.absoluteString
@@ -68,17 +65,17 @@ public class DataStore {
     }
 
     func fetchGIF(id: String) throws -> ManagedGIF? {
-        guard self.storeIsReady else {
-            throw DataStore.Error.dataStoreNotInitialized
-        }
+        return self.fetchGIF(id: id, moc: self.persistentStore.viewContext)
+    }
 
+    private func fetchGIF(id: String, moc: NSManagedObjectContext) -> ManagedGIF? {
+        assert(self.storeIsReady)
         let fetchRequest: NSFetchRequest<ManagedGIF> = ManagedGIF.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "giphyID == %@", id)
-        let managedGIFs = try self.persistentStore.viewContext.fetch(fetchRequest)
-        return managedGIFs.first
+        let managedGIFs = try? moc.fetch(fetchRequest)
+        return managedGIFs?.first
     }
 }
-
 
 extension DataStore {
 
