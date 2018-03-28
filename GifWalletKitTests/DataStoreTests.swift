@@ -12,7 +12,7 @@ class DataStoreTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        dataStore = DataStore()
+        dataStore = DataStore(kind: .memory)
     }
 
     func testInit() throws {

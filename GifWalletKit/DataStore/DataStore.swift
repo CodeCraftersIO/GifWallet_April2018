@@ -8,10 +8,15 @@ import Async
 
 public class DataStore {
 
+    public enum Kind {
+        case sqlite
+        case memory
+    }
+
     private let persistentStore: NSPersistentContainer
     public var storeIsReady: Bool = false
 
-    public init() {
+    public init(kind: Kind = .sqlite) {
         guard
             let path = Bundle(for: DataStore.self).path(forResource: "Model", ofType: "momd"),
             let model = NSManagedObjectModel(contentsOf: URL(fileURLWithPath: path)) else {
@@ -22,6 +27,10 @@ public class DataStore {
             name: "GifModel",
             managedObjectModel: model
         )
+
+        let description = NSPersistentStoreDescription()
+        description.type = kind.coreDataRepresentation
+        persistentStore.persistentStoreDescriptions = [description]
     }
 
     public func loadAndMigrateIfNeeded() -> Future<()> {
@@ -36,6 +45,15 @@ public class DataStore {
         }
         return promise.future
     }
-
 }
 
+extension DataStore.Kind {
+    fileprivate var coreDataRepresentation: String {
+        switch self {
+        case .memory:
+            return NSInMemoryStoreType
+        case .sqlite:
+            return NSSQLiteStoreType
+        }
+    }
+}
