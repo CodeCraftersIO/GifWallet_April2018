@@ -13,12 +13,30 @@ class DataStoreTests: XCTestCase {
     override func setUp() {
         super.setUp()
         dataStore = DataStore(kind: .memory)
-    }
-
-    func testInit() throws {
-        try dataStore.loadAndMigrateIfNeeded().blockingAwait()
+        try? dataStore.loadAndMigrateIfNeeded().blockingAwait()
         XCTAssert(dataStore.storeIsReady)
     }
 
+    func testCreateAndFetchGIF() throws {
+        let id = "007"
+        try dataStore.createGIF(
+            giphyID: "007",
+            title: "James Bond",
+            subtitle: "GoldenEye",
+            url: URL(string: "google.com/007")!,
+            tags: ["007"]
+        ).blockingAwait(timeout: .seconds(1))
+
+        guard let managedGIF = try dataStore.fetchGIF(id: id) else {
+            throw Error.objectUnwrappedFailed
+        }
+        XCTAssert(managedGIF.giphyID == id)
+        XCTAssert(managedGIF.title == "James Bond")
+        XCTAssert(managedGIF.creationDate != nil)
+    }
+
+    enum Error: Swift.Error {
+        case objectUnwrappedFailed
+    }
 }
 
