@@ -19,7 +19,12 @@ extension XCTestCase {
                 error = $0
                 exp.fulfill()
         }
-        self.wait(for: [exp], timeout: 1)
+        self.waitForExpectations(timeout: 1) { (timeoutError) in
+            if let timeoutError = timeoutError {
+                error = timeoutError
+            }
+        }
+
         if let error = error {
             throw error
         }
