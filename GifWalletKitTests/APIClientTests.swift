@@ -37,19 +37,8 @@ class HTTPBinAPIClientTests: XCTestCase {
         apiClient = HTTPBinAPIClient(environment: HTTPBin.Hosts.production)
     }
 
-    func testGET() {
-
-        let exp = expectation(description: "Fetch Completes")
-
-        apiClient
-            .fetchIPAddress()
-            .do { (response) in
-                exp.fulfill()
-            }.catch { (error) in
-                exp.fulfill()
-                XCTFail()
-        }
-
-        wait(for: [exp], timeout: 3)
+    func testGET() throws {
+        let fetchFuture = apiClient.fetchIPAddress()
+        let _ = try self.waitAndExtractValue(future: fetchFuture)
     }
 }

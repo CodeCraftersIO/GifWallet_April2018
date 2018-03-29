@@ -15,32 +15,13 @@ class GiphyAPIClientTests: XCTestCase {
         apiClient = GiphyAPIClient()
     }
 
-    func testGetTrending() {
-        let exp = expectation(description: "Fetch Completes")
-
-        apiClient
-            .fetchTrending()
-            .do { (response) in
-                exp.fulfill()
-            }.catch { (error) in
-                exp.fulfill()
-                XCTFail()
-        }
-
-        wait(for: [exp], timeout: 3)
-
+    func testGetTrending() throws {
+        let trendingFuture = apiClient.fetchTrending()
+        let _ = try self.waitAndExtractValue(future: trendingFuture)
     }
 
-    func testSearchTerm() {
-        let exp = expectation(description: "Fetch Completes")
-        apiClient
-            .searchGif(term: "hello")
-            .do { (response) in
-                exp.fulfill()
-            }.catch { (error) in
-                exp.fulfill()
-                XCTFail()
-        }
-        wait(for: [exp], timeout: 3)
+    func testSearchTerm() throws {
+        let searchFuture = apiClient.searchGif(term: "hello")
+        let _ = try self.waitAndExtractValue(future: searchFuture)
     }
 }

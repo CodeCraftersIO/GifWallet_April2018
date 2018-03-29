@@ -85,7 +85,9 @@ class DataStoreTests: XCTestCase {
             tags: ["Superman"]
         )
 
-        let managedGIFs = try dataStore.fetchGIFsSortedByCreationDate()
+        let futureManagedGIFs = dataStore.fetchGIFsSortedByCreationDate()
+        let managedGIFs = try self.waitAndExtractValue(future: futureManagedGIFs)
+
         guard let firstGIF = managedGIFs.first, let secondGIF = managedGIFs.last else {
             throw Error.objectUnwrappedFailed
         }
@@ -94,6 +96,8 @@ class DataStoreTests: XCTestCase {
         XCTAssert(secondGIF.giphyID == JamesBondID)
     }
 
+    //MARK: Private
+
     private func createAndFetch(giphyID: String, title: String, subtitle: String, url: URL, tags: Set<String>) throws -> ManagedGIF {
         try dataStore.createGIF(
             giphyID: giphyID,
@@ -101,7 +105,7 @@ class DataStoreTests: XCTestCase {
             subtitle: subtitle,
             url: url,
             tags: tags
-            ).blockingAwait(timeout: .seconds(10))
+            ).blockingAwait(timeout: .seconds(1))
 
         guard let managedGIF = try dataStore.fetchGIF(id: giphyID) else {
             throw Error.objectUnwrappedFailed
@@ -114,3 +118,4 @@ class DataStoreTests: XCTestCase {
         case objectUnwrappedFailed
     }
 }
+
