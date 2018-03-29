@@ -11,7 +11,7 @@ public class DataStore {
     private let persistentStore: NSPersistentContainer
     public var storeIsReady: Bool = false
 
-    public init(kind: Kind = .sqlite) {
+    public init(kind: Kind = .sqlite, shouldLoadAsync: Bool = true) {
         guard
             let path = Bundle(for: DataStore.self).path(forResource: "Model", ofType: "momd"),
             let model = NSManagedObjectModel(contentsOf: URL(fileURLWithPath: path)) else {
@@ -25,6 +25,7 @@ public class DataStore {
 
         let description = NSPersistentStoreDescription()
         description.type = kind.coreDataRepresentation
+        description.shouldAddStoreAsynchronously = shouldLoadAsync
         persistentStore.persistentStoreDescriptions = [description]
     }
 
