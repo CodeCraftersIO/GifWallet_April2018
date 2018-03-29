@@ -96,7 +96,7 @@ public class DataStore {
     private func fetchGIFsSortedByCreationDate(moc: NSManagedObjectContext) -> [ManagedGIF] {
         assert(self.storeIsReady)
         let fetchRequest: NSFetchRequest<ManagedGIF> = ManagedGIF.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: #keyPath(ManagedGIF.creationDate), ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         let managedGIFs = try? moc.fetch(fetchRequest)
         return managedGIFs ?? []
@@ -105,7 +105,7 @@ public class DataStore {
     private func fetchGIF(id: String, moc: NSManagedObjectContext) -> ManagedGIF? {
         assert(self.storeIsReady)
         let fetchRequest: NSFetchRequest<ManagedGIF> = ManagedGIF.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "giphyID == %@", id)
+        fetchRequest.predicate = NSPredicate(property: #keyPath(ManagedGIF.giphyID), value: id)
         let managedGIFs = try? moc.fetch(fetchRequest)
         return managedGIFs?.first
     }
@@ -113,7 +113,7 @@ public class DataStore {
     private func fetchTag(name: String, moc: NSManagedObjectContext) -> ManagedTag? {
         assert(self.storeIsReady)
         let fetchRequest: NSFetchRequest<ManagedTag> = ManagedTag.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        fetchRequest.predicate = NSPredicate(property: #keyPath(ManagedTag.name), value: name)
         let managedTags = try? moc.fetch(fetchRequest)
         return managedTags?.first
     }

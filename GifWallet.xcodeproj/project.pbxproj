@@ -15,6 +15,7 @@
 		F50514F62049B17E00D3C1BB /* UIView+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50514F52049B17E00D3C1BB /* UIView+Wallet.swift */; };
 		F5071B262049B3DF001D09B2 /* ListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5071B252049B3DF001D09B2 /* ListState.swift */; };
 		F51C3B47206CDDA0000BE0B1 /* ManagedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51C3B46206CDDA0000BE0B1 /* ManagedModels.swift */; };
+		F51C3B49206CE988000BE0B1 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51C3B48206CE988000BE0B1 /* CoreDataExtensions.swift */; };
 		F52373B620514F3A007CC1C9 /* GIFWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52373B520514F39007CC1C9 /* GIFWalletViewController.swift */; };
 		F52373B920514F78007CC1C9 /* MockLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52373B820514F78007CC1C9 /* MockLoader.swift */; };
 		F52373BB20514FF5007CC1C9 /* ViewModelConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52373BA20514FF5007CC1C9 /* ViewModelConfigurable.swift */; };
@@ -112,6 +113,7 @@
 		F50514F52049B17E00D3C1BB /* UIView+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Wallet.swift"; sourceTree = "<group>"; };
 		F5071B252049B3DF001D09B2 /* ListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListState.swift; sourceTree = "<group>"; };
 		F51C3B46206CDDA0000BE0B1 /* ManagedModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedModels.swift; sourceTree = "<group>"; };
+		F51C3B48206CE988000BE0B1 /* CoreDataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
 		F52373B520514F39007CC1C9 /* GIFWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFWalletViewController.swift; sourceTree = "<group>"; };
 		F52373B820514F78007CC1C9 /* MockLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockLoader.swift; sourceTree = "<group>"; };
 		F52373BA20514FF5007CC1C9 /* ViewModelConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelConfigurable.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				F5CA2DE9206BAE460089E9D5 /* Model.xcdatamodeld */,
 				F5CA2DE4206BAC780089E9D5 /* DataStore.swift */,
 				F51C3B46206CDDA0000BE0B1 /* ManagedModels.swift */,
+				F51C3B48206CE988000BE0B1 /* CoreDataExtensions.swift */,
 			);
 			path = DataStore;
 			sourceTree = "<group>";
@@ -757,6 +760,7 @@
 				F51C3B47206CDDA0000BE0B1 /* ManagedModels.swift in Sources */,
 				F5CA2DE5206BAC780089E9D5 /* DataStore.swift in Sources */,
 				F5D1D49120499ED00012E800 /* APIClient.swift in Sources */,
+				F51C3B49206CE988000BE0B1 /* CoreDataExtensions.swift in Sources */,
 				F5CA2DEB206BAE460089E9D5 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
