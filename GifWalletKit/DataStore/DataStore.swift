@@ -55,6 +55,20 @@ public class DataStore {
             managedGIF.giphyID = giphyID
             managedGIF.creationDate = Date()
 
+            let managedTags: [ManagedTag] = tags.map {
+                if let managedTag = self.fetchTag(name: $0, moc: moc) {
+                    return managedTag
+                } else {
+                    let managedTag = ManagedTag(entity: ManagedTag.entity(), insertInto: moc)
+                    managedTag.name = $0
+                    return managedTag
+                }
+            }
+
+            managedTags.forEach {
+                managedGIF.addToManagedTags($0)
+            }
+
             do {
                 try moc.save()
                 promise.complete()
@@ -75,6 +89,14 @@ public class DataStore {
         fetchRequest.predicate = NSPredicate(format: "giphyID == %@", id)
         let managedGIFs = try? moc.fetch(fetchRequest)
         return managedGIFs?.first
+    }
+
+    private func fetchTag(name: String, moc: NSManagedObjectContext) -> ManagedTag? {
+        assert(self.storeIsReady)
+        let fetchRequest: NSFetchRequest<ManagedTag> = ManagedTag.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        let managedTags = try? moc.fetch(fetchRequest)
+        return managedTags?.first
     }
 }
 

@@ -28,6 +28,7 @@ class DataStoreTests: XCTestCase {
         XCTAssert(managedGIF.giphyID == "007")
         XCTAssert(managedGIF.title == "James Bond")
         XCTAssert(managedGIF.creationDate != nil)
+        XCTAssert(managedGIF.tags.contains("007"))
     }
 
     func testCreateAFetchGIFTwice() throws {
