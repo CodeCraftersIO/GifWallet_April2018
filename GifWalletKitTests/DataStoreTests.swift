@@ -66,6 +66,34 @@ class DataStoreTests: XCTestCase {
         XCTAssert(managedGIFs.count == 1)
     }
 
+    func testQueryAllGIFsChronologically() throws {
+        let JamesBondID = "007"
+        let _ = try self.createAndFetch(
+            giphyID: JamesBondID,
+            title: "James Bond",
+            subtitle: "GoldenEye",
+            url: URL(string: "google.com/007")!,
+            tags: ["007"]
+        )
+
+        let SupermanID = "Superman"
+        let _ = try self.createAndFetch(
+            giphyID: SupermanID,
+            title: "Superman",
+            subtitle: "Kryptonite",
+            url: URL(string: "google.com/superman")!,
+            tags: ["Superman"]
+        )
+
+        let managedGIFs = try dataStore.fetchGIFsSortedByCreationDate()
+        guard let firstGIF = managedGIFs.first, let secondGIF = managedGIFs.last else {
+            throw Error.objectUnwrappedFailed
+        }
+
+        XCTAssert(firstGIF.giphyID == SupermanID)
+        XCTAssert(secondGIF.giphyID == JamesBondID)
+    }
+
     private func createAndFetch(giphyID: String, title: String, subtitle: String, url: URL, tags: Set<String>) throws -> ManagedGIF {
         try dataStore.createGIF(
             giphyID: giphyID,

@@ -87,6 +87,21 @@ public class DataStore {
         return self.fetchTag(name: tag, moc: self.persistentStore.viewContext)?.gifs ?? []
     }
 
+    func fetchGIFsSortedByCreationDate() throws -> [ManagedGIF] {
+        return self.fetchGIFsSortedByCreationDate(moc: self.persistentStore.viewContext)
+    }
+
+    //MARK: Private
+
+    private func fetchGIFsSortedByCreationDate(moc: NSManagedObjectContext) -> [ManagedGIF] {
+        assert(self.storeIsReady)
+        let fetchRequest: NSFetchRequest<ManagedGIF> = ManagedGIF.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        let managedGIFs = try? moc.fetch(fetchRequest)
+        return managedGIFs ?? []
+    }
+
     private func fetchGIF(id: String, moc: NSManagedObjectContext) -> ManagedGIF? {
         assert(self.storeIsReady)
         let fetchRequest: NSFetchRequest<ManagedGIF> = ManagedGIF.fetchRequest()
