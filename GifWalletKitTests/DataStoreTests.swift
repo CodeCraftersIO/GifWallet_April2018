@@ -52,6 +52,20 @@ class DataStoreTests: XCTestCase {
         XCTAssert(managedGIF.subtitle == "Tomorrow Never Dies")
     }
 
+    func testFetchGIFsViaTag() throws {
+        let sampleTag = "007"
+        let _ = try self.createAndFetch(
+            giphyID: "007",
+            title: "James Bond",
+            subtitle: "Tomorrow Never Dies",
+            url: URL(string: "google.com/007")!,
+            tags: [sampleTag]
+        )
+
+        let managedGIFs = try dataStore.fetchGIFs(withTag: sampleTag)
+        XCTAssert(managedGIFs.count == 1)
+    }
+
     private func createAndFetch(giphyID: String, title: String, subtitle: String, url: URL, tags: Set<String>) throws -> ManagedGIF {
         try dataStore.createGIF(
             giphyID: giphyID,

@@ -14,3 +14,11 @@ extension ManagedGIF {
     }
 }
 
+extension ManagedTag {
+    var gifs: Set<ManagedGIF> {
+        guard let managedGifs = self.managedGifs as? Set<ManagedGIF> else {
+            return []
+        }
+        return managedGifs
+    }
+}

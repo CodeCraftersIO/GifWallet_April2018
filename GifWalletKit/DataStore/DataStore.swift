@@ -83,6 +83,10 @@ public class DataStore {
         return self.fetchGIF(id: id, moc: self.persistentStore.viewContext)
     }
 
+    func fetchGIFs(withTag tag: String) throws -> Set<ManagedGIF> {
+        return self.fetchTag(name: tag, moc: self.persistentStore.viewContext)?.gifs ?? []
+    }
+
     private func fetchGIF(id: String, moc: NSManagedObjectContext) -> ManagedGIF? {
         assert(self.storeIsReady)
         let fetchRequest: NSFetchRequest<ManagedGIF> = ManagedGIF.fetchRequest()
