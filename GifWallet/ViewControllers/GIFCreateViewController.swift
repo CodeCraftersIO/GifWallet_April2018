@@ -4,11 +4,13 @@
 //
 
 import UIKit
+import GifWalletKit
 
 class GIFCreateViewController: UIViewController, UITableViewDataSource {
 
     private let tableView = UITableView(frame: .zero, style: .grouped)
     private let saveButton = SaveButton()
+    private let formValidator = GIFCreateFormValidator()
 
     private init() {
         super.init(nibName: nil, bundle: nil)
@@ -76,25 +78,43 @@ class GIFCreateViewController: UIViewController, UITableViewDataSource {
 
     //MARK: UITableViewDataSource
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return formValidator.requiredSections.count
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: FormTableViewCell<TagsInputView> = tableView.dequeueReusableCell(indexPath: indexPath)
-        cell.configureFor(vm: FormTableViewCell<TagsInputView>.VM(inputVM: TagsInputView.VM(tags: ["Studio", "iOS", "Funny"]), showsWarning: true))
-        cell.formInputView.delegate = self
 
-//        let cell: FormTableViewCell<GIFInputView> = tableView.dequeueReusableCell(indexPath: indexPath)
-//        cell.configureFor(vm: FormTableViewCell<GIFInputView>.VM(inputVM: GIFInputView.VM(id: "hello", url: URL(string: "https://media0.giphy.com/media/8752sSo2HbPqE7MN03/giphy.gif")!), showsWarning: true))
-//        cell.formInputView.delegate = self
-
-//        let cell: FormTableViewCell<TextInputView> = tableView.dequeueReusableCell(indexPath: indexPath)
-//        cell.configureFor(vm: FormTableViewCell<TextInputView>.VM(inputVM: TextInputView.VM(text: nil), showsWarning: true))
-//        cell.formInputView.placeholder = "Enter the Title"
-//        cell.formInputView.delegate = self
-
-        return cell
+        let section = formValidator.requiredSections[indexPath.section]
+        let tableViewCell: UITableViewCell = {
+            switch section {
+            case .gifURL:
+                let cell: FormTableViewCell<GIFInputView> = tableView.dequeueReusableCell(indexPath: indexPath)
+                cell.configureFor(vm: FormTableViewCell<GIFInputView>.VM(inputVM: GIFInputView.VM(id: "hello", url: URL(string: "https://media0.giphy.com/media/8752sSo2HbPqE7MN03/giphy.gif")!), showsWarning: true))
+                cell.formInputView.delegate = self
+                return cell
+            case .title:
+                let cell: FormTableViewCell<TextInputView> = tableView.dequeueReusableCell(indexPath: indexPath)
+                cell.configureFor(vm: FormTableViewCell<TextInputView>.VM(inputVM: TextInputView.VM(text: nil), showsWarning: true))
+                cell.formInputView.placeholder = "Enter the Title"
+                cell.formInputView.delegate = self
+                return cell
+            case .subtitle:
+                let cell: FormTableViewCell<TextInputView> = tableView.dequeueReusableCell(indexPath: indexPath)
+                cell.configureFor(vm: FormTableViewCell<TextInputView>.VM(inputVM: TextInputView.VM(text: nil), showsWarning: true))
+                cell.formInputView.placeholder = "Enter the Subtitle"
+                cell.formInputView.delegate = self
+                return cell
+            case .tags:
+                let cell: FormTableViewCell<TagsInputView> = tableView.dequeueReusableCell(indexPath: indexPath)
+                cell.configureFor(vm: FormTableViewCell<TagsInputView>.VM(inputVM: TagsInputView.VM(tags: ["Studio", "iOS", "Funny"]), showsWarning: true))
+                cell.formInputView.delegate = self
+                return cell
+            }
+        }()
+        return tableViewCell
     }
 }
 

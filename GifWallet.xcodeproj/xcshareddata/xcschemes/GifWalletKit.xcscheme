@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F5D1D47920499E300012E800"
+               BuildableName = "GifWalletKitTests.xctest"
+               BlueprintName = "GifWalletKitTests"
+               ReferencedContainer = "container:GifWallet.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "F5D1D47120499E2F0012E800"
+            BuildableName = "GifWalletKit.framework"
+            BlueprintName = "GifWalletKit"
+            ReferencedContainer = "container:GifWallet.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
