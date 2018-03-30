@@ -59,6 +59,7 @@ class GIFFormValidatorTests: XCTestCase {
         formValidator.form.title = title
         formValidator.form.subtitle = subtitle
         formValidator.form.gifURL = gifURL
+        formValidator.form.gifID = gifURL?.absoluteString
         formValidator.form.tags = tags
 
         switch formValidator.validateForm() {
