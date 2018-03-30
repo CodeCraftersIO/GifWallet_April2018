@@ -32,6 +32,7 @@ final class TagsInputView: UIView, ViewModelConfigurable {
     }()
 
     let textField = UITextField.autolayoutTextFieldWith(textStyle: .body, placeholderText: "Intro Tag Here")
+    var minHeightAnchor: NSLayoutConstraint!
 
     weak var delegate: TagsInputViewDelegate?
 
@@ -52,6 +53,8 @@ final class TagsInputView: UIView, ViewModelConfigurable {
     private func layout() {
         addAutolayoutView(textField)
         addAutolayoutView(tagView)
+        minHeightAnchor = self.heightAnchor.constraint(equalToConstant: 40)
+
         NSLayoutConstraint.activate([
             textField.leadingAnchor.constraint(equalTo: leadingAnchor),
             textField.topAnchor.constraint(equalTo: topAnchor),
@@ -65,6 +68,7 @@ final class TagsInputView: UIView, ViewModelConfigurable {
 
     func configureFor(vm: VM) {
         tagView.addTags(vm.tags)
+        minHeightAnchor.isActive = (vm.tags.count == 0)
     }
 }
 

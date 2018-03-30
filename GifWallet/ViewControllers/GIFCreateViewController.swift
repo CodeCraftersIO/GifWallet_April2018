@@ -11,6 +11,7 @@ class GIFCreateViewController: UIViewController, UITableViewDataSource {
     private let tableView = UITableView(frame: .zero, style: .grouped)
     private let saveButton = SaveButton()
     private let formValidator = GIFCreateFormValidator()
+    private var lastValidationErrors: Set<GIFCreateFormValidator.ValidationError> = []
 
     private init() {
         super.init(nibName: nil, bundle: nil)
@@ -23,7 +24,6 @@ class GIFCreateViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         assert(self.navigationController != nil)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(dismissViewController))
         setup()
         layout()
     }
@@ -43,7 +43,13 @@ class GIFCreateViewController: UIViewController, UITableViewDataSource {
     }
 
     @objc func onSave() {
-
+        switch self.formValidator.validateForm() {
+        case .error(let errors):
+            self.lastValidationErrors = errors
+            self.tableView.reloadData()
+        case .ok:
+            self.dismissViewController()
+        }
     }
 
     //MARK: Private
@@ -51,6 +57,7 @@ class GIFCreateViewController: UIViewController, UITableViewDataSource {
     private func setup() {
         setupTableView()
         saveButton.addTarget(self, action: #selector(onSave), for: .touchDown)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(dismissViewController))
     }
 
     private func layout() {
@@ -91,25 +98,31 @@ class GIFCreateViewController: UIViewController, UITableViewDataSource {
         let tableViewCell: UITableViewCell = {
             switch section {
             case .gifURL:
+                let shouldShowWarning = lastValidationErrors.contains(.gifNotProvided)
                 let cell: FormTableViewCell<GIFInputView> = tableView.dequeueReusableCell(indexPath: indexPath)
-                cell.configureFor(vm: FormTableViewCell<GIFInputView>.VM(inputVM: GIFInputView.VM(id: nil, url: nil), showsWarning: false))
+                cell.configureFor(vm: FormTableViewCell<GIFInputView>.VM(inputVM: GIFInputView.VM(id: nil, url: nil), showsWarning: shouldShowWarning))
                 cell.formInputView.delegate = self
                 return cell
             case .title:
+                let shouldShowWarning = lastValidationErrors.contains(.titleNotProvided)
                 let cell: FormTableViewCell<TextInputView> = tableView.dequeueReusableCell(indexPath: indexPath)
-                cell.configureFor(vm: FormTableViewCell<TextInputView>.VM(inputVM: TextInputView.VM(text: nil), showsWarning: false))
+                cell.configureFor(vm: FormTableViewCell<TextInputView>.VM(inputVM: TextInputView.VM(text: self.formValidator.form.title), showsWarning: shouldShowWarning))
                 cell.formInputView.placeholder = "Enter the Title"
                 cell.formInputView.delegate = self
+                cell.formInputView.tag = TextInputTags.title.rawValue
                 return cell
             case .subtitle:
+                let shouldShowWarning = lastValidationErrors.contains(.subtitleNotProvided)
                 let cell: FormTableViewCell<TextInputView> = tableView.dequeueReusableCell(indexPath: indexPath)
-                cell.configureFor(vm: FormTableViewCell<TextInputView>.VM(inputVM: TextInputView.VM(text: nil), showsWarning: true))
+                cell.configureFor(vm: FormTableViewCell<TextInputView>.VM(inputVM: TextInputView.VM(text: self.formValidator.form.subtitle), showsWarning: shouldShowWarning))
                 cell.formInputView.placeholder = "Enter the Subtitle"
                 cell.formInputView.delegate = self
+                cell.formInputView.tag = TextInputTags.subtitle.rawValue
                 return cell
             case .tags:
+                let shouldShowWarning = lastValidationErrors.contains(.tagsNotProvided)
                 let cell: FormTableViewCell<TagsInputView> = tableView.dequeueReusableCell(indexPath: indexPath)
-                cell.configureFor(vm: FormTableViewCell<TagsInputView>.VM(inputVM: TagsInputView.VM(tags: []), showsWarning: false))
+                cell.configureFor(vm: FormTableViewCell<TagsInputView>.VM(inputVM: TagsInputView.VM(tags: formValidator.form.tags), showsWarning: shouldShowWarning))
                 cell.formInputView.delegate = self
                 return cell
             }
@@ -127,16 +140,44 @@ extension GIFCreateViewController {
             return navController
         }
     }
+
+    enum TextInputTags: Int {
+        case title = 100
+        case subtitle = 101
+    }
 }
 
 extension GIFCreateViewController: GIFInputViewDelegate, TextInputViewDelegate, TagsInputViewDelegate {
     
     func didModifyText(text: String, textInputView: TextInputView) {
-
+        guard let textInput = TextInputTags(rawValue: textInputView.tag) else { return }
+        let sectionToReload: GIFCreateFormValidator.Section
+        switch textInput {
+        case .title:
+            formValidator.form.title = text
+            sectionToReload = .title
+        case .subtitle:
+            formValidator.form.subtitle = text
+            sectionToReload = .subtitle
+        }
+        guard let sectionToReloadIndex = formValidator.requiredSections.index(of: sectionToReload) else {
+            return
+        }
+        tableView.performBatchUpdates({
+            tableView.reloadSections([sectionToReloadIndex], with: .automatic)
+        }, completion: nil)
     }
 
     func didAddTag(newTag: String, tagsInputView: TagsInputView) {
-
+        let cleanTag = newTag.trimmingCharacters(in: [" "])
+        guard !cleanTag.isEmpty else { return }
+        formValidator.form.tags.append(cleanTag)
+        guard let sectionToReloadIndex = formValidator.requiredSections.index(of: .tags) else {
+            return
+        }
+        tableView.performBatchUpdates({
+            tableView.reloadSections([sectionToReloadIndex], with: .automatic)
+        }, completion: nil)
     }
 
     func didTapGIFInputView(_ inputView: GIFInputView) {

@@ -67,7 +67,7 @@ public final class GIFCreateFormValidator {
             errors.insert(.gifNotProvided)
         }
 
-        if form.tags == nil || form.tags.isEmpty {
+        if form.tags.isEmpty {
             errors.insert(.tagsNotProvided)
         }
 
