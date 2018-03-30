@@ -30,6 +30,12 @@
 		F5767FB2206E4329000076C5 /* GIFCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5767FB1206E4329000076C5 /* GIFCreateViewController.swift */; };
 		F5767FB4206E519D000076C5 /* GIFCreateViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5767FB3206E519D000076C5 /* GIFCreateViewControllerTests.swift */; };
 		F5767FB7206E691A000076C5 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5767FB6206E691A000076C5 /* SaveButton.swift */; };
+		F5767FB9206E72B3000076C5 /* UITextField+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5767FB8206E72B3000076C5 /* UITextField+Wallet.swift */; };
+		F5767FBB206E7429000076C5 /* GIFInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5767FBA206E7429000076C5 /* GIFInputView.swift */; };
+		F5767FBD206E74C6000076C5 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5767FBC206E74C6000076C5 /* TextInputView.swift */; };
+		F5767FBF206E7B9D000076C5 /* UITableView+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5767FBE206E7B9D000076C5 /* UITableView+Wallet.swift */; };
+		F5767FC1206E7F40000076C5 /* FormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5767FC0206E7F40000076C5 /* FormTableViewCell.swift */; };
+		F5767FC4206E86C6000076C5 /* TagInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5767FC3206E86C6000076C5 /* TagInputView.swift */; };
 		F5BF8488205023020091BA88 /* CollectionViewStatefulDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BF8487205023020091BA88 /* CollectionViewStatefulDataSource.swift */; };
 		F5CE5CC92057EEAF007765F6 /* UIViewControllerTransitionCoordinator+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE5CC82057EEAF007765F6 /* UIViewControllerTransitionCoordinator+Wallet.swift */; };
 		F5D1D43E20499B880012E800 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D1D43D20499B880012E800 /* AppDelegate.swift */; };
@@ -118,6 +124,12 @@
 		F5767FB1206E4329000076C5 /* GIFCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFCreateViewController.swift; sourceTree = "<group>"; };
 		F5767FB3206E519D000076C5 /* GIFCreateViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFCreateViewControllerTests.swift; sourceTree = "<group>"; };
 		F5767FB6206E691A000076C5 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
+		F5767FB8206E72B3000076C5 /* UITextField+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Wallet.swift"; sourceTree = "<group>"; };
+		F5767FBA206E7429000076C5 /* GIFInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFInputView.swift; sourceTree = "<group>"; };
+		F5767FBC206E74C6000076C5 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
+		F5767FBE206E7B9D000076C5 /* UITableView+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Wallet.swift"; sourceTree = "<group>"; };
+		F5767FC0206E7F40000076C5 /* FormTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTableViewCell.swift; sourceTree = "<group>"; };
+		F5767FC3206E86C6000076C5 /* TagInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagInputView.swift; sourceTree = "<group>"; };
 		F5BF8487205023020091BA88 /* CollectionViewStatefulDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewStatefulDataSource.swift; sourceTree = "<group>"; };
 		F5CE5CC82057EEAF007765F6 /* UIViewControllerTransitionCoordinator+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewControllerTransitionCoordinator+Wallet.swift"; sourceTree = "<group>"; };
 		F5D1D43A20499B880012E800 /* GifWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GifWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +220,8 @@
 				F528E8C120545A05003A8421 /* UILabel+Wallet.swift */,
 				F5CE5CC82057EEAF007765F6 /* UIViewControllerTransitionCoordinator+Wallet.swift */,
 				F52531AD205D59C4009E9062 /* UIViewController+Wallet.swift */,
+				F5767FB8206E72B3000076C5 /* UITextField+Wallet.swift */,
+				F5767FBE206E7B9D000076C5 /* UITableView+Wallet.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -264,8 +278,20 @@
 			isa = PBXGroup;
 			children = (
 				F5767FB6206E691A000076C5 /* SaveButton.swift */,
+				F5767FC0206E7F40000076C5 /* FormTableViewCell.swift */,
+				F5767FC2206E8071000076C5 /* Input Views */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F5767FC2206E8071000076C5 /* Input Views */ = {
+			isa = PBXGroup;
+			children = (
+				F5767FBA206E7429000076C5 /* GIFInputView.swift */,
+				F5767FBC206E74C6000076C5 /* TextInputView.swift */,
+				F5767FC3206E86C6000076C5 /* TagInputView.swift */,
+			);
+			path = "Input Views";
 			sourceTree = "<group>";
 		};
 		F5D1D43120499B870012E800 = {
@@ -451,7 +477,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Code Crafters";
 				TargetAttributes = {
 					F5D1D43920499B880012E800 = {
@@ -686,14 +712,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				F52373B920514F78007CC1C9 /* MockLoader.swift in Sources */,
+				F5767FC1206E7F40000076C5 /* FormTableViewCell.swift in Sources */,
 				F54F91E120540023000891B2 /* AutoLayoutTestsViewController.swift in Sources */,
 				F5D1D43E20499B880012E800 /* AppDelegate.swift in Sources */,
 				F5CE5CC92057EEAF007765F6 /* UIViewControllerTransitionCoordinator+Wallet.swift in Sources */,
 				F54F91E32054277D000891B2 /* GIFDetailsViewController.swift in Sources */,
+				F5767FBD206E74C6000076C5 /* TextInputView.swift in Sources */,
 				F52531B5205E8441009E9062 /* GIFDetailsInteractor.swift in Sources */,
+				F5767FB9206E72B3000076C5 /* UITextField+Wallet.swift in Sources */,
 				F528E8C220545A05003A8421 /* UILabel+Wallet.swift in Sources */,
 				F52531B7205E84EB009E9062 /* UIImageView+Wallet.swift in Sources */,
 				F52531B3205E8421009E9062 /* GIFWalletInteractor.swift in Sources */,
+				F5767FBF206E7B9D000076C5 /* UITableView+Wallet.swift in Sources */,
+				F5767FBB206E7429000076C5 /* GIFInputView.swift in Sources */,
 				F5BF8488205023020091BA88 /* CollectionViewStatefulDataSource.swift in Sources */,
 				F5767FB7206E691A000076C5 /* SaveButton.swift in Sources */,
 				F52531AE205D59C4009E9062 /* UIViewController+Wallet.swift in Sources */,
@@ -701,6 +732,7 @@
 				F52373BB20514FF5007CC1C9 /* ViewModelConfigurable.swift in Sources */,
 				F50514F32049AFD200D3C1BB /* UIColor+Wallet.swift in Sources */,
 				F5071B262049B3DF001D09B2 /* ListState.swift in Sources */,
+				F5767FC4206E86C6000076C5 /* TagInputView.swift in Sources */,
 				F5767FB2206E4329000076C5 /* GIFCreateViewController.swift in Sources */,
 				F52373B620514F3A007CC1C9 /* GIFWalletViewController.swift in Sources */,
 				F50514F62049B17E00D3C1BB /* UIView+Wallet.swift in Sources */,
@@ -785,6 +817,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -792,6 +825,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -842,6 +876,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -849,6 +884,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
