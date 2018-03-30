@@ -9,7 +9,7 @@ class GIFCreateViewController: UIViewController {
 
     private let tableView = UITableView(frame: .zero, style: .grouped)
 
-    init() {
+    private init() {
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -37,5 +37,16 @@ class GIFCreateViewController: UIViewController {
     private func setupTableView() {
         view.addSubview(tableView)
         tableView.pinToSuperviewSafeLayoutEdges()
+    }
+}
+
+extension GIFCreateViewController {
+    enum Factory {
+        static func viewController() -> UIViewController {
+            let createVC = GIFCreateViewController()
+            let navController = UINavigationController(rootViewController: createVC)
+            navController.modalPresentationStyle = .formSheet
+            return navController
+        }
     }
 }
