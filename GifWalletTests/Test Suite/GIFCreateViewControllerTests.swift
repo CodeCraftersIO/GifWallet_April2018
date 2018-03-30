@@ -9,5 +9,7 @@ import XCTest
 class GIFCreateViewControllerTests: SnapshotTest {
     func testBasicLayout() {
         let vc = GIFCreateViewController.Factory.viewController()
+        presentViewController(vc)
+        waitABitAndVerify(viewController: vc)
     }
 }
