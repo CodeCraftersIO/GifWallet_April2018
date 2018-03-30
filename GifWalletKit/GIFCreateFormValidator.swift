@@ -30,7 +30,7 @@ public final class GIFCreateFormValidator {
         public var title: String?
         public var subtitle: String?
         public var gifURL: URL?
-        public var tags: [String]?
+        public var tags: [String] = []
 
         init() { }
     }
@@ -67,7 +67,7 @@ public final class GIFCreateFormValidator {
             errors.insert(.gifNotProvided)
         }
 
-        if form.tags == nil || form.tags!.isEmpty {
+        if form.tags == nil || form.tags.isEmpty {
             errors.insert(.tagsNotProvided)
         }
 

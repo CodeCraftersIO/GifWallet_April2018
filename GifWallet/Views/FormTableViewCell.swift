@@ -18,7 +18,7 @@ class FormTableViewCell<InputView: ViewModelConfigurable & UIView>: UITableViewC
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.alignment = .fill
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fill
         return stackView
     }()
 
@@ -28,7 +28,9 @@ class FormTableViewCell<InputView: ViewModelConfigurable & UIView>: UITableViewC
         imageView.contentMode = .scaleAspectFit
         imageView.image = image.withRenderingMode(.alwaysTemplate)
         imageView.tintColor = .red
-        imageView.widthAnchor.constraint(equalToConstant: image.size.width).isActive = true
+        let widthConstraint = imageView.widthAnchor.constraint(equalToConstant: image.size.width)
+        widthConstraint.priority = .defaultLow
+        widthConstraint.isActive = true
         imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         imageView.setContentHuggingPriority(.defaultLow, for: .vertical)
         return imageView
