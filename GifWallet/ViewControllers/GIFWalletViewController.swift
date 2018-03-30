@@ -57,6 +57,14 @@ class GIFWalletViewController: UIViewController {
         dataSource = CollectionViewStatefulDataSource<GifCell>(
             collectionView: collectionView
         )
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewGif))
+    }
+
+    @objc func addNewGif() {
+        let createVC = GIFCreateViewController()
+        let navController = UINavigationController(rootViewController: createVC)
+        navController.modalPresentationStyle = .formSheet
+        self.present(navController, animated: true, completion: nil)
     }
 
     private func setupCollectionView() {
