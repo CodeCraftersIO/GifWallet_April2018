@@ -1,0 +1,5 @@
+xcodebuild test -workspace GifWallet.xcworkspace -scheme GifWallet\ Development -destination 'platform=iOS Simulator,name=iPhone SE'
+xcodebuild test -workspace GifWallet.xcworkspace -scheme GifWallet\ Development -destination 'platform=iOS Simulator,name=iPhone X'
+xcodebuild test -workspace GifWallet.xcworkspace -scheme GifWallet\ Development -destination 'platform=iOS Simulator,name=iPhone 7'
+xcodebuild test -workspace GifWallet.xcworkspace -scheme GifWallet\ Development -destination 'platform=iOS Simulator,name=iPhone 7 Plus'
+xcodebuild test -workspace GifWallet.xcworkspace -scheme GifWallet\ Development -destination 'platform=iOS Simulator,name=iPad (5th Generation)'
