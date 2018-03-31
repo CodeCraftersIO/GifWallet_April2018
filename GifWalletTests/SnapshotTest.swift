@@ -8,7 +8,7 @@ import FBSnapshotTestCase
 
 class SnapshotTest: FBSnapshotTestCase {
 
-    let waiter = XCTWaiter()
+    var waiter = XCTWaiter()
 
     override func setUp() {
         super.setUp()
@@ -40,6 +40,7 @@ class SnapshotTest: FBSnapshotTestCase {
         rootViewController = viewController
         let exp = expectation(description: "No expectation")
         let _ = waiter.wait(for: [exp], timeout: 1000)
+        waiter = XCTWaiter()
     }
 
     func debugView(_ view: UIView) {
@@ -59,6 +60,7 @@ class SnapshotTest: FBSnapshotTestCase {
             exp.fulfill()
         })
         let _ = waiter.wait(for: [exp], timeout: 10)
+        waiter = XCTWaiter()
     }
 
     func waitABitAndVerify(viewController: UIViewController) {
@@ -87,6 +89,7 @@ class SnapshotTest: FBSnapshotTestCase {
             exp.fulfill()
         }
         let _ = waiter.wait(for: [exp], timeout: 1)
+        waiter = XCTWaiter()
     }
 }
 

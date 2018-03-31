@@ -7,9 +7,9 @@ import Foundation
 import Async
 
 public class GiphyAPIClient: APIClient {
-    public init() {
+    public init(networkFetcher: APIClientNetworkFetcher = URLSession(configuration: .default)) {
         let signature = APIClient.Signature(name: "api_key", value: "kw7ABCKe5AfWxPu0qLcjaN7MpQdqAPES")
-        super.init(environment: Giphy.Hosts.production, signature: signature)
+        super.init(environment: Giphy.Hosts.production, signature: signature, networkFetcher: networkFetcher)
     }
 
     public func fetchTrending() -> Future<Giphy.Responses.Page> {
@@ -55,12 +55,13 @@ public enum Giphy {
 
     public enum Responses {
         public struct GIF: Decodable {
-            let id: String
-            let url: URL
-
+            public let id: String
+            public let url: URL
+            public let title: String
             private enum GIFKeys: String, CodingKey {
                 case id = "id"
                 case images = "images"
+                case title = "title"
             }
 
             private enum ImagesKeys: String, CodingKey {
@@ -71,23 +72,25 @@ public enum Giphy {
                 case url = "url"
             }
 
-            init(id: String, url: URL) {
+            init(id: String, url: URL, title: String) {
                 self.id = id
                 self.url = url
+                self.title = title
             }
 
             public init(from decoder: Decoder) throws {
                 let container = try decoder.container(keyedBy: GIFKeys.self)
                 let id: String = try container.decode(String.self, forKey: .id)
+                let title: String = try container.decode(String.self, forKey: .title)
                 let imagesContainer = try container.nestedContainer(keyedBy: ImagesKeys.self, forKey: .images)
                 let originalContainer = try imagesContainer.nestedContainer(keyedBy: ImageKeys.self, forKey: .original)
                 let url: URL = try originalContainer.decode(URL.self, forKey: .url)
-                self.init(id: id, url: url)
+                self.init(id: id, url: url, title: title)
             }
         }
 
         public struct Page: Decodable {
-            let data: [GIF]
+            public let data: [GIF]
         }
     }
 }

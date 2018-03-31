@@ -1,68 +1,70 @@
 //
-//  Created by Pierluigi Cifani on 02/03/2018.
-//  Copyright © 2018 Pierluigi Cifani. All rights reserved.
+//  Created by Jordi Serra i Font on 18/3/18.
+//  Copyright © 2018 Code Crafters. All rights reserved.
 //
 
 import UIKit
-import SDWebImage
+import FLAnimatedImage
 
-class GIFWalletViewController: UIViewController {
+protocol GIFSearchDelegate: class {
+    func didSelectGIF(id: String, url: URL)
+}
+
+final class GIFSearchViewController: UIViewController {
 
     private enum Constants {
         static let cellHeight: CGFloat = 200
     }
 
+    var searchController: UISearchController!
+
     var collectionView: UICollectionView!
     var collectionViewLayout: UICollectionViewFlowLayout!
     var dataSource: CollectionViewStatefulDataSource<GIFCollectionViewCell>!
-    let interactor: GIFWalletInteractorType
-    
-    init(interactor: GIFWalletInteractorType = MockDataInteractor()) {
+    let interactor: GIFSearchInteractorType
+
+    weak var delegate: GIFSearchDelegate?
+
+    init(interactor: GIFSearchInteractorType = Interactor()) {
         self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         assert(self.navigationController != nil)
-        title = "Your GIFs"
+
+        view.backgroundColor = .white
+
         setup()
-        fetchData()
-    }
-
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.willTransition(to: newCollection, with: coordinator)
-        coordinator.newCollection = newCollection
-    }
-
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        guard let _ = collectionViewLayout else { return }
-        let newCollection = coordinator.newCollection ?? self.traitCollection
-        coordinator.animate(alongsideTransition: { (_) in
-            self.configureCollectionViewLayout(
-                forHorizontalSizeClass: newCollection.horizontalSizeClass,
-                targetSize: size
-            )
-        }, completion: nil)
+        layout()
     }
 
     private func setup() {
         setupCollectionView()
-        dataSource = CollectionViewStatefulDataSource<GIFCollectionViewCell>(
-            collectionView: collectionView
-        )
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewGif))
+        setupSearchBar()
+
+        dataSource = CollectionViewStatefulDataSource<GIFCollectionViewCell>(collectionView: collectionView)
+
+        fetchData()
     }
 
-    @objc func addNewGif() {
-        let createVC = GIFCreateViewController.Factory.viewController()
-        self.present(createVC, animated: true, completion: nil)
+    private func fetchData() {
+        let searchTerm = self.searchController.searchBar.text ?? ""
+        let request: Request = searchTerm.isEmpty ? .trending : .search(term: searchTerm)
+
+        self.dataSource.state = .loading
+        interactor.performRequest(request) { (results, error) in
+            guard error == nil else {
+                self.dataSource.state = .failure(error: error!)
+                return
+            }
+            self.dataSource.state = .loaded(data: results!)
+        }
     }
 
     private func setupCollectionView() {
@@ -74,6 +76,7 @@ class GIFWalletViewController: UIViewController {
         collectionView.pinToSuperviewSafeLayoutEdges()
         collectionView.backgroundColor = .white
         collectionView.delegate = self
+        collectionView.alwaysBounceVertical = true
         configureCollectionViewLayout(
             forHorizontalSizeClass: self.traitCollection.horizontalSizeClass,
             targetSize: self.view.frame.size
@@ -96,20 +99,35 @@ class GIFWalletViewController: UIViewController {
         )
     }
 
-    private func fetchData() {
-        interactor.fetchData { (listState) in
-            self.dataSource.state = listState
-        }
+    private func setupSearchBar() {
+        searchController = UISearchController(searchResultsController: nil)
+
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search a GIF..."
+        navigationItem.searchController = searchController
+    }
+
+    private func layout() {
+        view.addAutolayoutView(collectionView)
+        collectionView.pinToSuperviewSafeLayoutEdges()
     }
 }
 
-extension GIFWalletViewController: UICollectionViewDelegate {
+extension GIFSearchViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        fetchData()
+    }
+}
+
+extension GIFSearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard case .loaded(let data) = self.dataSource.state else {
             return
         }
         let gifVM = data[indexPath.item]
-        let vc = GIFDetailsViewController(gifID: gifVM.id)
-        self.show(vc, sender: nil)
+        delegate?.didSelectGIF(id: gifVM.id, url: gifVM.url)
+        searchController.isActive = false
+        self.closeViewController(sender: nil)
     }
 }

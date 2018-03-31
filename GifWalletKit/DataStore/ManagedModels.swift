@@ -10,7 +10,7 @@ extension ManagedGIF {
         guard let managedTags = self.managedTags as? Set<ManagedTag> else {
             return []
         }
-        return Set(managedTags.flatMap { return $0.name })
+        return Set(managedTags.compactMap { return $0.name })
     }
 }
 
