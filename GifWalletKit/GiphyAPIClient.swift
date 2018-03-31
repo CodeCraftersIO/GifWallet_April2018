@@ -7,9 +7,9 @@ import Foundation
 import Async
 
 public class GiphyAPIClient: APIClient {
-    public init() {
+    public init(networkFetcher: APIClientNetworkFetcher = URLSession(configuration: .default)) {
         let signature = APIClient.Signature(name: "api_key", value: "kw7ABCKe5AfWxPu0qLcjaN7MpQdqAPES")
-        super.init(environment: Giphy.Hosts.production, signature: signature)
+        super.init(environment: Giphy.Hosts.production, signature: signature, networkFetcher: networkFetcher)
     }
 
     public func fetchTrending() -> Future<Giphy.Responses.Page> {

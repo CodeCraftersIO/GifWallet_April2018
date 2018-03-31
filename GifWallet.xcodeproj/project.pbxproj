@@ -40,6 +40,9 @@
 		F5578354206F672100BD80DF /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5578352206F672100BD80DF /* APIClientTests.swift */; };
 		F5578355206F672100BD80DF /* GiphyAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5578353206F672100BD80DF /* GiphyAPIClientTests.swift */; };
 		F5578358206F672A00BD80DF /* HTTPBin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5578357206F672A00BD80DF /* HTTPBin.swift */; };
+		F557835A206F6B1A00BD80DF /* trending.json in Resources */ = {isa = PBXBuildFile; fileRef = F5578359206F6B1A00BD80DF /* trending.json */; };
+		F557835C206F6D0300BD80DF /* search.json in Resources */ = {isa = PBXBuildFile; fileRef = F557835B206F6D0300BD80DF /* search.json */; };
+		F557835E206F6D1C00BD80DF /* MockJSONLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F557835D206F6D1C00BD80DF /* MockJSONLoading.swift */; };
 		F5767FB2206E4329000076C5 /* GIFCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5767FB1206E4329000076C5 /* GIFCreateViewController.swift */; };
 		F5767FB4206E519D000076C5 /* GIFCreateViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5767FB3206E519D000076C5 /* GIFCreateViewControllerTests.swift */; };
 		F5767FB7206E691A000076C5 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5767FB6206E691A000076C5 /* SaveButton.swift */; };
@@ -147,6 +150,9 @@
 		F5578352206F672100BD80DF /* APIClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
 		F5578353206F672100BD80DF /* GiphyAPIClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiphyAPIClientTests.swift; sourceTree = "<group>"; };
 		F5578357206F672A00BD80DF /* HTTPBin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBin.swift; sourceTree = "<group>"; };
+		F5578359206F6B1A00BD80DF /* trending.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trending.json; sourceTree = "<group>"; };
+		F557835B206F6D0300BD80DF /* search.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = search.json; sourceTree = "<group>"; };
+		F557835D206F6D1C00BD80DF /* MockJSONLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJSONLoading.swift; sourceTree = "<group>"; };
 		F5767FB1206E4329000076C5 /* GIFCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFCreateViewController.swift; sourceTree = "<group>"; };
 		F5767FB3206E519D000076C5 /* GIFCreateViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFCreateViewControllerTests.swift; sourceTree = "<group>"; };
 		F5767FB6206E691A000076C5 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
@@ -317,7 +323,10 @@
 		F5578356206F672A00BD80DF /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				F557835B206F6D0300BD80DF /* search.json */,
+				F5578359206F6B1A00BD80DF /* trending.json */,
 				F5578357206F672A00BD80DF /* HTTPBin.swift */,
+				F557835D206F6D1C00BD80DF /* MockJSONLoading.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -608,6 +617,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F557835A206F6B1A00BD80DF /* trending.json in Resources */,
+				F557835C206F6D0300BD80DF /* search.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,6 +894,7 @@
 			files = (
 				F5578342206EBE3A00BD80DF /* GIFCreateFormValidatorTests.swift in Sources */,
 				F5578358206F672A00BD80DF /* HTTPBin.swift in Sources */,
+				F557835E206F6D1C00BD80DF /* MockJSONLoading.swift in Sources */,
 				F5578354206F672100BD80DF /* APIClientTests.swift in Sources */,
 				F5578355206F672100BD80DF /* GiphyAPIClientTests.swift in Sources */,
 			);

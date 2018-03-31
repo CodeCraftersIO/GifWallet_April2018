@@ -9,15 +9,17 @@ import XCTest
 class GiphyAPIClientTests: XCTestCase {
 
     var apiClient: GiphyAPIClient!
-
+    private var networkFetcher: MockGiphyNetworkFetcher!
     override func setUp() {
         super.setUp()
-        apiClient = GiphyAPIClient()
+
+        networkFetcher = MockGiphyNetworkFetcher()
+        apiClient = GiphyAPIClient(networkFetcher: networkFetcher)
     }
 
     func testGetTrending() {
         let exp = expectation(description: "Fetch Completes")
-
+        networkFetcher.mockedRequest = .trending
         apiClient
             .fetchTrending()
             .do { (response) in
@@ -33,6 +35,7 @@ class GiphyAPIClientTests: XCTestCase {
 
     func testSearchTerm() {
         let exp = expectation(description: "Fetch Completes")
+        networkFetcher.mockedRequest = .search
         apiClient
             .searchGif(term: "hello")
             .do { (response) in
@@ -42,5 +45,25 @@ class GiphyAPIClientTests: XCTestCase {
                 XCTFail()
         }
         wait(for: [exp], timeout: 3)
+    }
+}
+
+import Async
+
+private class MockGiphyNetworkFetcher: APIClientNetworkFetcher {
+    enum MockedRequest: String {
+        case trending
+        case search
+        var mockedData: Data {
+            return fetchMockedData(jsonNamed: self.rawValue)
+        }
+    }
+
+    var mockedRequest: MockedRequest!
+
+    func fetchData(with urlRequest: URLRequest) -> Future<Data> {
+        let promise = Promise<Data>()
+        promise.complete(mockedRequest.mockedData)
+        return promise.future
     }
 }

@@ -6,26 +6,30 @@
 import Foundation
 import Async
 
+public protocol APIClientNetworkFetcher {
+    func fetchData(with urlRequest: URLRequest) -> Future<Data>
+}
+
 open class APIClient {
 
     let environment: Environment
-    let urlSession: URLSession
     let signature: Signature?
     let jsonDecoder = JSONDecoder()
     var delegateQueue = DispatchQueue.main
     let workerQueue = DispatchQueue.global(qos: .userInitiated)
+    let networkFetcher: APIClientNetworkFetcher
 
-    public init(environment: Environment, signature: Signature? = nil) {
+    public init(environment: Environment, signature: Signature? = nil, networkFetcher: APIClientNetworkFetcher = URLSession(configuration: .default)) {
         self.environment = environment
         self.signature = signature
-        self.urlSession = URLSession(configuration: .default)
+        self.networkFetcher = networkFetcher
     }
 
     public func perform<T: Decodable>(_ request: Request<T>) -> Future<T> {
 
         let urlRequest: Future<URLRequest> = self.createURLRequest(endpoint: request.endpoint)
         let downloadData = urlRequest.flatMap(to: Data.self) { (urlRequest) in
-            return self.urlSession.fetchData(with: urlRequest)
+            return self.networkFetcher.fetchData(with: urlRequest)
         }
         let parseData = downloadData.flatMap(to: T.self) { (data) in
             return self.parseResponse(data: data)
@@ -110,8 +114,8 @@ open class APIClient {
     }
 }
 
-private extension URLSession {
-    func fetchData(with urlRequest: URLRequest) -> Future<Data> {
+extension URLSession: APIClientNetworkFetcher {
+    public func fetchData(with urlRequest: URLRequest) -> Future<Data> {
         let promise = Promise<Data>()
         let task = self.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
