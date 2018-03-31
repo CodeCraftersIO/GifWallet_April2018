@@ -23,7 +23,9 @@ public class DataStore {
             managedObjectModel: model
         )
 
-        let description = NSPersistentStoreDescription()
+        let storeDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let url = storeDirectory.appendingPathComponent("GifModel.sqlite")
+        let description = NSPersistentStoreDescription(url: url)
         description.type = kind.coreDataRepresentation
         description.shouldAddStoreAsynchronously = shouldLoadAsync
         persistentStore.persistentStoreDescriptions = [description]
