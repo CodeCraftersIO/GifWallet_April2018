@@ -3,28 +3,56 @@
 //  Copyright © 2018 Code Crafters. All rights reserved.
 //
 
-import Foundation
+import GifWalletKit
+import Async
 
 protocol GIFSearchInteractorType {
-    func trendingGifs(handler: @escaping ([GIFCollectionViewCell.VM]) -> Void)
-    func searchGifs(term: String, handler: @escaping ([GIFCollectionViewCell.VM]) -> Void)
+    func performRequest(_ request: GIFSearchViewController.Request, handler: @escaping ([GIFCollectionViewCell.VM]?, Swift.Error?) -> Void)
 }
 
 extension GIFSearchViewController {
+
+    enum Request {
+        case trending
+        case search(term: String)
+    }
+
+    class Interactor: GIFSearchInteractorType {
+
+        let apiClient = GiphyAPIClient()
+
+        func performRequest(_ request: GIFSearchViewController.Request, handler: @escaping ([GIFCollectionViewCell.VM]?, Swift.Error?) -> Void) {
+            let future: Future<Giphy.Responses.Page> = {
+                switch request {
+                case .trending:
+                    return self.apiClient.fetchTrending()
+                case .search(let term):
+                    return self.apiClient.searchGif(term: term)
+                }
+            }()
+            let vmFuture = future.map(to: [GIFCollectionViewCell.VM].self) { (page) in
+                return page.data.compactMap({ (gif)  in
+                    return GIFCollectionViewCell.VM(id: gif.id, title: gif.title, url: gif.url)
+                })
+            }
+
+            vmFuture
+                .do {
+                    handler($0, nil)
+                }
+                .catch {
+                    handler(nil, $0)
+            }
+        }
+    }
 
     class MockDataInteractor: GIFSearchInteractorType {
 
         var delaySeconds: Int = 1
 
-        func trendingGifs(handler: @escaping ([GIFCollectionViewCell.VM]) -> Void) {
+        func performRequest(_ request: GIFSearchViewController.Request, handler: @escaping ([GIFCollectionViewCell.VM]?, Swift.Error?) -> Void) {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delaySeconds)) {
-                handler(MockLoader.mockCellVM())
-            }
-        }
-
-        func searchGifs(term: String, handler: @escaping ([GIFCollectionViewCell.VM]) -> Void) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delaySeconds)) {
-                handler(MockLoader.mockCellVM())
+                handler(MockLoader.mockCellVM(), nil)
             }
         }
     }
