@@ -6,7 +6,7 @@
 import UIKit
 
 protocol GIFWalletInteractorType {
-    func fetchData(handler: @escaping (ListState<GIFWalletViewController.VM>) -> Void)
+    func fetchData(handler: @escaping (ListState<GIFCollectionViewCell.VM>) -> Void)
 }
 
 extension GIFWalletViewController {
@@ -15,7 +15,7 @@ extension GIFWalletViewController {
         
         var delaySeconds: Int = 1
         
-        func fetchData(handler: @escaping (ListState<GIFWalletViewController.VM>) -> Void) {
+        func fetchData(handler: @escaping (ListState<GIFCollectionViewCell.VM>) -> Void) {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delaySeconds)) {
                 handler(.loaded(data: MockLoader.mockCellVM()))
             }

@@ -6,9 +6,9 @@
 import Foundation
 
 enum MockLoader {
-    static func mockCellVM() -> [GIFWalletViewController.VM] {
+    static func mockCellVM() -> [GIFCollectionViewCell.VM] {
         return mockedDetailGifs.map({ (gifDetails) in
-            return GIFWalletViewController.VM(id: gifDetails.gifID, title: gifDetails.title, url: gifDetails.url)
+            return GIFCollectionViewCell.VM(id: gifDetails.gifID, title: gifDetails.title, url: gifDetails.url)
         })
     }
 
