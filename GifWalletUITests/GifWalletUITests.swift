@@ -41,16 +41,12 @@ class GifWalletUITests: XCTestCase {
     
     func testTapAddShowsGIFCreateView() {
         app.navigationBars["Your GIFs"].buttons["Add"].tap()
-        XCTAssertFalse(app.isDisplayingGIFWallet)
         XCTAssertTrue(app.isDisplayingGIFCreate)
-        
-        
     }
     
     func testTapGifEmptyViewShowsGIFSearchView() {
         app.navigationBars["Your GIFs"].buttons["Add"].tap()
         app/*@START_MENU_TOKEN@*/.tables/*[[".otherElements[\"GIFCreateView\"].tables",".tables"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.children(matching: .cell).element(boundBy: 0).children(matching: .other).element(boundBy: 0).children(matching: .other).element.children(matching: .image).element.tap()
-        XCTAssertFalse(app.isDisplayingGIFWallet)
         XCTAssertFalse(app.isDisplayingGIFCreate)
         XCTAssertTrue(app.isDisplayingGIFSearch)
     }
@@ -80,13 +76,13 @@ class GifWalletUITests: XCTestCase {
     }
     
     func testAddNewGIFImageShowsGIFCreate() {
-        
         app.navigationBars["Your GIFs"].buttons["Add"].tap()
         //Tap the image to add
         app.images["GIFImageToAdd"].tap()
         //Tap first row of search
-        app/*@START_MENU_TOKEN@*/.collectionViews/*[[".otherElements[\"GIFSearchView\"].collectionViews",".collectionViews"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.tap()
+        app/*@START_MENU_TOKEN@*/.otherElements["GIFSearchView"].collectionViews/*[[".otherElements[\"GIFSearchView\"].collectionViews",".collectionViews"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.tap()
         
+
         XCTAssertTrue(app.isDisplayingGIFCreate)
         
     }
