@@ -27,6 +27,7 @@ final class GIFInputView: UIView, ViewModelReusable {
         imageView.clipsToBounds = true
         imageView.backgroundColor = .lightGray
         imageView.isUserInteractionEnabled = true
+        imageView.accessibilityIdentifier = "GIFImageToAdd"
         return imageView
     }()
 

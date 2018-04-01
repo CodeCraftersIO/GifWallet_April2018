@@ -36,6 +36,7 @@ final class GIFSearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.accessibilityIdentifier = "GIFSearchView"
         assert(self.navigationController != nil)
 
         view.backgroundColor = .white

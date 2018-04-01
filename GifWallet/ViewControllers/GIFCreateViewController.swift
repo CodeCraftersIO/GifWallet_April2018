@@ -25,6 +25,7 @@ class GIFCreateViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.accessibilityIdentifier = "GIFCreateView"
         assert(self.navigationController != nil)
         setup()
         layout()

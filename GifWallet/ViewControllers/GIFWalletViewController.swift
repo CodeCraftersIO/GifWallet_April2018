@@ -28,6 +28,7 @@ class GIFWalletViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.accessibilityIdentifier = "GIFWalletView"
         view.backgroundColor = .white
         assert(self.navigationController != nil)
         title = "Your GIFs"

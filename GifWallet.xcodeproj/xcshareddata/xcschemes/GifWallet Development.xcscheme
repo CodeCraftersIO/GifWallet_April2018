@@ -38,6 +38,16 @@
                ReferencedContainer = "container:GifWallet.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "670036652071193800AF6C90"
+               BuildableName = "GifWalletUITests.xctest"
+               BlueprintName = "GifWalletUITests"
+               ReferencedContainer = "container:GifWallet.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
