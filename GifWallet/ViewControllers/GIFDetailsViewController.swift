@@ -66,7 +66,7 @@ class GIFDetailsViewController: UIViewController {
     private var portraitConstraints: [NSLayoutConstraint]!
     private var imageAspectRatioConstraint: NSLayoutConstraint!
 
-    init(gifID: String, interactor: GIFDetailInteractorType = MockDataInteractor()) {
+    init(gifID: String, interactor: GIFDetailInteractorType) {
         self.gifID = gifID
         self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
@@ -180,8 +180,8 @@ extension GIFDetailsViewController {
     struct VM {
         let gifID: String
         let title: String
-        let url: URL
         let subtitle: String
+        let url: URL
         let tags: Set<String>
     }
 }

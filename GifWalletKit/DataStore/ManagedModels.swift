@@ -6,7 +6,7 @@
 import CoreData
 
 extension ManagedGIF {
-    var tags: Set<String> {
+    public var tags: Set<String> {
         guard let managedTags = self.managedTags as? Set<ManagedTag> else {
             return []
         }
@@ -15,7 +15,7 @@ extension ManagedGIF {
 }
 
 extension ManagedTag {
-    var gifs: Set<ManagedGIF> {
+    public var gifs: Set<ManagedGIF> {
         guard let managedGifs = self.managedGifs as? Set<ManagedGIF> else {
             return []
         }

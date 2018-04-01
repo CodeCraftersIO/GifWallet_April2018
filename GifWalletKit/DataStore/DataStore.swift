@@ -33,6 +33,11 @@ public class DataStore {
 
     public func loadAndMigrateIfNeeded() -> Future<()> {
         let promise = Promise<()>()
+        guard !self.storeIsReady else {
+            promise.complete()
+            return promise.future
+        }
+
         persistentStore.loadPersistentStores { (description, error) in
             if let error = error {
                 promise.fail(error)
@@ -45,7 +50,8 @@ public class DataStore {
     }
 
     //MARK: GIF Creation
-    func createGIF(giphyID: String, title: String, subtitle: String, url: URL, tags: Set<String>) -> Future<()> {
+    
+    public func createGIF(giphyID: String, title: String, subtitle: String, url: URL, tags: Set<String>) -> Future<()> {
         assert(self.storeIsReady)
 
         let promise = Promise<()>()
@@ -81,15 +87,15 @@ public class DataStore {
         return promise.future
     }
 
-    func fetchGIF(id: String) throws -> ManagedGIF? {
+    public func fetchGIF(id: String) throws -> ManagedGIF? {
         return self.fetchGIF(id: id, moc: self.persistentStore.viewContext)
     }
 
-    func fetchGIFs(withTag tag: String) throws -> Set<ManagedGIF> {
+    public func fetchGIFs(withTag tag: String) throws -> Set<ManagedGIF> {
         return self.fetchTag(name: tag, moc: self.persistentStore.viewContext)?.gifs ?? []
     }
 
-    func fetchGIFsSortedByCreationDate() -> Future<[ManagedGIF]> {
+    public func fetchGIFsSortedByCreationDate() -> Future<[ManagedGIF]> {
         return self.fetchGIFsSortedByCreationDate(moc: self.persistentStore.viewContext)
     }
 

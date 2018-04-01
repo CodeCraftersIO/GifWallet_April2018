@@ -8,8 +8,26 @@ import XCTest
 
 class GIFCreateViewControllerTests: SnapshotTest {
     func testBasicLayout() {
-        let vc = GIFCreateViewController.Factory.viewController()
+        let interactor = MockInteractor(observer: MockInteractor.Observer())
+        let vc = GIFCreateViewController.Factory.viewController(interactor: interactor)
         presentViewController(vc)
         waitABitAndVerify(viewController: vc)
+    }
+}
+
+private class MockInteractor: GIFCreateInteractorType {
+
+    class Observer: GIFCreateObserver {
+        func didCreateGIF() {
+
+        }
+    }
+
+    required init(observer: GIFCreateObserver) {
+
+    }
+
+    func createGIF(giphyID: String, title: String, subtitle: String, url: URL, tags: Set<String>) {
+
     }
 }
