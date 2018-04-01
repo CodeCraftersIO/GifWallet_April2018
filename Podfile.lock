@@ -1,4 +1,5 @@
 PODS:
+  - Async (1.0.0)
   - FLAnimatedImage (1.0.12)
   - iOSSnapshotTestCase (2.2.0):
     - iOSSnapshotTestCase/SwiftSupport (= 2.2.0)
@@ -13,18 +14,29 @@ PODS:
   - TagListView (1.3.0)
 
 DEPENDENCIES:
+  - Async (from `git@github.com:CodeCraftersIO/async.git`)
   - iOSSnapshotTestCase
   - IQKeyboardManager
   - SDWebImage/GIF
   - TagListView (~> 1.0)
 
+EXTERNAL SOURCES:
+  Async:
+    :git: git@github.com:CodeCraftersIO/async.git
+
+CHECKOUT OPTIONS:
+  Async:
+    :commit: a2398bc876510937ac54b0d4268d09dffcd7f557
+    :git: git@github.com:CodeCraftersIO/async.git
+
 SPEC CHECKSUMS:
+  Async: 7bfd2e0838de9ae4d02e847de269b1b49a38e892
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   iOSSnapshotTestCase: 415bd84f9dbba4ff45fede49d800bc7332fbedac
   IQKeyboardManager: 266cb7b1d11f94a3e71229d77f960f9a1b538e5b
   SDWebImage: 29bd3c0bc1f01e5eb59720847c64ad4c4ca1af5d
   TagListView: 669f7d4455003c877655875d34829731c4191528
 
-PODFILE CHECKSUM: c2a770f9fd73003d9564009eebb7a3d792912bb1
+PODFILE CHECKSUM: 6bdad11935f8e7b2c4f4abd00415f22adaa48bba
 
 COCOAPODS: 1.4.0

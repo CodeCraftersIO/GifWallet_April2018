@@ -7,18 +7,17 @@
 //
 
 @testable import GifWalletKit
+import Async
 
 /// Full-suite tests are courtesy of our good friends of HTTPBin
 
 class HTTPBinAPIClient: APIClient {
 
-    func fetchIPAddress(handler: @escaping(HTTPBin.Responses.IP?, Swift.Error?) -> Void) {
+    func fetchIPAddress() -> Future<HTTPBin.Responses.IP> {
         let ipRequest = Request<HTTPBin.Responses.IP>(
             endpoint: HTTPBin.API.ip
         )
-        self.perform(ipRequest) { (response, error) in
-            handler(response, error)
-        }
+        return self.perform(ipRequest)
     }
 }
 

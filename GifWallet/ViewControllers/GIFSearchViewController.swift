@@ -25,7 +25,7 @@ final class GIFSearchViewController: UIViewController {
 
     weak var delegate: GIFSearchDelegate?
 
-    init(interactor: GIFSearchInteractorType = MockDataInteractor()) {
+    init(interactor: GIFSearchInteractorType = Interactor()) {
         self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
     }
@@ -55,17 +55,15 @@ final class GIFSearchViewController: UIViewController {
 
     private func fetchData() {
         let searchTerm = self.searchController.searchBar.text ?? ""
+        let request: Request = searchTerm.isEmpty ? .trending : .search(term: searchTerm)
 
         self.dataSource.state = .loading
-        if searchTerm.isEmpty {
-            interactor.trendingGifs { (results) in
-                self.dataSource.state = .loaded(data: results)
+        interactor.performRequest(request) { (results, error) in
+            guard error == nil else {
+                self.dataSource.state = .failure(error: error!)
+                return
             }
-        }
-        else {
-            interactor.searchGifs(term: searchTerm) { (results) in
-                self.dataSource.state = .loaded(data: results)
-            }
+            self.dataSource.state = .loaded(data: results!)
         }
     }
 
@@ -108,8 +106,6 @@ final class GIFSearchViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search a GIF..."
         navigationItem.searchController = searchController
-        definesPresentationContext = true
-        searchController.obscuresBackgroundDuringPresentation = true
     }
 
     private func layout() {
@@ -131,6 +127,7 @@ extension GIFSearchViewController: UICollectionViewDelegateFlowLayout {
         }
         let gifVM = data[indexPath.item]
         delegate?.didSelectGIF(id: gifVM.id, url: gifVM.url)
+        searchController.isActive = false
         self.closeViewController(sender: nil)
     }
 }

@@ -41,9 +41,13 @@ class HTTPBinAPIClientTests: XCTestCase {
 
         let exp = expectation(description: "Fetch Completes")
 
-        apiClient.fetchIPAddress { (response, error) in
-            XCTAssert(response != nil)
-            exp.fulfill()
+        apiClient
+            .fetchIPAddress()
+            .do { (response) in
+                exp.fulfill()
+            }.catch { (error) in
+                exp.fulfill()
+                XCTFail()
         }
 
         wait(for: [exp], timeout: 3)

@@ -1,5 +1,5 @@
 
-platform :ios, '10.0'
+platform :ios, '11.0'
 use_frameworks!
 
 target 'GifWallet' do
@@ -13,6 +13,10 @@ target 'GifWallet' do
 end
 
 target 'GifWalletKit' do
+    pod 'Async', :git => "git@github.com:CodeCraftersIO/async.git"
+    target 'GifWalletKitTests' do
+        inherit! :search_paths
+    end
 end
 
 
