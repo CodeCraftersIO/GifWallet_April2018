@@ -17,7 +17,7 @@ class GIFWalletViewController: UIViewController {
     var dataSource: CollectionViewStatefulDataSource<GIFCollectionViewCell>!
     let interactor: GIFWalletInteractorType
     
-    init(interactor: GIFWalletInteractorType = MockDataInteractor()) {
+    init(interactor: GIFWalletInteractorType) {
         self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
     }
@@ -61,7 +61,7 @@ class GIFWalletViewController: UIViewController {
     }
 
     @objc func addNewGif() {
-        let createVC = GIFCreateViewController.Factory.viewController()
+        let createVC = interactor.addNewGIFViewController(observer: self)
         self.present(createVC, animated: true, completion: nil)
     }
 
@@ -97,8 +97,13 @@ class GIFWalletViewController: UIViewController {
     }
 
     private func fetchData() {
-        interactor.fetchData { (listState) in
-            self.dataSource.state = listState
+        dataSource.state = .loading
+        interactor.fetchData { (results, error) in
+            guard error == nil else {
+                self.dataSource.state = .failure(error: error!)
+                return
+            }
+            self.dataSource.state = .loaded(data: results!)
         }
     }
 }
@@ -109,7 +114,14 @@ extension GIFWalletViewController: UICollectionViewDelegate {
             return
         }
         let gifVM = data[indexPath.item]
-        let vc = GIFDetailsViewController(gifID: gifVM.id)
-        self.show(vc, sender: nil)
+        self.show(interactor.detailsViewController(gifID: gifVM.id), sender: nil)
+    }
+}
+
+extension GIFWalletViewController: GIFCreateObserver {
+    func didCreateGIF() {
+        self.dismiss(animated: true) {
+            self.fetchData()
+        }
     }
 }

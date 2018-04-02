@@ -11,9 +11,11 @@ class GIFCreateViewController: UIViewController, UITableViewDataSource {
     private let tableView = UITableView(frame: .zero, style: .grouped)
     private let saveButton = SaveButton()
     private let formValidator = GIFCreateFormValidator()
+    private let interactor: GIFCreateInteractorType
     private var lastValidationErrors: Set<GIFCreateFormValidator.ValidationError> = []
 
-    private init() {
+    private init(interactor: GIFCreateInteractorType) {
+        self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -48,7 +50,13 @@ class GIFCreateViewController: UIViewController, UITableViewDataSource {
             self.lastValidationErrors = errors
             self.tableView.reloadData()
         case .ok:
-            self.dismissViewController()
+            self.interactor.createGIF(
+                giphyID: self.formValidator.form.gifID!,
+                title: self.formValidator.form.title!,
+                subtitle: self.formValidator.form.subtitle!,
+                url: self.formValidator.form.gifURL!,
+                tags: Set(self.formValidator.form.tags)
+            )
         }
     }
 
@@ -143,8 +151,8 @@ class GIFCreateViewController: UIViewController, UITableViewDataSource {
 
 extension GIFCreateViewController {
     enum Factory {
-        static func viewController() -> UIViewController {
-            let createVC = GIFCreateViewController()
+        static func viewController(interactor: GIFCreateInteractorType) -> UIViewController {
+            let createVC = GIFCreateViewController(interactor: interactor)
             let navController = UINavigationController(rootViewController: createVC)
             navController.modalPresentationStyle = .formSheet
             return navController

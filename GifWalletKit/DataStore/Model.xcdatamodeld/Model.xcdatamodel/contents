@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D102" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ManagedGIF" representedClassName="ManagedGIF" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="giphyID" attributeType="String" syncable="YES"/>
+        <attribute name="remoteURL" attributeType="String" syncable="YES"/>
+        <attribute name="subtitle" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <relationship name="managedTags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ManagedTag" inverseName="managedGifs" inverseEntity="ManagedTag" syncable="YES"/>
+    </entity>
+    <entity name="ManagedTag" representedClassName="ManagedTag" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="managedGifs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ManagedGIF" inverseName="managedTags" inverseEntity="ManagedGIF" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ManagedGIF" positionX="-279" positionY="-45" width="128" height="135"/>
+        <element name="ManagedTag" positionX="-54" positionY="27" width="128" height="75"/>
+    </elements>
+</model>

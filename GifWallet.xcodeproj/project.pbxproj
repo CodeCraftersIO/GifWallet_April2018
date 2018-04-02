@@ -43,6 +43,13 @@
 		F557835A206F6B1A00BD80DF /* trending.json in Resources */ = {isa = PBXBuildFile; fileRef = F5578359206F6B1A00BD80DF /* trending.json */; };
 		F557835C206F6D0300BD80DF /* search.json in Resources */ = {isa = PBXBuildFile; fileRef = F557835B206F6D0300BD80DF /* search.json */; };
 		F557835E206F6D1C00BD80DF /* MockJSONLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F557835D206F6D1C00BD80DF /* MockJSONLoading.swift */; };
+		F5578365206F7B9600BD80DF /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5578360206F7B9600BD80DF /* CoreDataExtensions.swift */; };
+		F5578366206F7B9600BD80DF /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5578361206F7B9600BD80DF /* DataStore.swift */; };
+		F5578367206F7B9600BD80DF /* ManagedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5578362206F7B9600BD80DF /* ManagedModels.swift */; };
+		F5578368206F7B9600BD80DF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5578363206F7B9600BD80DF /* Model.xcdatamodeld */; };
+		F557836C206F7BC300BD80DF /* XCTestCase+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = F557836A206F7BC300BD80DF /* XCTestCase+Async.swift */; };
+		F557836D206F7BC300BD80DF /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F557836B206F7BC300BD80DF /* DataStoreTests.swift */; };
+		F557836F206FD91B00BD80DF /* GIFCreateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F557836E206FD91B00BD80DF /* GIFCreateInteractor.swift */; };
 		F5767FB2206E4329000076C5 /* GIFCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5767FB1206E4329000076C5 /* GIFCreateViewController.swift */; };
 		F5767FB4206E519D000076C5 /* GIFCreateViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5767FB3206E519D000076C5 /* GIFCreateViewControllerTests.swift */; };
 		F5767FB7206E691A000076C5 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5767FB6206E691A000076C5 /* SaveButton.swift */; };
@@ -153,6 +160,13 @@
 		F5578359206F6B1A00BD80DF /* trending.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trending.json; sourceTree = "<group>"; };
 		F557835B206F6D0300BD80DF /* search.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = search.json; sourceTree = "<group>"; };
 		F557835D206F6D1C00BD80DF /* MockJSONLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJSONLoading.swift; sourceTree = "<group>"; };
+		F5578360206F7B9600BD80DF /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
+		F5578361206F7B9600BD80DF /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		F5578362206F7B9600BD80DF /* ManagedModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedModels.swift; sourceTree = "<group>"; };
+		F5578364206F7B9600BD80DF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		F557836A206F7BC300BD80DF /* XCTestCase+Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Async.swift"; sourceTree = "<group>"; };
+		F557836B206F7BC300BD80DF /* DataStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreTests.swift; sourceTree = "<group>"; };
+		F557836E206FD91B00BD80DF /* GIFCreateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFCreateInteractor.swift; sourceTree = "<group>"; };
 		F5767FB1206E4329000076C5 /* GIFCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFCreateViewController.swift; sourceTree = "<group>"; };
 		F5767FB3206E519D000076C5 /* GIFCreateViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFCreateViewControllerTests.swift; sourceTree = "<group>"; };
 		F5767FB6206E691A000076C5 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
@@ -295,6 +309,7 @@
 			children = (
 				F52531B2205E8420009E9062 /* GIFWalletInteractor.swift */,
 				F52531B4205E8441009E9062 /* GIFDetailsInteractor.swift */,
+				F557836E206FD91B00BD80DF /* GIFCreateInteractor.swift */,
 				F5578345206ED6BD00BD80DF /* GIFSearchInteractor.swift */,
 			);
 			path = Interactor;
@@ -313,6 +328,7 @@
 		F5578349206F671000BD80DF /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
+				F557834D206F671000BD80DF /* GiphyAPIClient.swift */,
 				F557834A206F671000BD80DF /* Environment.swift */,
 				F557834B206F671000BD80DF /* APIClient.swift */,
 				F557834C206F671000BD80DF /* Endpoint.swift */,
@@ -329,6 +345,25 @@
 				F557835D206F6D1C00BD80DF /* MockJSONLoading.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		F557835F206F7B9600BD80DF /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				F5578361206F7B9600BD80DF /* DataStore.swift */,
+				F5578362206F7B9600BD80DF /* ManagedModels.swift */,
+				F5578363206F7B9600BD80DF /* Model.xcdatamodeld */,
+				F5578360206F7B9600BD80DF /* CoreDataExtensions.swift */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
+		F5578369206F7BA700BD80DF /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				F557833F206EBD2600BD80DF /* GIFCreateFormValidator.swift */,
+			);
+			path = Form;
 			sourceTree = "<group>";
 		};
 		F5767FB5206E6910000076C5 /* Views */ = {
@@ -409,9 +444,9 @@
 			children = (
 				F5D1D47420499E2F0012E800 /* GifWalletKit.h */,
 				F5D1D47520499E2F0012E800 /* Info.plist */,
-				F557833F206EBD2600BD80DF /* GIFCreateFormValidator.swift */,
-				F557834D206F671000BD80DF /* GiphyAPIClient.swift */,
+				F5578369206F7BA700BD80DF /* Form */,
 				F5578349206F671000BD80DF /* APIClient */,
+				F557835F206F7B9600BD80DF /* DataStore */,
 			);
 			path = GifWalletKit;
 			sourceTree = "<group>";
@@ -419,6 +454,8 @@
 		F5D1D48020499E300012E800 /* GifWalletKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				F557836A206F7BC300BD80DF /* XCTestCase+Async.swift */,
+				F557836B206F7BC300BD80DF /* DataStoreTests.swift */,
 				F5578352206F672100BD80DF /* APIClientTests.swift */,
 				F5578353206F672100BD80DF /* GiphyAPIClientTests.swift */,
 				F5578341206EBE3A00BD80DF /* GIFCreateFormValidatorTests.swift */,
@@ -845,6 +882,7 @@
 				F5767FB9206E72B3000076C5 /* UITextField+Wallet.swift in Sources */,
 				F528E8C220545A05003A8421 /* UILabel+Wallet.swift in Sources */,
 				F5578346206ED6BD00BD80DF /* GIFSearchInteractor.swift in Sources */,
+				F557836F206FD91B00BD80DF /* GIFCreateInteractor.swift in Sources */,
 				F5578348206ED6F100BD80DF /* GIFCollectionViewCell.swift in Sources */,
 				F52531B7205E84EB009E9062 /* UIImageView+Wallet.swift in Sources */,
 				F52531B3205E8421009E9062 /* GIFWalletInteractor.swift in Sources */,
@@ -880,11 +918,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5578366206F7B9600BD80DF /* DataStore.swift in Sources */,
 				F5578351206F671000BD80DF /* GiphyAPIClient.swift in Sources */,
 				F5578340206EBD2600BD80DF /* GIFCreateFormValidator.swift in Sources */,
+				F5578365206F7B9600BD80DF /* CoreDataExtensions.swift in Sources */,
 				F557834E206F671000BD80DF /* Environment.swift in Sources */,
+				F5578368206F7B9600BD80DF /* Model.xcdatamodeld in Sources */,
 				F5578350206F671000BD80DF /* Endpoint.swift in Sources */,
 				F557834F206F671000BD80DF /* APIClient.swift in Sources */,
+				F5578367206F7B9600BD80DF /* ManagedModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,6 +937,8 @@
 				F5578342206EBE3A00BD80DF /* GIFCreateFormValidatorTests.swift in Sources */,
 				F5578358206F672A00BD80DF /* HTTPBin.swift in Sources */,
 				F557835E206F6D1C00BD80DF /* MockJSONLoading.swift in Sources */,
+				F557836D206F7BC300BD80DF /* DataStoreTests.swift in Sources */,
+				F557836C206F7BC300BD80DF /* XCTestCase+Async.swift in Sources */,
 				F5578354206F672100BD80DF /* APIClientTests.swift in Sources */,
 				F5578355206F672100BD80DF /* GiphyAPIClientTests.swift in Sources */,
 			);
@@ -1249,6 +1293,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F5578363206F7B9600BD80DF /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F5578364206F7B9600BD80DF /* Model.xcdatamodel */,
+			);
+			currentVersion = F5578364206F7B9600BD80DF /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F5D1D43220499B870012E800 /* Project object */;
 }

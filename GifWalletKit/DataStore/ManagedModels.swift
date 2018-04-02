@@ -1,0 +1,24 @@
+//
+//  Created by Pierluigi Cifani on 29/03/2018.
+//  Copyright © 2018 Code Crafters. All rights reserved.
+//
+
+import CoreData
+
+extension ManagedGIF {
+    public var tags: Set<String> {
+        guard let managedTags = self.managedTags as? Set<ManagedTag> else {
+            return []
+        }
+        return Set(managedTags.compactMap { return $0.name })
+    }
+}
+
+extension ManagedTag {
+    public var gifs: Set<ManagedGIF> {
+        guard let managedGifs = self.managedGifs as? Set<ManagedGIF> else {
+            return []
+        }
+        return managedGifs
+    }
+}
