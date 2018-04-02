@@ -49,7 +49,8 @@ class FormTableViewCell<InputView: ViewModelConfigurable & UIView>: UITableViewC
 
     func configureFor(vm: VM) {
         warningIcon.isHidden = !vm.showsWarning
-        self.formInputView.configureFor(vm: vm.inputVM)
+        formInputView.configureFor(vm: vm.inputVM)
+        accessibilityValue = vm.showsWarning ? "Error" : nil
     }
 
     private func layout() {

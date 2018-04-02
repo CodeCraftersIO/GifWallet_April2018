@@ -41,7 +41,21 @@ class GifWalletUITests: XCTestCase {
             XCTFail()
             return
         }
+        
         XCTAssert(firstCellAccesibility == "Hola")
+    }
+
+    func testFailCreateGIF() {
+        app.navigationBars["Your GIFs"].buttons["Add"].tap()
+        app.buttons["Save"].tap()
+
+        let firstCell = cellInTableView(cellIndex: 0, app: app)
+        guard let firstCellAccesibility = firstCell.value as? String else {
+            XCTFail()
+            return
+        }
+
+        XCTAssert(firstCellAccesibility == "Error")
     }
 }
 
