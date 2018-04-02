@@ -57,6 +57,7 @@ class GIFCollectionViewCell: UICollectionViewCell, ViewModelReusable {
     func configureFor(vm: GIFCollectionViewCell.VM) {
         titleLabel.text = vm.title
         imageView.setImageWithURL(vm.url)
+        accessibilityValue = vm.title
     }
 }
 

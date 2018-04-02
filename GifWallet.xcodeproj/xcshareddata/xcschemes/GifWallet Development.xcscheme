@@ -26,7 +26,25 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES"
       shouldUseLaunchSchemeArgsEnv = "NO">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "F5D1D43920499B880012E800"
+            BuildableName = "GifWallet.app"
+            BlueprintName = "GifWallet"
+            ReferencedContainer = "container:GifWallet.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "F5D1D47120499E2F0012E800"
+            BuildableName = "GifWalletKit.framework"
+            BlueprintName = "GifWalletKit"
+            ReferencedContainer = "container:GifWallet.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">
