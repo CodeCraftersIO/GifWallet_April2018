@@ -28,6 +28,12 @@ class GiphyAPIClientTests: XCTestCase {
         let searchFuture = apiClient.searchGif(term: "hello")
         let _ = try self.waitAndExtractValue(future: searchFuture)
     }
+
+    func testSearchTermWithSpaces() throws {
+        networkFetcher.mockedRequest = .search
+        let searchFuture = apiClient.searchGif(term: "hello world")
+        let _ = try self.waitAndExtractValue(future: searchFuture)
+    }
 }
 
 import Async
