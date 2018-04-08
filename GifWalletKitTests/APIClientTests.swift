@@ -26,6 +26,18 @@ class HTTPBINAPITests: XCTestCase {
         let response = try decoder.decode(HTTPBin.Responses.IP.self, from: json)
         XCTAssert(response.origin == "80.34.92.76")
     }
+
+    func testCreateRequest() throws {
+        let apiClient = HTTPBinAPIClient(environment: HTTPBin.Hosts.development)
+
+        _ = try apiClient.createURLRequest(endpoint: HTTPBin.API.ip)
+    }
+
+    func testCreateRequestPathWithSpaces() throws {
+        let apiClient = HTTPBinAPIClient(environment: HTTPBin.Hosts.development)
+
+        _ = try apiClient.createURLRequest(endpoint: HTTPBin.API.endpointWithSpaces)
+    }
 }
 
 class HTTPBinAPIClientTests: XCTestCase {
