@@ -48,8 +48,7 @@ public enum Giphy {
             case .trending:
                 return "/v1/gifs/trending"
             case .search(let term):
-                let queryEncodedTerm = term.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? term
-                return "/v1/gifs/search?q=\(queryEncodedTerm)"
+                return "/v1/gifs/search?q=\(term)"
             }
         }
     }

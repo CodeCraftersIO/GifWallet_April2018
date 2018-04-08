@@ -39,6 +39,7 @@ enum HTTPBin {
     enum API: Endpoint {
         case ip
         case orderPizza
+        case endpointWithSpaces
 
         var path: String {
             switch self {
@@ -46,6 +47,8 @@ enum HTTPBin {
                 return "/forms/post"
             case .ip:
                 return "/ip"
+            case .endpointWithSpaces:
+                return "/bad endpoint"
             }
         }
 
@@ -55,6 +58,15 @@ enum HTTPBin {
                 return .POST
             default:
                 return .GET
+            }
+        }
+
+        var parameters: [String : Any]? {
+            switch self {
+            case .endpointWithSpaces:
+                return ["bodyParameter": "body with spaces should be fine"]
+            default:
+                return nil
             }
         }
     }

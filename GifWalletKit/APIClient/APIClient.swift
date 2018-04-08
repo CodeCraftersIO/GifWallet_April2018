@@ -72,8 +72,9 @@ open class APIClient {
         return promise.future
     }
 
-    private func createURLRequest(endpoint: Endpoint) throws -> URLRequest {
-        guard let URL = URL(string: endpoint.path, relativeTo: self.environment.baseURL) else {
+    func createURLRequest(endpoint: Endpoint) throws -> URLRequest {
+        guard let path = endpoint.path.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
+        let URL = URL(string: path, relativeTo: self.environment.baseURL) else {
             throw Error.malformedURL
         }
 
