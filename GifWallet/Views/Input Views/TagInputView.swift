@@ -67,6 +67,7 @@ final class TagsInputView: UIView, ViewModelConfigurable {
     }
 
     func configureFor(vm: VM) {
+        tagView.removeAllTags()
         tagView.addTags(vm.tags)
         minHeightAnchor.isActive = (vm.tags.count == 0)
     }
