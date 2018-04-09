@@ -105,6 +105,7 @@ final class GIFSearchViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search a GIF..."
+        searchController.searchBar.tintColor = UIColor.white
         navigationItem.searchController = searchController
     }
 
