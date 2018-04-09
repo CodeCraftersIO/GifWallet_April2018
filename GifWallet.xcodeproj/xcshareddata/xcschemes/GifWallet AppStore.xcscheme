@@ -29,7 +29,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F5D1D44F20499B880012E800"
@@ -39,17 +39,17 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F5D1D45A20499B880012E800"
+               BlueprintIdentifier = "F55783732072262700BD80DF"
                BuildableName = "GifWalletUITests.xctest"
                BlueprintName = "GifWalletUITests"
                ReferencedContainer = "container:GifWallet.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F5D1D47920499E300012E800"
