@@ -1,6 +1,6 @@
 
 platform :ios, '11.0'
-use_frameworks!
+use_modular_headers!
 
 target 'GifWallet' do
   pod 'SDWebImage/GIF'
