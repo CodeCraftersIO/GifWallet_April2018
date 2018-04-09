@@ -18,6 +18,7 @@ class GIFCollectionViewCell: UICollectionViewCell, ViewModelReusable {
         let label = UILabel()
         label.numberOfLines = 2
         label.textAlignment = .center
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
 
