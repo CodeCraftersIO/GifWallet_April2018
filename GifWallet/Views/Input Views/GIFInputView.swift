@@ -54,7 +54,7 @@ final class GIFInputView: UIView, ViewModelReusable {
         addAutolayoutView(gifImageView)
         gifImageView.pinToSuperview()
         imageHeightConstraint = gifImageView.heightAnchor.constraint(equalToConstant: Constants.maxImageHeight)
-        imageHeightConstraint.priority = .required
+        imageHeightConstraint.priority = .defaultLow
         imageHeightConstraint.isActive = true
         let imageAspectRatioConstraint = gifImageView.heightAnchor.constraint(equalTo: gifImageView.widthAnchor, multiplier: 1)
         imageAspectRatioConstraint.priority = .defaultLow

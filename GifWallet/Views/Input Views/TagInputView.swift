@@ -26,8 +26,8 @@ final class TagsInputView: UIView, ViewModelConfigurable {
         tagView.tagBackgroundColor = UIColor.GifWallet.brand
         tagView.alignment = .left
         tagView.cornerRadius = 5
-        tagView.setContentHuggingPriority(.required, for: .vertical)
-        tagView.setContentHuggingPriority(.required, for: .horizontal)
+        tagView.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        tagView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         return tagView
     }()
 
@@ -54,6 +54,7 @@ final class TagsInputView: UIView, ViewModelConfigurable {
         addAutolayoutView(textField)
         addAutolayoutView(tagView)
         minHeightAnchor = self.heightAnchor.constraint(equalToConstant: 40)
+        minHeightAnchor.priority = .defaultHigh
 
         NSLayoutConstraint.activate([
             textField.leadingAnchor.constraint(equalTo: leadingAnchor),
