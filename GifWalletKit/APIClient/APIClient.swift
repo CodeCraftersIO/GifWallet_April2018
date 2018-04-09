@@ -8,6 +8,13 @@ import Async
 
 public protocol APIClientNetworkFetcher {
     func fetchData(with urlRequest: URLRequest) -> Future<Data>
+    var successRange: Range<Int> { get }
+}
+
+extension APIClientNetworkFetcher {
+    public var successRange: Range<Int> {
+        return (200..<300)
+    }
 }
 
 open class APIClient {
@@ -105,6 +112,7 @@ open class APIClient {
         case malformedParameters
         case malformedResponse
         case malformedJSONResponse
+        case failureStatusCode(Int)
         case unknownError
     }
 
@@ -117,18 +125,22 @@ open class APIClient {
 extension URLSession: APIClientNetworkFetcher {
     public func fetchData(with urlRequest: URLRequest) -> Future<Data> {
         let promise = Promise<Data>()
+        
         let task = self.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
                 promise.fail(error!)
                 return
             }
 
-            guard
-                let httpResponse = response as? HTTPURLResponse,
-                httpResponse.statusCode == 200,
+            guard let httpResponse = response as? HTTPURLResponse,
                 let data = data else {
                     promise.fail(APIClient.Error.malformedResponse)
                     return
+            }
+            
+            guard self.successRange ~= httpResponse.statusCode else {
+                promise.fail(APIClient.Error.failureStatusCode(httpResponse.statusCode))
+                return
             }
 
             promise.complete(data)
