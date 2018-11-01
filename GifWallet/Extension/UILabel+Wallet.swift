@@ -7,7 +7,7 @@ import UIKit
 
 extension UILabel {
 
-    public static func autolayoutLabelWith(textStyle style: UIFontTextStyle) -> UILabel {
+    public static func autolayoutLabelWith(textStyle style: UIFont.TextStyle) -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.preferredFont(forTextStyle: style)

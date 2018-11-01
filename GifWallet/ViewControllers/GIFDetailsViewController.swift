@@ -143,7 +143,7 @@ class GIFDetailsViewController: UIViewController {
         self.configureStackViews(forContainerViewSize: self.view.frame.size)
 
         // Add UIActivityIndicatorView
-        activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityView = UIActivityIndicatorView(style: .gray)
         activityView.hidesWhenStopped = true
         self.view.addAutolayoutView(activityView)
         activityView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

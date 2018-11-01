@@ -65,7 +65,7 @@ class CollectionViewStatefulDataSource<Cell: ViewModelReusable & UICollectionVie
                     return nil
                 }
             case .loading:
-                let activity = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+                let activity = UIActivityIndicatorView(style: .gray)
                 activity.startAnimating()
                 return activity
             case .failure(let error):

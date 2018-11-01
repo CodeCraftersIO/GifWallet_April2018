@@ -7,7 +7,7 @@ import UIKit
 
 extension UITextField {
 
-    static func autolayoutTextFieldWith(textStyle style: UIFontTextStyle, placeholderText: String) -> UITextField {
+    static func autolayoutTextFieldWith(textStyle style: UIFont.TextStyle, placeholderText: String) -> UITextField {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.preferredFont(forTextStyle: style)

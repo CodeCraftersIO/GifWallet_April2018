@@ -545,7 +545,6 @@
 				F5D1D43820499B880012E800 /* Resources */,
 				44AD65C36388A1A649ADBEED /* [CP] Embed Pods Frameworks */,
 				F5D1D48E20499E300012E800 /* Embed Frameworks */,
-				AB2A6B50AA076D56197D4FCF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -566,7 +565,6 @@
 				F5D1D44D20499B880012E800 /* Frameworks */,
 				F5D1D44E20499B880012E800 /* Resources */,
 				228E61E740DAB9DAE2A40149 /* [CP] Embed Pods Frameworks */,
-				62E17FA074992A5B6C03F8D1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -587,7 +585,6 @@
 				F5D1D46E20499E2F0012E800 /* Frameworks */,
 				F5D1D46F20499E2F0012E800 /* Headers */,
 				F5D1D47020499E2F0012E800 /* Resources */,
-				43DF52E67EBE8D51938B18C6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -607,7 +604,6 @@
 				F5D1D47720499E300012E800 /* Frameworks */,
 				F5D1D47820499E300012E800 /* Resources */,
 				A1C95F2F70FA700757726C63 /* [CP] Embed Pods Frameworks */,
-				CE15E7476B3A13452C830C81 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -637,6 +633,7 @@
 					};
 					F5D1D43920499B880012E800 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					F5D1D44F20499B880012E800 = {
@@ -647,7 +644,7 @@
 					};
 					F5D1D47120499E2F0012E800 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					F5D1D47920499E300012E800 = {
@@ -784,21 +781,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		43DF52E67EBE8D51938B18C6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GifWalletKit/Pods-GifWalletKit-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		44AD65C36388A1A649ADBEED /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -823,21 +805,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GifWallet/Pods-GifWallet-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		62E17FA074992A5B6C03F8D1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GifWallet-GifWalletTests/Pods-GifWallet-GifWalletTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		87660106223F79343BA173AC /* [CP] Check Pods Manifest.lock */ = {
@@ -892,36 +859,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GifWalletKitTests/Pods-GifWalletKitTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AB2A6B50AA076D56197D4FCF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GifWallet/Pods-GifWallet-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CE15E7476B3A13452C830C81 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GifWalletKitTests/Pods-GifWalletKitTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1207,7 +1144,7 @@
 				INFOPLIST_FILE = GifWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1222,7 +1159,7 @@
 				INFOPLIST_FILE = GifWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1284,7 +1221,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1310,7 +1247,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.blurred.GifWalletKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

@@ -65,7 +65,7 @@ class GIFCreateViewController: UIViewController, UITableViewDataSource {
     private func setup() {
         setupTableView()
         saveButton.addTarget(self, action: #selector(onSave), for: .touchDown)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(dismissViewController))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(dismissViewController))
     }
 
     private func layout() {
@@ -84,7 +84,7 @@ class GIFCreateViewController: UIViewController, UITableViewDataSource {
     private func setupTableView() {
         tableView.keyboardDismissMode = .onDrag
         tableView.estimatedRowHeight = 60
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.registerReusableCell(FormTableViewCell<GIFInputView>.self)
         tableView.registerReusableCell(FormTableViewCell<TextInputView>.self)
         tableView.registerReusableCell(FormTableViewCell<TagsInputView>.self)
